@@ -1,0 +1,9 @@
+diff a/GraduationWork/lib/Scene.h b/GraduationWork/lib/Scene.h	(rejected hunks)
+@@ -131,7 +131,6 @@
+ 	/// <typeparam name="C">��������I�u�W�F�N�g</typeparam>
+ 	/// <returns>���������I�u�W�F�N�g</returns>
+ 	template<class C>
+-	C* Instantiate(std::string _name = "")
+ 	C* Instantiate(std::string _tagName = "")
+ 	{
+ 		GameObject* obj = new C;
