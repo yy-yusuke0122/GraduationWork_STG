@@ -59,6 +59,7 @@
     <ClCompile Include="..\lib\Transform.cpp" />
     <ClCompile Include="..\lib\typedef.cpp" />
     <ClCompile Include="..\lib\UrLib.cpp" />
+    <ClCompile Include="..\Source\Components\EnemyController.cpp" />
     <ClCompile Include="..\Source\Components\Life.cpp" />
     <ClCompile Include="..\Source\Components\PlayerController.cpp" />
     <ClCompile Include="..\Source\Components\PlayerMover.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="..\lib\Transform.h" />
     <ClInclude Include="..\lib\typedef.h" />
     <ClInclude Include="..\lib\UrLib.h" />
+    <ClInclude Include="..\Source\Components\EnemyController.h" />
     <ClInclude Include="..\Source\Components\Life.h" />
     <ClInclude Include="..\Source\Components\PlayerController.h" />
     <ClInclude Include="..\Source\Components\PlayerMover.h" />
