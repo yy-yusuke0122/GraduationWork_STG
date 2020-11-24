@@ -30,18 +30,18 @@ void BoxCollider::Disp()
 		c + right + bottom + front
 	};
 
-	DrawLine(v[0].x, v[0].y, v[1].x, v[1].y, GetColor(255, 255, 255));
-	DrawLine(v[1].x, v[1].y, v[2].x, v[2].y, GetColor(255, 255, 255));
-	DrawLine(v[2].x, v[2].y, v[3].x, v[3].y, GetColor(255, 255, 255));
-	DrawLine(v[3].x, v[3].y, v[0].x, v[0].y, GetColor(255, 255, 255));
-	DrawLine(v[0].x, v[0].y, v[4].x, v[4].y, GetColor(255, 255, 255));
-	DrawLine(v[1].x, v[1].y, v[5].x, v[5].y, GetColor(255, 255, 255));
-	DrawLine(v[2].x, v[2].y, v[6].x, v[6].y, GetColor(255, 255, 255));
-	DrawLine(v[3].x, v[3].y, v[7].x, v[7].y, GetColor(255, 255, 255));
-	DrawLine(v[4].x, v[4].y, v[5].x, v[5].y, GetColor(255, 255, 255));
-	DrawLine(v[5].x, v[5].y, v[6].x, v[6].y, GetColor(255, 255, 255));
-	DrawLine(v[6].x, v[6].y, v[7].x, v[7].y, GetColor(255, 255, 255));
-	DrawLine(v[7].x, v[7].y, v[4].x, v[4].y, GetColor(255, 255, 255));
+	DrawLine((int)v[0].x, (int)v[0].y, (int)v[1].x, (int)v[1].y, GetColor(255, 255, 255));
+	DrawLine((int)v[1].x, (int)v[1].y, (int)v[2].x, (int)v[2].y, GetColor(255, 255, 255));
+	DrawLine((int)v[2].x, (int)v[2].y, (int)v[3].x, (int)v[3].y, GetColor(255, 255, 255));
+	DrawLine((int)v[3].x, (int)v[3].y, (int)v[0].x, (int)v[0].y, GetColor(255, 255, 255));
+	DrawLine((int)v[0].x, (int)v[0].y, (int)v[4].x, (int)v[4].y, GetColor(255, 255, 255));
+	DrawLine((int)v[1].x, (int)v[1].y, (int)v[5].x, (int)v[5].y, GetColor(255, 255, 255));
+	DrawLine((int)v[2].x, (int)v[2].y, (int)v[6].x, (int)v[6].y, GetColor(255, 255, 255));
+	DrawLine((int)v[3].x, (int)v[3].y, (int)v[7].x, (int)v[7].y, GetColor(255, 255, 255));
+	DrawLine((int)v[4].x, (int)v[4].y, (int)v[5].x, (int)v[5].y, GetColor(255, 255, 255));
+	DrawLine((int)v[5].x, (int)v[5].y, (int)v[6].x, (int)v[6].y, GetColor(255, 255, 255));
+	DrawLine((int)v[6].x, (int)v[6].y, (int)v[7].x, (int)v[7].y, GetColor(255, 255, 255));
+	DrawLine((int)v[7].x, (int)v[7].y, (int)v[4].x, (int)v[4].y, GetColor(255, 255, 255));
 }
 
 bool BoxCollider::IsCollide(Collider3D* _collider)

@@ -72,19 +72,20 @@ namespace UrLib {
 	/// <returns>0:ê¨å˜,-1:é∏îs</returns>
 	inline int DrawRotaBox(AABB2D box, double Angle, unsigned int Color, int FillFlag) {
 		VECTOR2 v[4];
-		float rad = Angle;
-		v[0].x = cos(rad) * box.LeftTop().x - sin(rad) * box.LeftTop().y + box.p.x;
-		v[0].y = sin(rad) * box.LeftTop().x + cos(rad) * box.LeftTop().y + box.p.y;
-		v[1].x = cos(rad) * box.RightTop().x - sin(rad) * box.RightTop().y + box.p.x;
-		v[1].y = sin(rad) * box.RightTop().x + cos(rad) * box.RightTop().y + box.p.y;
-		v[2].x = cos(rad) * box.RightBottom().x - sin(rad) * box.RightBottom().y + box.p.x;
-		v[2].y = sin(rad) * box.RightBottom().x + cos(rad) * box.RightBottom().y + box.p.y;
-		v[3].x = cos(rad) * box.LeftBottom().x - sin(rad) * box.LeftBottom().y + box.p.x;
-		v[3].y = sin(rad) * box.LeftBottom().x + cos(rad) * box.LeftBottom().y + box.p.y;
+		float rad = static_cast<float>(Angle);
+		v[0].x = cosf(rad) * box.LeftTop().x - sinf(rad) * box.LeftTop().y + box.p.x;
+		v[0].y = sinf(rad) * box.LeftTop().x + cosf(rad) * box.LeftTop().y + box.p.y;
+		v[1].x = cosf(rad) * box.RightTop().x - sinf(rad) * box.RightTop().y + box.p.x;
+		v[1].y = sinf(rad) * box.RightTop().x + cosf(rad) * box.RightTop().y + box.p.y;
+		v[2].x = cosf(rad) * box.RightBottom().x - sinf(rad) * box.RightBottom().y + box.p.x;
+		v[2].y = sinf(rad) * box.RightBottom().x + cosf(rad) * box.RightBottom().y + box.p.y;
+		v[3].x = cosf(rad) * box.LeftBottom().x - sinf(rad) * box.LeftBottom().y + box.p.x;
+		v[3].y = sinf(rad) * box.LeftBottom().x + cosf(rad) * box.LeftBottom().y + box.p.y;
 
 		for (int i = 0; i < 4; ++i) {
 			int end = i == 3 ? 0 : i + 1;
-			int ret = DrawLine(v[i].x, v[i].y, v[end].x, v[end].y, Color, FillFlag);
+			int ret = DrawLine(static_cast<int>(v[i].x), static_cast<int>(v[i].y),
+				static_cast<int>(v[end].x), static_cast<int>(v[end].y), Color, FillFlag);
 			if (ret == -1) {
 				return -1;
 			}

@@ -129,6 +129,29 @@ public:
 	int GetSubSceneCount()const;
 
 	/// <summary>
+	/// ゲームオブジェクトを探しますよ！！！
+	/// </summary>
+	/// <param name="_tag">タグ</param>
+	/// <returns>アドレス！！！</returns>
+	GameObject* FindGameObject(const std::string& _tag);
+
+	/// <summary>
+	/// ゲームオブジェクトを探しますよ！！！
+	/// </summary>
+	/// <returns>アドレス！！！</returns>
+	template<class C>
+	C* FindGameObject()
+	{
+		for (std::list<GameObject*>::iterator it = objectList.begin(), end = objectList.end(); it != end; ++it)
+		{
+			C* p = dynamic_cast<C*>(*it);
+			if (p != nullptr)
+				return p;
+		}
+		return nullptr;
+	}
+
+	/// <summary>
 	/// ゲームオブジェクト生成
 	/// </summary>
 	/// <typeparam _tagName="C">生成するオブジェクト</typeparam>

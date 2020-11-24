@@ -22,7 +22,3 @@ void Enemy::Start()
 	// コンポーネント毎の設定
 	imageRenderer->SetImage("Media/Enemy.png");	// 描画する画像をセット
 }
-
-void Enemy::Update()
-{
-}

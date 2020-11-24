@@ -8,7 +8,6 @@ public:
 	Enemy();
 	~Enemy();
 	void Start() override;
-	void Update() override;
 
 private:
 	EnemyController* enemyController;

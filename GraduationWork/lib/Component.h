@@ -49,7 +49,7 @@ public:
 	/// <typeparam name="C">生成したいGameObjectのクラス</typeparam>
 	/// <returns>生成したGameObjectのポインター</returns>
 	template<class C>
-	inline GameObject* Instantiate();
+	inline C* Instantiate();
 
 	/// <summary>
 	/// 存在しているシーンのポインターを返す
@@ -97,7 +97,7 @@ inline bool Component::RemoveComponent()
 }
 
 template<class C>
-inline GameObject* Component::Instantiate()
+inline C* Component::Instantiate()
 {
 	return SceneManager::Get()->GetCurrentScene()->Instantiate<C>();
 }

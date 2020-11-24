@@ -14,7 +14,7 @@ public:
 	GameObject();
 	virtual ~GameObject();
 
-	void Update() override;
+	void Update() final;
 
 	/// <summary>
 	/// Component‚ð’Ç‰Á‚·‚é

@@ -182,6 +182,14 @@ int Scene::GetSubSceneCount() const
 	return static_cast<int>(subSceneList.size());
 }
 
+GameObject* Scene::FindGameObject(const std::string& _tag)
+{
+	for (std::list<GameObject*>::iterator it = objectList.begin(), end = objectList.end(); it != end; ++it)
+		if ((*it)->tag == _tag)
+			return *it;
+	return nullptr;
+}
+
 int Scene::GetAsyncLoadCount()const
 {
 	return static_cast<int>(asyncRendererList.size());
