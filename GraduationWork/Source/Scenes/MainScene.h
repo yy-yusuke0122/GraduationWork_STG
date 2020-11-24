@@ -1,6 +1,9 @@
 #pragma once
 #include "../../lib/UrLib.h"
 
+class Player;
+class Enemy;
+
 class MainScene : public Scene {
 public:
 	MainScene();
@@ -9,4 +12,7 @@ public:
 	void Update();
 private:
 	void CheckInput();
+private:
+	Player* player;
+	Enemy* enemy;
 };

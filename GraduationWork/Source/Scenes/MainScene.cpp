@@ -5,8 +5,8 @@
 
 MainScene::MainScene()
 {
-	Instantiate<Player>();
-	Instantiate<Enemy>();
+	player = Instantiate<Player>();
+	enemy = Instantiate<Enemy>();
 }
 
 MainScene::~MainScene()
@@ -15,6 +15,12 @@ MainScene::~MainScene()
 
 void MainScene::Start()
 {
+	VECTOR3 center = VGet((float)(Screen::x / 2), (float)(Screen::y / 2), 0.0f);
+	VECTOR3 add = VGet(200.0f, 0.0f, 0.0f);
+	player->transform->SetPosition(center);
+	player->transform->AddPosition(-add);
+	enemy->transform->SetPosition(center);
+	enemy->transform->AddPosition(add);
 }
 
 void MainScene::Update()
