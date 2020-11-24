@@ -8,7 +8,6 @@ public:
 	Character();
 	virtual ~Character();
 	virtual void Start();
-	virtual void Update();
 protected:
 	ImageRenderer* imageRenderer;
 	Life* life;

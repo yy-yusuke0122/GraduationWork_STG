@@ -11,7 +11,3 @@ Character::~Character()
 void Character::Start()
 {
 }
-
-void Character::Update()
-{
-}
