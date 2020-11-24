@@ -171,6 +171,9 @@
     <ClCompile Include="..\Source\Components\PlayerController.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\PlayerMover.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -324,6 +327,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Components\PlayerController.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\PlayerMover.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

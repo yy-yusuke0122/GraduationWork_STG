@@ -1,14 +1,18 @@
 #pragma once
 #include "Character.h"
 
+class Life;
 class PlayerController;
 
-class Player : public Character {
+class Player : public GameObject {
 public:
 	Player();
 	~Player();
-	void Start() override;
-	void Update() override;
+	void Start();
 private:
+	ImageRenderer* imageRenderer;
+	Life* life;
+	Animator2D* animator2D;
 	PlayerController* playerController;
+
 };
