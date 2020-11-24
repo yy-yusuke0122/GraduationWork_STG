@@ -1,6 +1,8 @@
 #pragma once
 #include "Character.h"
 
+class PlayerController;
+
 class Player : public Character {
 public:
 	Player();
@@ -8,4 +10,5 @@ public:
 	void Start() override;
 	void Update() override;
 private:
+	PlayerController* playerController;
 };

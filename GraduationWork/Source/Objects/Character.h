@@ -12,4 +12,5 @@ public:
 protected:
 	ImageRenderer* imageRenderer;
 	Life* life;
+	Animator2D* animator2D;
 };

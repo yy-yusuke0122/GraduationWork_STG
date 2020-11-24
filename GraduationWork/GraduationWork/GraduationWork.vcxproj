@@ -60,6 +60,7 @@
     <ClCompile Include="..\lib\typedef.cpp" />
     <ClCompile Include="..\lib\UrLib.cpp" />
     <ClCompile Include="..\Source\Components\Life.cpp" />
+    <ClCompile Include="..\Source\Components\PlayerController.cpp" />
     <ClCompile Include="..\Source\Main.cpp" />
     <ClCompile Include="..\Source\Objects\Character.cpp" />
     <ClCompile Include="..\Source\Objects\Enemy.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="..\lib\typedef.h" />
     <ClInclude Include="..\lib\UrLib.h" />
     <ClInclude Include="..\Source\Components\Life.h" />
+    <ClInclude Include="..\Source\Components\PlayerController.h" />
     <ClInclude Include="..\Source\Objects\Character.h" />
     <ClInclude Include="..\Source\Objects\Enemy.h" />
     <ClInclude Include="..\Source\Objects\Player.h" />

@@ -168,6 +168,9 @@
     <ClCompile Include="..\Source\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\PlayerController.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -318,6 +321,9 @@
       <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Components\Life.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\PlayerController.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
