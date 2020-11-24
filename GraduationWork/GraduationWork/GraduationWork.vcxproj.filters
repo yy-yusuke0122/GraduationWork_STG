@@ -13,14 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="testSource">
+    <Filter Include="Source">
       <UniqueIdentifier>{62b4b2d9-37a6-40cb-829d-f0c24b2265a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes">
+      <UniqueIdentifier>{9ad7edf3-d689-425f-8e6c-76405c12aa18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects">
+      <UniqueIdentifier>{a8774585-ea96-4f03-8e70-baaff016d9fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components">
+      <UniqueIdentifier>{bb02918a-ec96-41dd-9ca4-6a7379ec4729}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\UrLib.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -42,18 +48,6 @@
     <ClCompile Include="..\lib\SceneManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\TitleScene.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Player.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\PlayerComponent.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\PlayerChild.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\DrawManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -66,32 +60,11 @@
     <ClCompile Include="..\lib\ImageRenderer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\PlayerChanger.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\PlayerRotate.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\TitleSubScene.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\GameMain.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\Input.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\typedef.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\TestTransformChara.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\TestTransformScene.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\TestTransformComponent.cpp">
-      <Filter>testSource</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\Time.cpp">
       <Filter>ソース ファイル</Filter>
@@ -101,12 +74,6 @@
     </ClCompile>
     <ClCompile Include="..\lib\Collider.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AnimTestComp.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AnimTestScene.cpp">
-      <Filter>testSource</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\Sound.cpp">
       <Filter>ソース ファイル</Filter>
@@ -156,9 +123,6 @@
     <ClCompile Include="..\lib\Texture.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\TestCollisionScene.cpp">
-      <Filter>testSource</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\DirectionalLight.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -170,9 +134,6 @@
     </ClCompile>
     <ClCompile Include="..\lib\Light.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\LightTest.cpp">
-      <Filter>testSource</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\Loader.cpp">
       <Filter>ソース ファイル</Filter>
@@ -186,8 +147,26 @@
     <ClCompile Include="..\lib\Debug.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\TestCollisionComponent.cpp">
-      <Filter>testSource</Filter>
+    <ClCompile Include="..\Source\Scenes\MainScene.cpp">
+      <Filter>Source\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\TitleScene.cpp">
+      <Filter>Source\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Player.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Enemy.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\Life.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Character.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Main.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,18 +191,6 @@
     <ClInclude Include="..\lib\SceneManager.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\TitleScene.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Player.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\PlayerComponent.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\PlayerChild.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\Renderer.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
@@ -239,35 +206,11 @@
     <ClInclude Include="..\lib\typedef.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\PlayerChanger.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\Function.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\PlayerRotate.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\TitleSubScene.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\GameMain.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\Input.h">
       <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\TestTransformChara.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\TestTransformScene.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\TestTransformComponent.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\lib\Delay.h">
-      <Filter>testSource</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\Time.h">
       <Filter>ソース ファイル</Filter>
@@ -280,12 +223,6 @@
     </ClInclude>
     <ClInclude Include="..\lib\Animator2D.h">
       <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AnimTestComp.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AnimTestScene.h">
-      <Filter>testSource</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\Sound.h">
       <Filter>ソース ファイル</Filter>
@@ -338,9 +275,6 @@
     <ClInclude Include="..\lib\Mesh.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\TestCollisionScene.h">
-      <Filter>testSource</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\Light.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
@@ -352,9 +286,6 @@
     </ClInclude>
     <ClInclude Include="..\lib\SpotLight.h">
       <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\LightTest.h">
-      <Filter>testSource</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\Loader.h">
       <Filter>ソース ファイル</Filter>
@@ -371,8 +302,23 @@
     <ClInclude Include="..\lib\Debug.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\TestCollisionComponent.h">
-      <Filter>testSource</Filter>
+    <ClInclude Include="..\Source\Objects\Player.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\MainScene.h">
+      <Filter>Source\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\TitleScene.h">
+      <Filter>Source\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Enemy.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Character.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\Life.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
