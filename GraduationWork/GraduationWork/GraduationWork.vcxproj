@@ -64,6 +64,8 @@
     <ClCompile Include="..\Source\Components\EnemyAttack01.cpp" />
     <ClCompile Include="..\Source\Components\EnemyController.cpp" />
     <ClCompile Include="..\Source\Components\Life.cpp" />
+    <ClCompile Include="..\Source\Components\PlayerAttack00.cpp" />
+    <ClCompile Include="..\Source\Components\PlayerAttacker.cpp" />
     <ClCompile Include="..\Source\Components\PlayerController.cpp" />
     <ClCompile Include="..\Source\Components\PlayerMover.cpp" />
     <ClCompile Include="..\Source\Components\ScreenOut.cpp" />
@@ -127,6 +129,8 @@
     <ClInclude Include="..\Source\Components\EnemyAttack01.h" />
     <ClInclude Include="..\Source\Components\EnemyController.h" />
     <ClInclude Include="..\Source\Components\Life.h" />
+    <ClInclude Include="..\Source\Components\PlayerAttack00.h" />
+    <ClInclude Include="..\Source\Components\PlayerAttacker.h" />
     <ClInclude Include="..\Source\Components\PlayerController.h" />
     <ClInclude Include="..\Source\Components\PlayerMover.h" />
     <ClInclude Include="..\Source\Components\ScreenOut.h" />
