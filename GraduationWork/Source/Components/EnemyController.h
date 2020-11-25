@@ -11,11 +11,15 @@ public:
 	void Start();
 	void Update();
 
+	void Next();
+
 private:
 	void ChangeMode();
 private:
 	float count;
 	int pattern;
+	int nextPattern;
 
 	Component* state;
+
 };

@@ -2,13 +2,12 @@
 
 #include "../../lib/UrLib.h"
 
+class EnemyController;
+
 class EnemyAttack00 :public Component
 {
 public:
-	EnemyAttack00() :
-		jumpPower(0.f), jumpSpeed(0.f), attackTime(0.3f), time(0.f), isAttacked(false)
-	{
-	}
+	EnemyAttack00();
 
 	~EnemyAttack00()
 	{
@@ -18,20 +17,25 @@ public:
 
 	void Update()override;
 
+private:
 	void Jump();
 
-	void OnCollisionEnter2D(Collider2D* _collider)override;
+	void OnCollisionStay2D(Collider2D* _collider)override;
 
-public:
-	float jumpPower;
-	
+private:	
 	float attackTime;
 
-private:
 	float jumpSpeed;
 
 	bool isAttacked;//çUåÇÇµÇΩÇ©
 
+	bool isInitialize;
+
 	float time;
+
+	float stageY;
+
+	EnemyController* controller;
+	CircleCollider2D* circle;
 
 };

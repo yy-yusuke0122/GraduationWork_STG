@@ -61,6 +61,18 @@ public:
 	std::string GetPath()const { return image.path; }
 
 	/// <summary>
+	/// 画像Xサイズを取得
+	/// </summary>
+	/// <returns>読み込み時：画像サイズ、読み込んでいない：-1</returns>
+	int GetSizeX()const;
+
+	/// <summary>
+	/// 画像Yサイズを取得
+	/// </summary>
+	/// <returns>読み込み時：画像サイズ、読み込んでいない：-1</returns>
+	int GetSizeY()const;
+
+	/// <summary>
 	/// 読み込んだデータを破棄
 	/// </summary>
 	void Release() { image.Destroy(); drawNum = 0u; }

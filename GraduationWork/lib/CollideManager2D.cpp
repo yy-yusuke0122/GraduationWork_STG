@@ -54,8 +54,9 @@ void CollideManager2D::CheckCollider(COL_INFO* _col1, COL_INFO* _col2)
 	std::list<Collider2D*>::iterator itCol1;
 	std::list<Collider2D*>::iterator itCol2;
 	bool collided = IsCollided(_col1, col2, itCol1);
+	bool collided2 = false;
 	if (collided) {
-		IsCollided(_col2, col1, itCol2);
+		collided = IsCollided(_col2, col1, itCol2);
 	}
 
 	// 当たっているかの確認
@@ -81,7 +82,8 @@ void CollideManager2D::CheckCollider(COL_INFO* _col1, COL_INFO* _col2)
 			col2->ExecuteAllCollisionExit(col1);
 			// 衝突リストから外す
 			_col1->currentCollideList.erase(itCol1);
-			_col2->currentCollideList.erase(itCol2);
+			if (collided2)
+				_col2->currentCollideList.erase(itCol2);
 		}
 	}
 }

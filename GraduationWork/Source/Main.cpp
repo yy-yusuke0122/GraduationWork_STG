@@ -10,9 +10,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	//TODO
-	SceneManager::Get()->isAsyncLoad = true;
-	Loader::isAsync = true;
-	Saver::isAsync = true;
+	//SceneManager::Get()->isAsyncLoad = true;
+	//Loader::isAsync = true;
+	//Saver::isAsync = true;
 
 	SceneManager::Get()->LoadScene<TitleScene>();
 

@@ -79,6 +79,16 @@ void ImageRenderer::DestroyParam()
     drawNum = 0u;
 }
 
+int ImageRenderer::GetSizeX() const
+{
+    return (image.imageInfo == nullptr) ? -1 : image.imageInfo->sizeX;
+}
+
+int ImageRenderer::GetSizeY() const
+{
+    return (image.imageInfo == nullptr) ? -1 : image.imageInfo->sizeY;
+}
+
 void ImageRenderer::Initialize()
 {
     if (image.imageInfo != nullptr)

@@ -63,14 +63,17 @@
     <ClCompile Include="..\Source\Components\EnemyAttack00.cpp" />
     <ClCompile Include="..\Source\Components\EnemyAttack01.cpp" />
     <ClCompile Include="..\Source\Components\EnemyController.cpp" />
-    <ClCompile Include="..\Source\Components\EnemyShot.cpp" />
     <ClCompile Include="..\Source\Components\Life.cpp" />
     <ClCompile Include="..\Source\Components\PlayerController.cpp" />
     <ClCompile Include="..\Source\Components\PlayerMover.cpp" />
+    <ClCompile Include="..\Source\Components\ScreenOut.cpp" />
     <ClCompile Include="..\Source\Main.cpp" />
     <ClCompile Include="..\Source\Objects\Character.cpp" />
     <ClCompile Include="..\Source\Objects\Enemy.cpp" />
+    <ClCompile Include="..\Source\Objects\EnemyShot.cpp" />
     <ClCompile Include="..\Source\Objects\Player.cpp" />
+    <ClCompile Include="..\Source\Objects\ScreenCollider.cpp" />
+    <ClCompile Include="..\Source\Objects\Stage.cpp" />
     <ClCompile Include="..\Source\Scenes\MainScene.cpp" />
     <ClCompile Include="..\Source\Scenes\TitleScene.cpp" />
   </ItemGroup>
@@ -123,13 +126,16 @@
     <ClInclude Include="..\Source\Components\EnemyAttack00.h" />
     <ClInclude Include="..\Source\Components\EnemyAttack01.h" />
     <ClInclude Include="..\Source\Components\EnemyController.h" />
-    <ClInclude Include="..\Source\Components\EnemyShot.h" />
     <ClInclude Include="..\Source\Components\Life.h" />
     <ClInclude Include="..\Source\Components\PlayerController.h" />
     <ClInclude Include="..\Source\Components\PlayerMover.h" />
+    <ClInclude Include="..\Source\Components\ScreenOut.h" />
     <ClInclude Include="..\Source\Objects\Character.h" />
     <ClInclude Include="..\Source\Objects\Enemy.h" />
+    <ClInclude Include="..\Source\Objects\EnemyShot.h" />
     <ClInclude Include="..\Source\Objects\Player.h" />
+    <ClInclude Include="..\Source\Objects\ScreenCollider.h" />
+    <ClInclude Include="..\Source\Objects\Stage.h" />
     <ClInclude Include="..\Source\Scenes\MainScene.h" />
     <ClInclude Include="..\Source\Scenes\TitleScene.h" />
   </ItemGroup>
