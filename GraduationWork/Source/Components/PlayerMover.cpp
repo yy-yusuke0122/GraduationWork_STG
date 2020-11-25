@@ -1,5 +1,10 @@
 #include "PlayerMover.h"
 
+namespace {
+	const float JUMP_POWER = 10.0f;//上昇量
+	const float GRAVITY = 0.2f;//降下量
+}
+
 PlayerMover::PlayerMover()
 {
 }
@@ -10,11 +15,19 @@ PlayerMover::~PlayerMover()
 
 void PlayerMover::Start()
 {
-	speed = 1.0f;
+	speed = 3.0f;
+	jumpPower = 0.0f;
 }
 
 void PlayerMover::Update()
 {
+	// 座標に加算
+	VECTOR3 vec;
+	vec = VGet(0.0f, jumpPower, 0.0f);
+	transform->AddPosition(vec);
+
+	// ジャンプパワーを減少
+	jumpPower += GRAVITY;
 }
 
 void PlayerMover::Move(bool _isRight)
@@ -31,4 +44,5 @@ void PlayerMover::Move(bool _isRight)
 
 void PlayerMover::Jump()
 {
+	jumpPower = -JUMP_POWER;
 }
