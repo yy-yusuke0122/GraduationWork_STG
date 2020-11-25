@@ -2,6 +2,7 @@
 #include "TitleScene.h"
 #include "../Objects/Player.h"
 #include "../Objects/Enemy.h"
+#include "../Components/Life.h"
 
 MainScene::MainScene()
 {
@@ -26,6 +27,8 @@ void MainScene::Start()
 void MainScene::Update()
 {
 	CheckInput();
+
+	printfDx("PlayerHP : %2.f\n", player->GetComponent<Life>()->hp);
 
 	printfDx("MainScene\n");
 	printfDx("Press '0' : To 'TitleScene'\n");

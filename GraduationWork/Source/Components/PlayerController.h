@@ -2,6 +2,7 @@
 #include "../../lib/UrLib.h"
 
 class PlayerMover;
+class PlayerAttacker;
 
 class PlayerController : public Component {
 public:
@@ -11,5 +12,6 @@ public:
 	void Update();
 
 private:
-	PlayerMover* playerMover;
+	PlayerMover* mover;
+	PlayerAttacker* attacker;
 };

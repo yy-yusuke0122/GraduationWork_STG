@@ -8,8 +8,9 @@ public:
 	Character();
 	virtual ~Character();
 	virtual void Start();
+
 protected:
 	ImageRenderer* imageRenderer;
 	Life* life;
-	Animator2D* animator2D;
+	CircleCollider2D* circleCollider2D;
 };
