@@ -18,5 +18,5 @@ public:
 	void Update()override;
 
 private:
-
+	ImageRenderer* image;
 };

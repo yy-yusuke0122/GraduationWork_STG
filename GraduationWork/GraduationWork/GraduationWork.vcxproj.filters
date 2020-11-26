@@ -207,6 +207,9 @@
     <ClCompile Include="..\Source\Components\EnemyImageChanger.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\EnemyAttack02.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -396,6 +399,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Components\EnemyImageChanger.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\EnemyAttack02.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,7 +17,7 @@ void EnemyAttack01::Start()
 {
 	time = 0.f;
 
-	if (!isInitialize)
+	if ( ! isInitialize)
 	{
 		controller = GetComponent<EnemyController>();
 		isInitialize = true;

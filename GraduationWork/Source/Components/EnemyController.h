@@ -22,4 +22,6 @@ private:
 
 	Component* state;
 
+	Component* stateArray[3];
+
 };

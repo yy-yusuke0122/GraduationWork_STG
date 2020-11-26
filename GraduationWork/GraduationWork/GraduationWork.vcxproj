@@ -62,6 +62,7 @@
     <ClCompile Include="..\Source\Components\DirectionMover.cpp" />
     <ClCompile Include="..\Source\Components\EnemyAttack00.cpp" />
     <ClCompile Include="..\Source\Components\EnemyAttack01.cpp" />
+    <ClCompile Include="..\Source\Components\EnemyAttack02.cpp" />
     <ClCompile Include="..\Source\Components\EnemyController.cpp" />
     <ClCompile Include="..\Source\Components\EnemyImageChanger.cpp" />
     <ClCompile Include="..\Source\Components\Life.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="..\Source\Components\DirectionMover.h" />
     <ClInclude Include="..\Source\Components\EnemyAttack00.h" />
     <ClInclude Include="..\Source\Components\EnemyAttack01.h" />
+    <ClInclude Include="..\Source\Components\EnemyAttack02.h" />
     <ClInclude Include="..\Source\Components\EnemyController.h" />
     <ClInclude Include="..\Source\Components\EnemyImageChanger.h" />
     <ClInclude Include="..\Source\Components\Life.h" />
