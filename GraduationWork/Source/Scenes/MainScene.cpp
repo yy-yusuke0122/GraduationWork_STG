@@ -3,11 +3,15 @@
 #include "../Objects/Player.h"
 #include "../Objects/Enemy.h"
 #include "../Components/Life.h"
+#include "../Objects/Stage.h"
+#include "../Objects/ScreenCollider.h"
 
 MainScene::MainScene()
 {
+	Instantiate<ScreenCollider>();
 	player = Instantiate<Player>();
 	enemy = Instantiate<Enemy>();
+	Instantiate<Stage>();
 }
 
 MainScene::~MainScene()
@@ -40,4 +44,6 @@ void MainScene::CheckInput()
 	if (Input::IsKeyDown(KEY::KEY_0)) {
 		SceneManager::Get()->LoadScene<TitleScene>();
 	}
+	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
+		SceneManager::Get()->End();
 }

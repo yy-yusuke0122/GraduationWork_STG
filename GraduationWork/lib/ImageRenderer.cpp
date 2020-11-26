@@ -3,7 +3,7 @@
 
 ImageRenderer::ImageRenderer() :
     position(0.0f, 0.0f), rotation(0.0f), scale(1.0f, 1.0f), alpha(1.0f),
-    transFlag(TRUE), turnFlag(FALSE), order(0), drawNum(0u), image(this)
+    transFlag(TRUE), turnXFlag(false), turnYFlag(false), order(0), drawNum(0u), image(this)
 {
 }
 
@@ -26,7 +26,8 @@ void ImageRenderer::Draw()
     int cy = sizey / 2;
     float Angle = ToRadian(rotation);
 
-    DrawRotaGraph3(x, y, cx, cy, scale.x, scale.y, Angle, image.imageInfo->handles[drawNum], transFlag, turnFlag);
+    DrawRotaGraph3(x, y, cx, cy, scale.x, scale.y, Angle, image.imageInfo->handles[drawNum],
+        transFlag, (turnXFlag) ? TRUE : FALSE, (turnYFlag) ? TRUE : FALSE);
 }
 
 bool ImageRenderer::SetImage(const std::string& _filePass)

@@ -90,7 +90,8 @@ public:
 	VECTOR2 scale;
 	float alpha;
 	int transFlag;
-	int turnFlag;
+	bool turnXFlag;
+	bool turnYFlag;
 	int order;
 
 private:

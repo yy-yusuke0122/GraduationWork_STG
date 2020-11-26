@@ -21,5 +21,5 @@ public:
 
 private:
 	DirectionMover* direction;
-
+	ImageRenderer* image;
 };

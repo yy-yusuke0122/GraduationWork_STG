@@ -11,7 +11,8 @@ void EnemyShot::Start()
 {
 	direction = AddComponent<DirectionMover>();//指定方向へ移動
 	AddComponent<CircleCollider2D>();//コライダ
-	AddComponent<ImageRenderer>()->SetImage("Media/EnemyBullet.png");//画像
+	image = AddComponent<ImageRenderer>();
+	image->SetImage("Media/EnemyBullet.png");//画像
 	AddComponent<ScreenOut>();
 }
 
@@ -21,4 +22,6 @@ void EnemyShot::SetTargetPos(const VECTOR3& _pos)
 	direction->rad = atan2f(dist.y, dist.x);
 
 	direction->speed = SHOT_SPEED;
+
+	image->rotation = ToDegree(direction->rad);
 }

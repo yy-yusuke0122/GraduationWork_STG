@@ -36,10 +36,3 @@ void EnemyAttack01::Update()
 	}
 
 }
-
-void EnemyAttack01::OnCollisionEnter2D(Collider2D* _collider)
-{
-	if (_collider->gameObject->tag == "Stage")
-	{
-	}
-}

@@ -41,7 +41,7 @@ void EnemyAttack00::Update()
 
 	time += delta;
 	
-	if (!isAttacked && time > attackTime)
+	if ( ! isAttacked && time > attackTime)
 	{
 		isAttacked = true;
 		GameObject* player = gameObject->GetScene()->FindGameObject("Player");

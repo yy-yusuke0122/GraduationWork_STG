@@ -17,8 +17,6 @@ public:
 
 	void Update()override;
 
-	void OnCollisionEnter2D(Collider2D* _collider)override;
-
 private:
 	bool isInitialize;
 

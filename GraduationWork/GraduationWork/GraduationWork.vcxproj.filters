@@ -204,6 +204,9 @@
     <ClCompile Include="..\Source\Components\PlayerAttacker.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\EnemyImageChanger.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -390,6 +393,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Components\PlayerAttacker.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\EnemyImageChanger.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
