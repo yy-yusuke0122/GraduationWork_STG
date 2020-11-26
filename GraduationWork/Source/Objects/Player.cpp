@@ -19,4 +19,5 @@ void Player::Start()
 	imageRenderer->SetImage("Media/Player.png");	// •`‰æ‚·‚é‰æ‘œ‚ðƒZƒbƒg
 	life->SetMaxHP(3.0f);							// Å‘åHP‚ðÝ’è
 	life->SetHP(3.0f);								// ‰ŠúHP‚ðÝ’è
+	circleCollider2D->circle.r = (imageRenderer->GetSizeX() + imageRenderer->GetSizeY()) / 2.f;
 }
