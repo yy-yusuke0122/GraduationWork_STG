@@ -1,4 +1,5 @@
 #include "PlayerMover.h"
+#include "../Objects/Stage.h"
 
 namespace {
 	const float JUMP_POWER = 15.0f;//上昇量
@@ -17,14 +18,14 @@ void PlayerMover::Start()
 {
 	speed = 5.0f;		// 移動速度の設定
 	jumpPower = 0.0f;	// 初期の落下速度は0
-						// 開幕は着地していない
+	randing = false;	// 開幕は着地していない
 }
 
 void PlayerMover::Update()
 {
-	// ↓（もし）着地していないなら呼ぶ
-	// 落下処理
-	Fall();
+	if (randing == false) {
+			Fall();// 落下処理
+	}
 }
 
 void PlayerMover::Move(bool _isRight)
@@ -42,6 +43,7 @@ void PlayerMover::Move(bool _isRight)
 void PlayerMover::Jump()
 {
 	jumpPower = -JUMP_POWER;
+	randing = false;
 }
 
 void PlayerMover::Fall()
@@ -56,5 +58,16 @@ void PlayerMover::Fall()
 
 	// ↓していたら「着地しているかどうか」をtrueにして、座標はステージの高さに戻す（合わせる）
 	// 着地したかどうかの判定
+	ImageRenderer* p = GetComponent<ImageRenderer>();
+	int size = p->GetSizeY();	// 画像の縦幅
+	float h = Stage::GetY();	// ステージの高さ
+	float playerFoot = transform->position.y + size / 2;
 
+	if (playerFoot > h) {
+		VECTOR3 pos = transform->position;
+		pos.y = h - size / 2;
+		randing = true;
+
+		transform->SetPosition(pos);
+	}
 }

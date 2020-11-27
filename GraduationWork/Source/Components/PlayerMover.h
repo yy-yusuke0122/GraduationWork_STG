@@ -9,11 +9,12 @@ public:
 	void Update();
 	void Move(bool _isRight);
 	void Jump();
+	
 
 private:
 	float speed;		// ‰¡ˆÚ“®‘¬“x‚ğŠi”[‚·‚é” 
 	float jumpPower;	// —‰º‘¬“x‚ğŠi”[‚·‚é” 
-						// ’…’n‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠi”[‚·‚é” 
+	bool randing;		// ’…’n‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠi”[‚·‚é” 
 
 private:
 	void Fall();		// —‰ºˆ—
