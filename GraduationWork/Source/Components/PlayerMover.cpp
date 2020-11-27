@@ -15,19 +15,16 @@ PlayerMover::~PlayerMover()
 
 void PlayerMover::Start()
 {
-	speed = 5.0f;
-	jumpPower = 0.0f;
+	speed = 5.0f;		// 移動速度の設定
+	jumpPower = 0.0f;	// 初期の落下速度は0
+						// 開幕は着地していない
 }
 
 void PlayerMover::Update()
 {
-	// 座標に加算
-	VECTOR3 vec;
-	vec = VGet(0.0f, jumpPower, 0.0f);
-	transform->AddPosition(vec);
-
-	// ジャンプパワーを減少
-	jumpPower += GRAVITY;
+	// ↓（もし）着地していないなら呼ぶ
+	// 落下処理
+	Fall();
 }
 
 void PlayerMover::Move(bool _isRight)
@@ -45,4 +42,19 @@ void PlayerMover::Move(bool _isRight)
 void PlayerMover::Jump()
 {
 	jumpPower = -JUMP_POWER;
+}
+
+void PlayerMover::Fall()
+{
+	// 座標に加算
+	VECTOR3 vec;
+	vec = VGet(0.0f, jumpPower, 0.0f);
+	transform->AddPosition(vec);
+
+	// ジャンプパワーを減少
+	jumpPower += GRAVITY;
+
+	// ↓していたら「着地しているかどうか」をtrueにして、座標はステージの高さに戻す（合わせる）
+	// 着地したかどうかの判定
+
 }

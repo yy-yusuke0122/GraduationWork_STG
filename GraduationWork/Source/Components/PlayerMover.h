@@ -11,6 +11,10 @@ public:
 	void Jump();
 
 private:
-	float speed;
-	float jumpPower;
+	float speed;		// ‰¡ˆÚ“®‘¬“x‚ğŠi”[‚·‚é” 
+	float jumpPower;	// —‰º‘¬“x‚ğŠi”[‚·‚é” 
+						// ’…’n‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠi”[‚·‚é” 
+
+private:
+	void Fall();		// —‰ºˆ—
 };
