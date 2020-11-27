@@ -133,7 +133,7 @@ public:
 	/// </summary>
 	/// <param name="_tag">タグ</param>
 	/// <returns>アドレス！！！</returns>
-	GameObject* FindGameObject(const std::string& _tag);
+	GameObject* FindGameObject(const std::string& _tag)override;
 
 	/// <summary>
 	/// ゲームオブジェクトを探しますよ！！！

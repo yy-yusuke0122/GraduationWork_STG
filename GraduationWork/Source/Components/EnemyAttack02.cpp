@@ -58,13 +58,17 @@ void EnemyAttack02::Update()
 {
 	float delta = Time::DeltaTime();
 
-	time += delta;
-
 	jumpSpeed += GRAVITY * delta;
 
 	transform->position.y += jumpSpeed * delta;
 
 	transform->position.x += xspeed * delta;
+
+	GameObject* player = FindGameObject("Player");
+
+	if (player == nullptr)return;
+
+	time += delta;
 
 	if (SHOT_BLANK < time)
 	{
@@ -74,7 +78,7 @@ void EnemyAttack02::Update()
 			--shotCount;
 			EnemyShot* p = Instantiate<EnemyShot>();
 			p->transform->position = transform->position;
-			p->SetTargetPos(GetScene()->FindGameObject("Player")->transform->position);
+			p->SetTargetPos(player->transform->position);
 		}
 	}
 }

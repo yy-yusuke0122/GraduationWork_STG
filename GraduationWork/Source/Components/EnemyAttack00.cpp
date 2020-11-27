@@ -44,7 +44,7 @@ void EnemyAttack00::Update()
 	if ( ! isAttacked && time > attackTime)
 	{
 		isAttacked = true;
-		GameObject* player = gameObject->GetScene()->FindGameObject("Player");
+		GameObject* player = FindGameObject("Player");
 		if (player != nullptr)
 		{
 			EnemyShot* shot = Instantiate<EnemyShot>();
@@ -54,7 +54,7 @@ void EnemyAttack00::Update()
 	}
 
 #ifdef _DEBUG
-	GetScene()->FindGameObject("Stage")->GetComponent<BoxCollider2D>()->Disp();
+	FindGameObject("Stage")->GetComponent<BoxCollider2D>()->Disp();
 	circle->Disp();
 #endif // _DEBUG
 

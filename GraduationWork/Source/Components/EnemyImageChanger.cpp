@@ -8,7 +8,7 @@ void EnemyImageChanger::Start()
 
 void EnemyImageChanger::Update()
 {
-	GameObject* p = GetScene()->FindGameObject("Player");
+	GameObject* p = FindGameObject("Player");
 	if (p != nullptr)
 	{
 		float x = p->transform->position.x - transform->position.x;

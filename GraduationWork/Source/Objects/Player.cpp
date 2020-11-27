@@ -17,7 +17,7 @@ void Player::Start()
 
 	// コンポーネント毎の設定
 	imageRenderer->SetImage("Media/Player.png");	// 描画する画像をセット
-	life->SetMaxHP(5.0f);							// 最大HPを設定
-	life->SetHP(5.0f);								// 初期HPを設定
-	circleCollider2D->circle.r = (imageRenderer->GetSizeX() + imageRenderer->GetSizeY()) / 2.f;
+	life->SetMaxHP(50.0f);							// 最大HPを設定
+	life->SetHP(life->max);							// 初期HPを設定
+	circleCollider2D->circle.r = 4.0f;
 }

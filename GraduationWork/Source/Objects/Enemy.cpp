@@ -3,6 +3,11 @@
 #include "../Components/EnemyController.h"
 #include "../Components/EnemyImageChanger.h"
 
+namespace
+{
+
+}
+
 Enemy::Enemy()
 {
 }
@@ -19,4 +24,7 @@ void Enemy::Start()
 
 	AddComponent<EnemyImageChanger>();
 	enemyController = AddComponent<EnemyController>();		// 移動機能・攻撃機能
+
+	life->SetMaxHP(20.f);
+	life->SetHP(life->max);
 }

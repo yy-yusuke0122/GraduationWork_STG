@@ -1,5 +1,6 @@
 #include "../Components/DirectionMover.h"
 #include "../Components/ScreenOut.h"
+#include "../Components/DamageToPlayer.h"
 #include "EnemyShot.h"
 
 namespace
@@ -9,11 +10,16 @@ namespace
 
 void EnemyShot::Start()
 {
-	direction = AddComponent<DirectionMover>();//指定方向へ移動
-	AddComponent<CircleCollider2D>();//コライダ
 	image = AddComponent<ImageRenderer>();
 	image->SetImage("Media/EnemyBullet.png");//画像
+
+	CircleCollider2D* collider = AddComponent<CircleCollider2D>();//コライダ
+	collider->circle.r = (image->GetSizeX() + image->GetSizeY()) / 4.f;
+
+	direction = AddComponent<DirectionMover>();//指定方向へ移動
 	AddComponent<ScreenOut>();
+
+	AddComponent<DamageToPlayer>();//プレイヤーにダメージを与える
 }
 
 void EnemyShot::SetTargetPos(const VECTOR3& _pos)

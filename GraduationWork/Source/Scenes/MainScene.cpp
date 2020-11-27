@@ -5,6 +5,7 @@
 #include "../Components/Life.h"
 #include "../Objects/Stage.h"
 #include "../Objects/ScreenCollider.h"
+#include "../Components/CheckDead.h"
 
 MainScene::MainScene()
 {
@@ -12,6 +13,7 @@ MainScene::MainScene()
 	player = Instantiate<Player>();
 	enemy = Instantiate<Enemy>();
 	Instantiate<Stage>();
+	Instantiate<GameObject>()->AddComponent<CheckDead>();
 }
 
 MainScene::~MainScene()
@@ -32,10 +34,17 @@ void MainScene::Update()
 {
 	CheckInput();
 
-	printfDx("PlayerHP : %2.f\n", player->GetComponent<Life>()->hp);
+#ifdef _DEBUG
+
+	if (FindGameObject("Player") != nullptr)
+		printfDx("PlayerHP : %2.f\n", player->GetComponent<Life>()->hp);
+	if (FindGameObject("Enemy") != nullptr)
+		printfDx("EnemyHP : %2.f\n", enemy->GetComponent<Life>()->hp);
 
 	printfDx("MainScene\n");
 	printfDx("Press '0' : To 'TitleScene'\n");
+
+#endif // !_DEBUG
 }
 
 void MainScene::CheckInput()

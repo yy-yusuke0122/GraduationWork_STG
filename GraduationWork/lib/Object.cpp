@@ -1,3 +1,4 @@
+#include "Scene.h"
 #include "Object.h"
 
 Object::Object() :
@@ -40,4 +41,9 @@ bool Object::IsDestroy() const
 void Object::Destroy()
 {
     isDestroy = true;
+}
+
+GameObject* Object::FindGameObject(const std::string& _tag)
+{
+    return GetScene()->FindGameObject(_tag);
 }

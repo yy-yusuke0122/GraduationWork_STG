@@ -50,6 +50,13 @@ public:
 	/// </summary>
 	void Destroy();
 
+	/// <summary>
+	/// シーンのFindGameObjectを呼びます
+	/// </summary>
+	/// <param name="_tag">オブジェクトのタグ</param>
+	/// <returns>SceneのFindGameObject</returns>
+	virtual GameObject* FindGameObject(const std::string& _tag);
+
 private:
 	std::string className;		// 名前
 	bool active;				// 有効状態
