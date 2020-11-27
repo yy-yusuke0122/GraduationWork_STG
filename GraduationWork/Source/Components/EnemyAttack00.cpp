@@ -48,7 +48,7 @@ void EnemyAttack00::Update()
 		if (player != nullptr)
 		{
 			EnemyShot* shot = Instantiate<EnemyShot>();
-			shot->transform->position = transform->position;
+			shot->transform->SetPosition(transform->position);
 			shot->SetTargetPos(player->transform->position);
 		}
 	}

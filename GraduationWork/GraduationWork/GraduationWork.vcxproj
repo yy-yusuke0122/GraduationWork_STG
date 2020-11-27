@@ -79,6 +79,7 @@
     <ClCompile Include="..\Source\Objects\EnemyShot.cpp" />
     <ClCompile Include="..\Source\Objects\Player.cpp" />
     <ClCompile Include="..\Source\Objects\ScreenCollider.cpp" />
+    <ClCompile Include="..\Source\Objects\SoundManager.cpp" />
     <ClCompile Include="..\Source\Objects\Stage.cpp" />
     <ClCompile Include="..\Source\Scenes\MainScene.cpp" />
     <ClCompile Include="..\Source\Scenes\TitleScene.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="..\Source\Objects\EnemyShot.h" />
     <ClInclude Include="..\Source\Objects\Player.h" />
     <ClInclude Include="..\Source\Objects\ScreenCollider.h" />
+    <ClInclude Include="..\Source\Objects\SoundManager.h" />
     <ClInclude Include="..\Source\Objects\Stage.h" />
     <ClInclude Include="..\Source\Scenes\MainScene.h" />
     <ClInclude Include="..\Source\Scenes\TitleScene.h" />

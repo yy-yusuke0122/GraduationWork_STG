@@ -3,7 +3,7 @@
 #include "PlayerAttack00.h"
 
 namespace {
-	const float ATTACK_DIF = 32.0f;
+	const float ATTACK_DIF = 40.0f;
 }
 
 PlayerAttacker::PlayerAttacker()

@@ -6,22 +6,30 @@
 #include "../Objects/Stage.h"
 #include "../Objects/ScreenCollider.h"
 #include "../Components/CheckDeadObjects.h"
+#include "../Objects/SoundManager.h"
 
 MainScene::MainScene()
 {
+	// AsyncScene<>();
+
 	Instantiate<ScreenCollider>();
 	player = Instantiate<Player>();
 	enemy = Instantiate<Enemy>();
 	Instantiate<Stage>();
 	Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
+	SoundManager::Create(this);
 }
 
 MainScene::~MainScene()
 {
+	SoundManager::Destroy();
 }
 
 void MainScene::Start()
 {
+	SoundManager::Get()->Push("Sound/BGM.mp3", "MainBGM");
+	SoundManager::Get()->Play("MainBGM");
+
 	VECTOR3 center = VGet((float)(Screen::x / 2), (float)(Screen::y / 2), 0.0f);
 	VECTOR3 add = VGet(200.0f, 0.0f, 0.0f);
 	player->transform->SetPosition(center);

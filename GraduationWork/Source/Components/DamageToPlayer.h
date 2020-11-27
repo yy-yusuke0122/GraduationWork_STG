@@ -20,5 +20,4 @@ public:
 	void OnCollisionEnter2D(Collider2D* _collider)override;
 
 private:
-
 };

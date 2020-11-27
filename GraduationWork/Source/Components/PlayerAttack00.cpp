@@ -1,5 +1,6 @@
 #include "PlayerAttack00.h"
 #include "Life.h"
+#include "../Objects/SoundManager.h"
 
 PlayerAttack00::PlayerAttack00()
 {
@@ -19,6 +20,9 @@ void PlayerAttack00::Start()
 
 	AddComponent<ImageRenderer>()->SetImage("Media/Enemy.png");
 
+	// ƒqƒbƒg‰¹‚ÌÝ’è
+	SoundManager::Get()->Push("Sound/AttackHit.mp3", "AttackHit");
+
 	// 0.25•bŒã‚É”j‰ó
 	Delay<GameObject, void>* p = AddComponent<Delay<GameObject, void>>();
 	p->instance = gameObject;
@@ -35,5 +39,6 @@ void PlayerAttack00::OnCollisionEnter2D(Collider2D* _collider)
 {
 	if (_collider->gameObject->tag == "Enemy") {
 		_collider->GetComponent<Life>()->Damage(power);
+		SoundManager::Get()->Play("AttackHit");
 	}
 }

@@ -216,6 +216,9 @@
     <ClCompile Include="..\Source\Components\CheckDeadObjects.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Objects\SoundManager.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -415,6 +418,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Components\CheckDeadObjects.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\SoundManager.h">
+      <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

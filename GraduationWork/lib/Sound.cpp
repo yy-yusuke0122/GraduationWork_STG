@@ -9,6 +9,7 @@ Sound::~Sound()
 {
 	if (isAsync)
 		GetScene()->EraseAsyncSound(this);
+	Release();
 }
 
 void Sound::Update()
