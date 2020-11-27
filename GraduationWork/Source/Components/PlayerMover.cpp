@@ -1,8 +1,8 @@
 #include "PlayerMover.h"
 
 namespace {
-	const float JUMP_POWER = 10.0f;//è„è∏ó 
-	const float GRAVITY = 0.2f;//ç~â∫ó 
+	const float JUMP_POWER = 15.0f;//è„è∏ó 
+	const float GRAVITY = 0.5f;//ç~â∫ó 
 }
 
 PlayerMover::PlayerMover()
@@ -15,7 +15,7 @@ PlayerMover::~PlayerMover()
 
 void PlayerMover::Start()
 {
-	speed = 3.0f;
+	speed = 5.0f;
 	jumpPower = 0.0f;
 }
 
