@@ -14,4 +14,6 @@ public:
 private:
 	PlayerMover* mover;
 	PlayerAttacker* attacker;
+
+	VECTOR2 faceDir;	// ³–Ê‚ÌŒü‚«
 };

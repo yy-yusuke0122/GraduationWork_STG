@@ -2,6 +2,10 @@
 #include "../Objects/NullObject.h"
 #include "PlayerAttack00.h"
 
+namespace {
+	const float ATTACK_DIF = 32.0f;
+}
+
 PlayerAttacker::PlayerAttacker()
 {
 }
@@ -18,9 +22,11 @@ void PlayerAttacker::Update()
 {
 }
 
-void PlayerAttacker::Attack()
+void PlayerAttacker::Attack(VECTOR2 _faceDir)
 {
 	GameObject* obj = Instantiate<NullObject>();
-	obj->transform->SetPosition(transform->position);
+	VECTOR3 pos = VECTOR3(transform->position);
+	pos += _faceDir * ATTACK_DIF;
+	obj->transform->SetPosition(pos);
 	obj->AddComponent<PlayerAttack00>();
 }

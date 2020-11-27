@@ -4,7 +4,7 @@
 #include "Time.h"
 
 template<class C, typename RET>
-class Delay :public Component
+class Delay : public Component
 {
 public:
 	Delay() :

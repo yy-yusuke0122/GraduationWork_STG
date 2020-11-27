@@ -8,7 +8,7 @@ public:
 	void Start();
 	void Update();
 
-	void Attack();
+	void Attack(VECTOR2 _faceDir);
 
 private:
 };
