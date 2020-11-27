@@ -9,6 +9,8 @@ public:
 	virtual ~Character();
 	virtual void Start();
 
+	virtual void Dead() { Destroy(); }
+
 protected:
 	ImageRenderer* imageRenderer;
 	Life* life;

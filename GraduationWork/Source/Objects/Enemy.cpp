@@ -5,7 +5,7 @@
 
 namespace
 {
-
+	constexpr float MAX_HP = 50.f;
 }
 
 Enemy::Enemy()
@@ -25,6 +25,11 @@ void Enemy::Start()
 	AddComponent<EnemyImageChanger>();
 	enemyController = AddComponent<EnemyController>();		// 移動機能・攻撃機能
 
-	life->SetMaxHP(20.f);
+	life->SetMaxHP(MAX_HP);
 	life->SetHP(life->max);
+}
+
+void Enemy::Dead()
+{
+	Destroy();
 }

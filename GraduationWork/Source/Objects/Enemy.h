@@ -9,6 +9,8 @@ public:
 	~Enemy();
 	void Start() override;
 
+	void Dead()override;
+
 private:
 	EnemyController* enemyController;
 };

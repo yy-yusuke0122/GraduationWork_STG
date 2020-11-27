@@ -5,7 +5,7 @@
 #include "../Components/Life.h"
 #include "../Objects/Stage.h"
 #include "../Objects/ScreenCollider.h"
-#include "../Components/CheckDead.h"
+#include "../Components/CheckDeadObjects.h"
 
 MainScene::MainScene()
 {
@@ -13,7 +13,7 @@ MainScene::MainScene()
 	player = Instantiate<Player>();
 	enemy = Instantiate<Enemy>();
 	Instantiate<Stage>();
-	Instantiate<GameObject>()->AddComponent<CheckDead>();
+	Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
 }
 
 MainScene::~MainScene()

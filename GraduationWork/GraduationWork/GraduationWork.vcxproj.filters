@@ -213,7 +213,7 @@
     <ClCompile Include="..\Source\Components\DamageToPlayer.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Components\CheckDead.cpp">
+    <ClCompile Include="..\Source\Components\CheckDeadObjects.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -413,7 +413,7 @@
     <ClInclude Include="..\Source\Components\DamageToPlayer.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Components\CheckDead.h">
+    <ClInclude Include="..\Source\Components\CheckDeadObjects.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
