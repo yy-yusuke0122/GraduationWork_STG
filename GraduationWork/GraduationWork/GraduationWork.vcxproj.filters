@@ -219,6 +219,12 @@
     <ClCompile Include="..\Source\Objects\SoundManager.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\PlayerAttack01.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\PlayerAttack02.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -421,6 +427,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\Objects\SoundManager.h">
       <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\PlayerAttack01.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\PlayerAttack02.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

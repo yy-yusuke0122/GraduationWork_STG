@@ -11,4 +11,5 @@ public:
 	void Attack(VECTOR2 _faceDir);
 
 private:
+	int attackCount;
 };
