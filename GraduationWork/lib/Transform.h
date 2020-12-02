@@ -10,6 +10,7 @@ public:
 
 	void Start() override;
 	void Update() override;
+	void UpdatePysics();
 
 	/// <summary>
 	/// ç¿ïWÇë„ì¸
@@ -71,8 +72,10 @@ public:
 
 	VECTOR3 position;
 	VECTOR3 scale;
+	bool usePhysics;
 
 private:
+	VECTOR3 velocity;
 	Quaternion foward;
 	Quaternion right;
 	Quaternion up;

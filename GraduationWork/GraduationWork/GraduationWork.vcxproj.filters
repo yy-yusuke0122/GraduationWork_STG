@@ -231,6 +231,9 @@
     <ClCompile Include="..\Source\Scenes\LoadingScene.cpp">
       <Filter>Source\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\Jump.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -448,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\LoadingScene.h">
       <Filter>Source\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\Jump.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

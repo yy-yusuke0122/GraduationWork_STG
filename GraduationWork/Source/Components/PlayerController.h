@@ -3,6 +3,7 @@
 
 class PlayerMover;
 class PlayerAttacker;
+class JumpComponent;
 
 class PlayerController : public Component {
 public:
@@ -14,6 +15,7 @@ public:
 private:
 	PlayerMover* mover;
 	PlayerAttacker* attacker;
+	JumpComponent* jumpComponent;
 
 	VECTOR2 faceDir;	// ³–Ê‚ÌŒü‚«
 };

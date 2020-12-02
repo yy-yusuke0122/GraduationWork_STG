@@ -5,9 +5,14 @@
 #include "CircleCollider2D.h"
 #include "SphereCollider.h"
 
+namespace {
+    const float FRICTION_VAL = 0.9f;
+    const float PRECISION_ERROR = 0.00001f;
+}
+
 Transform::Transform() : 
-    position(VGet(0.0f,0.0f,0.0f)), scale(VGet(1.0f, 1.0f, 1.0f)),
-    foward(0.0f, 0.0f, 1.0f, 0.0f), right(1.0f, 0.0f, 0.0f, 0.0f), up(0.0f, 1.0f, 0.0f, 0.0f)
+    position(VECTOR3::zero()), scale(VECTOR3::one()),
+    velocity(VECTOR3::zero()), foward(0.0f, 0.0f, 1.0f, 0.0f), right(1.0f, 0.0f, 0.0f, 0.0f), up(0.0f, 1.0f, 0.0f, 0.0f)
 {
 }
 
@@ -21,6 +26,26 @@ void Transform::Start()
 
 void Transform::Update()
 {
+}
+
+void Transform::UpdatePysics()
+{
+    // 加速値が0ならば終了
+    if (velocity.Length() == 0.0f) {
+        return;
+    }
+
+    // 加速値に摩擦係数を乗算
+    velocity = velocity * FRICTION_VAL;
+
+    // 加速値が0に近ければ0にして終了
+    if (velocity.Length() < PRECISION_ERROR) {
+        velocity.Clear();
+        return;
+    }
+
+    // 座標に加算
+    AddPosition(velocity);
 }
 
 void Transform::SetPosition(VECTOR3 _pos)
