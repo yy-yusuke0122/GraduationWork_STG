@@ -58,6 +58,8 @@ public:
 private:
 	void Destroy(std::unordered_map<std::string, Image::INFO>& _info);
 
+	void AsyncLoad();
+
 public:
 	INFO* imageInfo;
 	std::string path;//ファイルパス

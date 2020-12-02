@@ -29,7 +29,7 @@ bool Image::Load(const std::string& _path)
 		p->handles.emplace_back(h);
 
 		if (GetUseASyncLoadFlag())
-			renderer->AddRendererToScene();
+			AsyncLoad();
 		else
 			Initialize(p);
 	}
@@ -81,7 +81,7 @@ bool Image::LoadDiv(const std::string& _path, unsigned _xdiv, unsigned _ydiv, un
 		p = &loadDivInfo[_path];//“o˜^‚µ‚½INFO‚ÌƒAƒhƒŒƒX‚ð•ÛŽ
 
 		if (GetUseASyncLoadFlag())
-			renderer->AddRendererToScene();
+			AsyncLoad();
 		else
 			Initialize(p);
 
@@ -152,4 +152,10 @@ void Image::Destroy(std::unordered_map<std::string, Image::INFO>& _info)
 	imageInfo = nullptr;
 	path.clear();
 
+}
+
+void Image::AsyncLoad()
+{
+	renderer->AddRendererToScene();
+	renderer->isRendererEnable = false;
 }

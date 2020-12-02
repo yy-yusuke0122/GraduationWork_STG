@@ -7,7 +7,7 @@
 #include "GameObject.h"
 
 class SceneManager;
-class Renderer;
+class AsyncComponent;
 class Sound;
 
 class Scene :public Object
@@ -233,13 +233,9 @@ public:
 public:
 	bool AddGameObject(GameObject* _object);
 
-	void AddAsyncRenderer(Renderer* _renderer);
+	void AddAsync(AsyncComponent* _async);
 
-	void EraseAsyncRenderer(Renderer* _renderer);
-
-	void AddAsyncSound(Sound* _sound);
-
-	void EraseAsyncSound(Sound* _sound);
+	void EraseAsync(AsyncComponent* _async);
 
 private://SceneManagerで使用
 	void SetName(const std::string& _name) { className = _name; }
@@ -271,8 +267,9 @@ private:
 
 	Scene* parentScene;//親シーン
 
-	std::list<Renderer*> asyncRendererList;//非同期読み込み中レンダラー
-	std::list<Sound*> asyncSoundList;//非同期読み込み中サウンド
+	std::list<AsyncComponent*> asyncList;//非同期読み込みコンポーネント
+
+	std::list<AsyncComponent*> asyncWaitList;//全体が読み終わるまで保存
 
 private://非同期用変数
 	NODE asyncNode;

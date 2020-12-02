@@ -1,6 +1,8 @@
 #pragma once
 
 #include <list>
+#include <unordered_map>
+#include <string>
 
 class Renderer;
 

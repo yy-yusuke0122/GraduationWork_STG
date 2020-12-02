@@ -39,7 +39,7 @@ void DrawManager::Draw()
 
 	for (std::list<Renderer*>::iterator it = rendererList.begin(), end = rendererList.end(); it != end; ++it)
 	{
-		if ((*it)->IsActive())
+		if ((*it)->IsActive() && (*it)->isRendererEnable)
 			(*it)->Draw();
 	}
 }

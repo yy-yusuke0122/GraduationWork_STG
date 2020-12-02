@@ -33,3 +33,8 @@ void Enemy::Dead()
 {
 	Destroy();
 }
+
+void Enemy::AsyncEnd()
+{
+	circleCollider2D->circle.r = (imageRenderer->GetSizeX() + imageRenderer->GetSizeY()) / 4.f;
+}

@@ -13,7 +13,7 @@ CircleCollider2D::~CircleCollider2D()
 void CircleCollider2D::Disp()
 {
 	VECTOR2 pos = GetWorldPosition();
-	DrawCircle(pos.x, pos.y, circle.r, GetColor(255, 255, 255), FALSE);
+	DrawCircle((int)pos.x, (int)pos.y, (int)circle.r, GetColor(255, 255, 255), FALSE);
 }
 
 bool CircleCollider2D::IsCollide(Collider2D* _collider)

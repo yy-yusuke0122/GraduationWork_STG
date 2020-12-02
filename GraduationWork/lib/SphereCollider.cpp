@@ -15,7 +15,7 @@ void SphereCollider::Disp()
 {
 	// ToDo
 	VECTOR3 pos = GetWorldPosition();
-	DrawCircle(pos.x, pos.y, radius, GetColor(255, 255, 255));
+	DrawCircle((int)pos.x, (int)pos.y, (int)radius, GetColor(255, 255, 255));
 }
 
 bool SphereCollider::IsCollide(Collider3D* _collider)

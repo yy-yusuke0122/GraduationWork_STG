@@ -1,7 +1,6 @@
 #include "dxlib/DxLib.h"
 #include "Scene.h"
-#include "Renderer.h"
-#include "Sound.h"
+#include "AsyncComponent.h"
 #include "Time.h"
 
 Scene* Scene::currentScene = nullptr;
@@ -55,8 +54,8 @@ void Scene::SceneUpdate()
 		(*it)->DestroyComponents();
 	}
 
-	//レンダラーの非同期読み込みが終了したかをチェック
-	for (std::list<Renderer*>::iterator it = asyncRendererList.begin(); it != asyncRendererList.end();)
+	//非同期読み込みが終了したかをチェック
+	for (std::list<AsyncComponent*>::iterator it = asyncList.begin(); it != asyncList.end();)
 	{
 		if ((*it)->CheckAsync())
 		{
@@ -65,26 +64,22 @@ void Scene::SceneUpdate()
 		else
 		{
 			(*it)->Initialize();
-			it = asyncRendererList.erase(it);
-		}
-	}
+			
+			if (asyncScene == nullptr)
+			{
+				(*it)->AsyncEnd();
+				(*it)->gameObject->AsyncEnd();
+			}
+			else
+				asyncWaitList.emplace_back(*it);
 
-	//サウンドの非同期読み込みが終了したかをチェック
-	for (std::list<Sound*>::iterator it = asyncSoundList.begin(); it != asyncSoundList.end();)
-	{
-		if ((*it)->CheckAsync())
-		{
-			++it;
-		}
-		else
-		{
-			it = asyncSoundList.erase(it);
+			it = asyncList.erase(it);
 		}
 	}
 
 	//非同期読み込み中または非同期シーン時間が残っている
 	bool isTimeRemain = asyncTime > 0.f;
-	bool isasync = (GetAsyncLoadCountWithSubScene() > 0) || (isTimeRemain);
+	bool isasync = (isTimeRemain) || (GetAsyncLoadCountWithSubScene() > 0);
 	if (isasync)
 	{
 		//非同期シーン生成
@@ -93,6 +88,10 @@ void Scene::SceneUpdate()
 			asyncScene = asyncNode.createScene();
 			asyncScene->SetName(asyncNode.name);
 			asyncTime = asyncUseTime;
+			
+			asyncScene->SetActive(false);
+			asyncScene->SceneStart();
+			asyncScene->parentScene = this;
 		}
 		else
 		{
@@ -103,10 +102,17 @@ void Scene::SceneUpdate()
 	else
 	{
 		//非同期シーン破棄
-		if (asyncScene != nullptr)
+		if (asyncScene != nullptr && !asyncScene->IsActive())//アクティブで判定
 		{
 			delete asyncScene;
 			asyncScene = nullptr;
+
+			for (std::list<AsyncComponent*>::iterator it = asyncWaitList.begin(); it != asyncWaitList.end();)
+			{
+				(*it)->AsyncEnd();
+				(*it)->gameObject->AsyncEnd();
+				it = asyncWaitList.erase(it);
+			}
 		}
 		asyncTime = 0.f;
 	}
@@ -192,7 +198,7 @@ GameObject* Scene::FindGameObject(const std::string& _tag)
 
 int Scene::GetAsyncLoadCount()const
 {
-	return static_cast<int>(asyncRendererList.size());
+	return static_cast<int>(asyncList.size());
 }
 
 int Scene::GetAsyncLoadCountWithSubScene()const
@@ -217,35 +223,18 @@ bool Scene::AddGameObject(GameObject* _object)
 	return true;
 }
 
-void Scene::AddAsyncRenderer(Renderer* _renderer)
+void Scene::AddAsync(AsyncComponent* _async)
 {
-	asyncRendererList.emplace_back(_renderer);
+	asyncList.emplace_back(_async);
 }
 
-void Scene::EraseAsyncRenderer(Renderer* _renderer)
+void Scene::EraseAsync(AsyncComponent* _async)
 {
-	for (std::list<Renderer*>::iterator it = asyncRendererList.begin(), end = asyncRendererList.end(); it != end; ++it)
+	for (std::list<AsyncComponent*>::iterator it = asyncList.begin(), end = asyncList.end(); it != end; ++it)
 	{
-		if ((*it) == _renderer)
+		if ((*it) == _async)
 		{
-			asyncRendererList.erase(it);
-			break;
-		}
-	}
-}
-
-void Scene::AddAsyncSound(Sound* _sound)
-{
-	asyncSoundList.emplace_back(_sound);
-}
-
-void Scene::EraseAsyncSound(Sound* _sound)
-{
-	for (std::list<Sound*>::iterator it = asyncSoundList.begin(), end = asyncSoundList.end(); it != end; ++it)
-	{
-		if ((*it) == _sound)
-		{
-			asyncSoundList.erase(it);
+			asyncList.erase(it);
 			break;
 		}
 	}

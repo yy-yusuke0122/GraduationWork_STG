@@ -11,6 +11,8 @@ public:
 
 	void Dead()override;
 
+	void AsyncEnd()override;
+
 private:
 	EnemyController* enemyController;
 };

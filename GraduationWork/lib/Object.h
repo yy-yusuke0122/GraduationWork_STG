@@ -57,6 +57,11 @@ public:
 	/// <returns>Scene‚ÌFindGameObject</returns>
 	virtual GameObject* FindGameObject(const std::string& _tag);
 
+	/// <summary>
+	/// ”ñ“¯ŠúI—¹
+	/// </summary>
+	virtual void AsyncEnd() {}
+
 private:
 	std::string className;		// –¼‘O
 	bool active;				// —LŒøó‘Ô

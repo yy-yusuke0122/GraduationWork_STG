@@ -106,7 +106,10 @@ bool MeshRenderer::Load(const std::string& _path)
     }
 
     if (info->isAsync)
+    {
         info->asyncList.emplace_back(this);
+        isRendererEnable = false;
+    }
     else
         InitializeParam();
 

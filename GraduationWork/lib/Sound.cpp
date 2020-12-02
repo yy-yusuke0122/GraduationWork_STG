@@ -8,7 +8,7 @@ std::unordered_map<std::string, Sound::INFO> Sound::load3DInfo;
 Sound::~Sound()
 {
 	if (isAsync)
-		GetScene()->EraseAsyncSound(this);
+		GetScene()->EraseAsync(this);
 	Release();
 }
 
@@ -42,7 +42,7 @@ bool Sound::Load(const std::string& _path)
 
 		if (GetUseASyncLoadFlag())
 		{
-			GetScene()->AddAsyncSound(this);
+			GetScene()->AddAsync(this);
 			isAsync = true;
 		}
 	}
@@ -91,7 +91,7 @@ bool Sound::Load3D(const std::string& _path)
 
 		if (GetUseASyncLoadFlag())
 		{
-			GetScene()->AddAsyncSound(this);
+			GetScene()->AddAsync(this);
 			isAsync = true;
 		}
 	}
@@ -208,29 +208,28 @@ bool Sound::SetReverbAll(SOUND3D_REVERB_PARAM* _param, bool _playSoundOnly)
 	return Set3DReverbParamSoundMemAll(_param, (_playSoundOnly) ? TRUE : FALSE) != -1;
 }
 
-bool Sound::CheckAsync() 
+int Sound::CheckAsyncLoading()
 {
 	if (soundInfo == nullptr)
 		return false;
 
-	int ret = CheckHandleASyncLoad(soundInfo->handle);
-	if (ret == -1)
-	{
-		if (is3D)
-		{
-			load3DInfo.erase(path);
-		}
-		else
-		{
-			loadInfo.erase(path);
-		}
+	return CheckHandleASyncLoad(soundInfo->handle);
+}
 
-		soundInfo = nullptr;
-		path.clear();
-		isLoopPlay = false;
-		return false;
+void Sound::DestroyParam()
+{
+	if (is3D)
+	{
+		load3DInfo.erase(path);
 	}
-	return ret;
+	else
+	{
+		loadInfo.erase(path);
+	}
+
+	soundInfo = nullptr;
+	path.clear();
+	isLoopPlay = false;
 }
 
 void Sound::DeleteHandle(std::unordered_map<std::string, INFO>& _info)

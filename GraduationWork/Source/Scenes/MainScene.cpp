@@ -1,5 +1,6 @@
 #include "MainScene.h"
 #include "TitleScene.h"
+#include "LoadingScene.h"
 #include "../Objects/Player.h"
 #include "../Objects/Enemy.h"
 #include "../Components/Life.h"
@@ -10,14 +11,9 @@
 
 MainScene::MainScene()
 {
-	// AsyncScene<>();
+	asyncMinTime = LoadingScene::asyncLoadMin;
+	AsyncScene<LoadingScene>();
 
-	Instantiate<ScreenCollider>();
-	player = Instantiate<Player>();
-	enemy = Instantiate<Enemy>();
-	Instantiate<Stage>();
-	Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
-	SoundManager::Create(this);
 }
 
 MainScene::~MainScene()
@@ -27,6 +23,13 @@ MainScene::~MainScene()
 
 void MainScene::Start()
 {
+	Instantiate<ScreenCollider>();
+	player = Instantiate<Player>();
+	enemy = Instantiate<Enemy>();
+	Instantiate<Stage>();
+	Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
+	SoundManager::Create(this);
+
 	SoundManager::Get()->Push("Sound/BGM.mp3", "MainBGM");
 	SoundManager::Get()->Play("MainBGM");
 

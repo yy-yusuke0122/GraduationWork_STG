@@ -26,7 +26,6 @@ void EnemyAttack00::Start()
 	{
 		controller = GetComponent<EnemyController>();
 		circle = GetComponent<CircleCollider2D>();
-		stageY = Stage::GetY() - circle->circle.r;
 		isInitialize = true;
 	}
 }
@@ -69,7 +68,7 @@ void EnemyAttack00::OnCollisionEnter2D(Collider2D* _collider)
 {
 	if (_collider->gameObject->tag == "Stage")
 	{
-		transform->position.y = stageY;
+		transform->position.y = Stage::GetY() - circle->circle.r;
 		controller->Next();
 	}
 }
