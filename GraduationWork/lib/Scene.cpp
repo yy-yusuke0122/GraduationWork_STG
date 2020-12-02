@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "AsyncComponent.h"
 #include "Time.h"
+#include "Transform.h"
 
 Scene* Scene::currentScene = nullptr;
 
@@ -179,6 +180,16 @@ void Scene::SceneUpdate()
 		}
 
 		Update();
+
+		//自身のトランスフォーム更新
+		for (std::list<GameObject*>::iterator it = objectList.begin(); it != objectList.end(); ++it)
+		{
+			if ((*it)->IsActive())
+			{
+				if ((*it)->transform->usePhysics)
+					(*it)->transform->UpdatePysics();
+			}
+		}
 	}
 
 	currentScene = nullptr;

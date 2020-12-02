@@ -41,6 +41,7 @@
     <ClCompile Include="..\lib\Input.cpp" />
     <ClCompile Include="..\lib\Light.cpp" />
     <ClCompile Include="..\lib\Loader.cpp" />
+    <ClCompile Include="..\lib\MapChip.cpp" />
     <ClCompile Include="..\lib\Material.cpp" />
     <ClCompile Include="..\lib\Mesh.cpp" />
     <ClCompile Include="..\lib\MeshRenderer.cpp" />
@@ -51,6 +52,7 @@
     <ClCompile Include="..\lib\Saver.cpp" />
     <ClCompile Include="..\lib\Scene.cpp" />
     <ClCompile Include="..\lib\SceneManager.cpp" />
+    <ClCompile Include="..\lib\Scroll.cpp" />
     <ClCompile Include="..\lib\Sound.cpp" />
     <ClCompile Include="..\lib\SoundListener.cpp" />
     <ClCompile Include="..\lib\SphereCollider.cpp" />
@@ -96,6 +98,8 @@
     <ClInclude Include="..\lib\Bone.h" />
     <ClInclude Include="..\lib\BoxCollider.h" />
     <ClInclude Include="..\lib\BoxCollider2D.h" />
+    <ClInclude Include="..\lib\Chip.h" />
+    <ClInclude Include="..\lib\ChipCollider.h" />
     <ClInclude Include="..\lib\CircleCollider2D.h" />
     <ClInclude Include="..\lib\CollideManager.h" />
     <ClInclude Include="..\lib\CollideManager2D.h" />
@@ -116,6 +120,7 @@
     <ClInclude Include="..\lib\Input.h" />
     <ClInclude Include="..\lib\Light.h" />
     <ClInclude Include="..\lib\Loader.h" />
+    <ClInclude Include="..\lib\MapChip.h" />
     <ClInclude Include="..\lib\Material.h" />
     <ClInclude Include="..\lib\Mesh.h" />
     <ClInclude Include="..\lib\MeshRenderer.h" />
@@ -127,6 +132,7 @@
     <ClInclude Include="..\lib\Saver.h" />
     <ClInclude Include="..\lib\Scene.h" />
     <ClInclude Include="..\lib\SceneManager.h" />
+    <ClInclude Include="..\lib\Scroll.h" />
     <ClInclude Include="..\lib\Sound.h" />
     <ClInclude Include="..\lib\SoundListener.h" />
     <ClInclude Include="..\lib\SphereCollider.h" />

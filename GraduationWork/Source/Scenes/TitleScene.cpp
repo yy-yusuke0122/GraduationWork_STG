@@ -25,9 +25,9 @@ void TitleScene::CheckInput()
 {
 	// 「1」キーの入力を受けたらメインシーンへ移動
 	if (Input::IsKeyDown(KEY::KEY_1)) {
-		SceneManager::Get()->isAsyncLoad = true;
-		SceneManager::Get()->LoadScene<MainScene>();
+		SceneManager::isAsyncLoad = true;
+		SceneManager::LoadScene<MainScene>();
 	}
 	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
-		SceneManager::Get()->End();
+		SceneManager::End();
 }

@@ -99,5 +99,5 @@ inline bool Component::RemoveComponent()
 template<class C>
 inline C* Component::Instantiate()
 {
-	return SceneManager::Get()->GetCurrentScene()->Instantiate<C>();
+	return SceneManager::GetCurrentScene()->Instantiate<C>();
 }

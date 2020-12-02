@@ -16,44 +16,38 @@ private:
 	template<class C>
 	static Scene* CreateScene() { return new C; }
 
-public:
-	/// <summary>
-	/// インスタンス取得
-	/// </summary>
-	/// <returns>インスタンス</returns>
-	static SceneManager* Get();
-
 private:
-	SceneManager():
-		mainScene(nullptr), createScene(nullptr), isEnd(false), isAsyncLoad(false)
+	SceneManager()
 	{
 	}
 
-	~SceneManager();
+	~SceneManager() 
+	{
+	}
 
 public:
 	/// <summary>
 	/// インスタンス破棄
 	/// </summary>
 	/// <returns>true：破棄、false：生成されていない</returns>
-	bool Destroy();
+	static bool Destroy();
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Start();
+	static void Start();
 
 	/// <summary>
 	/// 更新
 	/// </summary>
-	void Update();
+	static void Update();
 
 	/// <summary>
 	/// シーン切り替え
 	/// </summary>
 	/// <typeparam name="C">切り替えるシーン</typeparam>
 	template<class C>
-	void LoadScene()
+	static void LoadScene()
 	{
 		sceneName = typeid(C).name();
 		createScene = CreateScene<C>;
@@ -65,7 +59,7 @@ public:
 	/// <typeparam name="C">追加するサブシーン</typeparam>
 	/// <returns>true：成功、false：メインシーンが生成されていない</returns>
 	template<class C>
-	bool AddSubScene()
+	static bool AddSubScene()
 	{
 		if (mainScene == nullptr)return false;
 
@@ -78,7 +72,7 @@ public:
 	/// <typeparam name="C">破棄するサブシーン</typeparam>
 	/// <returns>true：サブシーンの破棄、false：メインシーンが生成されていない</returns>
 	template<class C>
-	bool DestroySubScene()const
+	static bool DestroySubScene()
 	{
 		if (mainScene == nullptr)return false;
 
@@ -91,7 +85,7 @@ public:
 	/// <typeparam name="C">メインシーンの型</typeparam>
 	/// <returns>メインシーン取得</returns>
 	template<class C>
-	C* GetMainScene()const { return dynamic_cast<C*>(mainScene); }
+	static C* GetMainScene() { return dynamic_cast<C*>(mainScene); }
 
 	/// <summary>
 	/// 現在のシーンを取得
@@ -108,33 +102,31 @@ public:
 	/// <summary>
 	/// 終了フラグを立てる
 	/// </summary>
-	void End() { isEnd = true; }
+	static void End() { isEnd = true; }
 
 	/// <summary>
 	/// 終了フラグ取得
 	/// </summary>
 	/// <returns>true：終了、false：続行</returns>
-	bool IsEnd()const { return isEnd; }
+	static bool IsEnd() { return isEnd; }
 
 private:
 	/// <summary>
 	/// シーン切り替え
 	/// </summary>
-	void ChangeScene();
+	static void ChangeScene();
 
 private:
-	Scene* mainScene;//メインシーン
+	static Scene* mainScene;//メインシーン
 
-	Scene* (*createScene)();//メインシーン切り替え関数
+	static Scene* (*createScene)();//メインシーン切り替え関数
 
-	std::string sceneName;//メインシーン名
-
-	static SceneManager* instance;//SceneManagerのインスタンス
+	static std::string sceneName;//メインシーン名
 
 private:
-	bool isEnd;//終了フラグ
+	static bool isEnd;//終了フラグ
 
 public:
-	bool isAsyncLoad;//Loader・Sceneで画像・音・モデル・ファイルを非同期で読み込むか
+	static bool isAsyncLoad;//Loader・Sceneで画像・音・モデル・ファイルを非同期で読み込むか
 
 };

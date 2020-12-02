@@ -2,32 +2,13 @@
 #include "Renderer.h"
 #include "Light.h"
 
-DrawManager* DrawManager::instance = nullptr;
+std::list<Renderer*> DrawManager::rendererList;
+std::list<Light*> DrawManager::lightList;
 
-DrawManager::~DrawManager() 
+void DrawManager::Destroy()
 {
-	rendererList.clear(); 
+	rendererList.clear();
 	lightList.clear();
-}
-
-DrawManager* DrawManager::Get()
-{
-	if (instance == nullptr)
-	{
-		instance = new DrawManager();
-	}
-	return instance;
-}
-
-bool DrawManager::Destroy()
-{
-	if (instance != nullptr)
-	{
-		delete instance;
-		instance = nullptr;
-		return true;
-	}
-	return false;
 }
 
 void DrawManager::Draw()

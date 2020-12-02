@@ -22,12 +22,12 @@ const Light::COLOR Light::black = Light::GetCOLOR(0.f, 0.f, 0.f);
 Light::Light() :
 	handle(-1), ambient(0.f, 0.f, 0.f)
 {
-	DrawManager::Get()->AddRight(this);
+	DrawManager::AddRight(this);
 }
 
 Light::~Light()
 {
-	DrawManager::Get()->EraseLight(this);
+	DrawManager::EraseLight(this);
 	if (handle != -1)
 		DeleteLightHandle(handle);
 

@@ -1,4 +1,3 @@
-#include "ImageRenderer.h"
 #include "UrLib.h"
 
 ImageRenderer::ImageRenderer() :
@@ -20,8 +19,10 @@ void ImageRenderer::Draw()
     int sizex = static_cast<int>(static_cast<float>(image.imageInfo->sizeX) * transform->scale.x);
     int sizey = static_cast<int>(static_cast<float>(image.imageInfo->sizeY) * transform->scale.y);
 
-    int x = static_cast<int>(transform->position.x + position.x);
-    int y = static_cast<int>(transform->position.y + position.y);
+    const VECTOR2& scroll = Scroll::GetValue();
+
+    int x = static_cast<int>(transform->position.x + position.x - scroll.x);
+    int y = static_cast<int>(transform->position.y + position.y - scroll.y);
     int cx = sizex / 2;
     int cy = sizey / 2;
     float Angle = ToRadian(rotation);

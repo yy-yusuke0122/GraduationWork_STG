@@ -23,6 +23,9 @@
 #include "Loader.h"
 #include "Random.h"
 #include "Debug.h"
+#include "Scroll.h"
+#include "MapChip.h"
+#include "Chip.h"
 
 namespace UrLib {
 	int Init(int ScreenSizeX, int ScreenSizeY, int ColorBitDepth, int WindowMode, bool IsShadowCalc = true);

@@ -1,32 +1,22 @@
 #include "dxlib/DxLib.h"
 #include "SceneManager.h"
 
-SceneManager* SceneManager::instance = nullptr;
+Scene* SceneManager::mainScene = nullptr;
 
-SceneManager* SceneManager::Get()
-{
-	if (instance == nullptr)
-	{
-		instance = new SceneManager();
-	}
-	return instance;
-}
+Scene* (*SceneManager::createScene)() = nullptr;
 
-SceneManager::~SceneManager()
+std::string SceneManager::sceneName;
+
+bool SceneManager::isEnd = false;
+
+bool SceneManager::isAsyncLoad = false;
+
+bool SceneManager::Destroy()
 {
 	if (mainScene != nullptr)
 	{
 		delete mainScene;
 		mainScene = nullptr;
-	}
-}
-
-bool SceneManager::Destroy()
-{
-	if (instance != nullptr)
-	{
-		delete instance;
-		instance = nullptr;
 		return true;
 	}
 	return false;

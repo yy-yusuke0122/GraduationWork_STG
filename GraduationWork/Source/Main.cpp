@@ -14,7 +14,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//Loader::isAsync = true;
 	//Saver::isAsync = true;
 
-	SceneManager::Get()->LoadScene<TitleScene>();
+	SceneManager::LoadScene<TitleScene>();
 
 	//ƒƒCƒ“ˆ—
 	UrLib::Update();

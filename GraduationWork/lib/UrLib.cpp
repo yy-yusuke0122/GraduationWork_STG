@@ -33,7 +33,7 @@ int UrLib::Init(int ScreenSizeX, int ScreenSizeY, int ColorBitDepth, int WindowM
 
     ret += SetLightEnable(FALSE);
 
-    SceneManager::Get()->Start();
+    SceneManager::Start();
 
     Input::Start();
 
@@ -56,12 +56,12 @@ void UrLib::Update()
         ret += clsDx();
         Input::Update();                    // 入力更新
         Time::Update();                     // 経過時間更新
-        SceneManager::Get()->Update();      // シーンの更新処理
+        SceneManager::Update();      // シーンの更新処理
         CollideManager::Get()->Update();    // 衝突判定
         ret += UrLib::Draw();               // 描画処理
         ret += ScreenFlip();		        // 裏画面と表画面の入替
         ret += ClearDrawScreen();	        // 裏画面の描画を全て消去
-        if (SceneManager::Get()->IsEnd())ret = -1;//終了チェック
+        if (SceneManager::IsEnd())ret = -1;//終了チェック
     }
 }
 
@@ -76,17 +76,18 @@ int UrLib::Draw()
     printfDx("ファイル非同期:%d\n", SceneManager::GetAsyncLoadAllCount());
 
 #endif // !
+    Scroll::Update();
 
-    DrawManager::Get()->Draw();
+    DrawManager::Draw();
     return ret;
 }
 
 int UrLib::End()
 {
     int ret = 0;
-    SceneManager::Get()->Destroy();
+    SceneManager::Destroy();
     CollideManager::Destroy();
-    DrawManager::Get()->Destroy();
+    DrawManager::Destroy();
     Input::End();
     Saver::Wait();
     Loader::Wait();

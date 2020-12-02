@@ -4,10 +4,10 @@
 Renderer::Renderer() :
 	isRendererEnable(true)
 {
-	DrawManager::Get()->AddRenderer(this);
+	DrawManager::AddRenderer(this);
 }
 
 Renderer::~Renderer()
 {
-	DrawManager::Get()->EraseRenderer(this);
+	DrawManager::EraseRenderer(this);
 }

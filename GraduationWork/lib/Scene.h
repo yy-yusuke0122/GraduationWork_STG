@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <vector>
 #include <string>
 #include <typeinfo>
 #include <new>
@@ -154,7 +155,8 @@ public:
 	/// <summary>
 	/// ゲームオブジェクト生成
 	/// </summary>
-	/// <typeparam _tagName="C">生成するオブジェクト</typeparam>
+	/// <typeparam name="C">生成するオブジェクト</typeparam>
+	/// <param name="_tagName">生成するオブジェクト名</typeparam>
 	/// <returns>生成したオブジェクト</returns>
 	template<class C>
 	C* Instantiate(std::string _tagName = "")
@@ -176,6 +178,44 @@ public:
 		obj->Start();
 
 		return reinterpret_cast<C*>(obj);
+	}
+	
+	/// <summary>
+	/// ゲームオブジェクト配列生成
+	/// </summary>
+	/// <typeparam name="C">生成するオブジェクト</typeparam>
+	/// <param name="_size">配列のサイズ</param>
+	/// <param name="_out">オブジェクトを格納する配列</param>
+	/// <param name="_tagName">生成するオブジェクト名</param>
+	/// <returns>true：成功、false：失敗</returns>
+	template<class C>
+	bool Instantiate(int _size, std::vector<C>& _out, std::string _tagName = "")
+	{
+		if (_size < 0)return false;
+
+		_out.resize(_size);
+		
+		for (int i = 0; i < _size; ++i)
+		{
+			GameObject* obj = &_out[i];
+
+			obj->scene = this;
+
+			Object* p = obj;
+			p->className = typeid(C).name() + std::to_string(i);
+
+			if (_tagName == "")
+				obj->tag = p->className.substr(6ull) + std::to_string(i);
+			else
+				obj->tag = _tagName + std::to_string(i);
+
+			objectList.emplace_back(obj);
+		}
+
+		for (int i = 0; i < _size; ++i)
+			reinterpret_cast<GameObject*>(&_out[i])->Start();
+
+		return true;
 	}
 
 	/// <summary>

@@ -9,6 +9,11 @@
 #include "../Components/CheckDeadObjects.h"
 #include "../Objects/SoundManager.h"
 
+namespace
+{
+	VECTOR2 s;
+}
+
 MainScene::MainScene()
 {
 	asyncMinTime = LoadingScene::asyncLoadMin;
@@ -42,6 +47,8 @@ void MainScene::Start()
 
 void MainScene::Update()
 {
+	Scroll::value.x = player->transform->position.x - Screen::x / 2;
+	
 	CheckInput();
 
 #ifdef _DEBUG
@@ -60,14 +67,15 @@ void MainScene::Update()
 void MainScene::AsyncEnd()
 {
 	SoundManager::Get()->Play("MainBGM");
+
 }
 
 void MainScene::CheckInput()
 {
 	// 「0」キーの入力を受けたらメインシーンへ移動
 	if (Input::IsKeyDown(KEY::KEY_0)) {
-		SceneManager::Get()->LoadScene<TitleScene>();
+		SceneManager::LoadScene<TitleScene>();
 	}
 	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
-		SceneManager::Get()->End();
+		SceneManager::End();
 }
