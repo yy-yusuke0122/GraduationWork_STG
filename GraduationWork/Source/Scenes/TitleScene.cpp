@@ -28,4 +28,6 @@ void TitleScene::CheckInput()
 		SceneManager::Get()->isAsyncLoad = true;
 		SceneManager::Get()->LoadScene<MainScene>();
 	}
+	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
+		SceneManager::Get()->End();
 }

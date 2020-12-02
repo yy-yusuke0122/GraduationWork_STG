@@ -10,6 +10,7 @@ public:
 	~MainScene();
 	void Start();
 	void Update();
+	void AsyncEnd()override;
 private:
 	void CheckInput();
 private:

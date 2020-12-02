@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\Animator2D.cpp" />
+    <ClCompile Include="..\lib\AsyncComponent.cpp" />
     <ClCompile Include="..\lib\Bone.cpp" />
     <ClCompile Include="..\lib\BoxCollider.cpp" />
     <ClCompile Include="..\lib\BoxCollider2D.cpp" />
@@ -83,12 +84,14 @@
     <ClCompile Include="..\Source\Objects\ScreenCollider.cpp" />
     <ClCompile Include="..\Source\Objects\SoundManager.cpp" />
     <ClCompile Include="..\Source\Objects\Stage.cpp" />
+    <ClCompile Include="..\Source\Scenes\LoadingScene.cpp" />
     <ClCompile Include="..\Source\Scenes\MainScene.cpp" />
     <ClCompile Include="..\Source\Scenes\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\Anim2D.h" />
     <ClInclude Include="..\lib\Animator2D.h" />
+    <ClInclude Include="..\lib\AsyncComponent.h" />
     <ClInclude Include="..\lib\Bone.h" />
     <ClInclude Include="..\lib\BoxCollider.h" />
     <ClInclude Include="..\lib\BoxCollider2D.h" />
@@ -101,6 +104,7 @@
     <ClInclude Include="..\lib\Collider3D.h" />
     <ClInclude Include="..\lib\Component.h" />
     <ClInclude Include="..\lib\Debug.h" />
+    <ClInclude Include="..\lib\Delay.h" />
     <ClInclude Include="..\lib\DirectionalLight.h" />
     <ClInclude Include="..\lib\DrawManager.h" />
     <ClInclude Include="..\lib\Function.h" />
@@ -154,6 +158,7 @@
     <ClInclude Include="..\Source\Objects\ScreenCollider.h" />
     <ClInclude Include="..\Source\Objects\SoundManager.h" />
     <ClInclude Include="..\Source\Objects\Stage.h" />
+    <ClInclude Include="..\Source\Scenes\LoadingScene.h" />
     <ClInclude Include="..\Source\Scenes\MainScene.h" />
     <ClInclude Include="..\Source\Scenes\TitleScene.h" />
   </ItemGroup>

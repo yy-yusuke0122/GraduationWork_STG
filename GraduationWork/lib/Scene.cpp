@@ -111,6 +111,7 @@ void Scene::SceneUpdate()
 			{
 				(*it)->AsyncEnd();
 				(*it)->gameObject->AsyncEnd();
+				AsyncEnd();
 				it = asyncWaitList.erase(it);
 			}
 		}

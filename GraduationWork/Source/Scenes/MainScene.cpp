@@ -31,7 +31,6 @@ void MainScene::Start()
 	SoundManager::Create(this);
 
 	SoundManager::Get()->Push("Sound/BGM.mp3", "MainBGM");
-	SoundManager::Get()->Play("MainBGM");
 
 	VECTOR3 center = VGet((float)(Screen::x / 2), (float)(Screen::y / 2), 0.0f);
 	VECTOR3 add = VGet(200.0f, 0.0f, 0.0f);
@@ -56,6 +55,11 @@ void MainScene::Update()
 	printfDx("Press '0' : To 'TitleScene'\n");
 
 #endif // !_DEBUG
+}
+
+void MainScene::AsyncEnd()
+{
+	SoundManager::Get()->Play("MainBGM");
 }
 
 void MainScene::CheckInput()
