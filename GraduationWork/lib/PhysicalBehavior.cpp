@@ -33,11 +33,13 @@ void PhysicalBehavior::PostUpdate()
 
     // 抵抗を計算
     if (isLanding) { // 着地している時
-        velocity = velocity * friction;
+        velocity -= velocity * friction;
     }
     else { // 空中にいる時
-        velocity = velocity * drag;
+        velocity -= velocity * drag;
     }
+
+    printfDx("vel.y : %f\n", velocity.y);
 
     // 加速値が0に近ければ0にして終了
     if (velocity.Length() < _OX_EPSILON_) {

@@ -2,6 +2,7 @@
 #include "UrLib.h"
 #include "DrawManager.h"
 #include "CollideManager.h"
+#include "MapChipManager.h"
 
 int Screen::x = 800;
 int Screen::y = 600;
@@ -56,8 +57,9 @@ void UrLib::Update()
         ret += clsDx();
         Input::Update();                    // 入力更新
         Time::Update();                     // 経過時間更新
-        SceneManager::Update();      // シーンの更新処理
+        SceneManager::Update();             // シーンの更新処理
         CollideManager::Get()->Update();    // 衝突判定
+        MapChipManager::Update();           // マップチップ当たり判定
         ret += UrLib::Draw();               // 描画処理
         ret += ScreenFlip();		        // 裏画面と表画面の入替
         ret += ClearDrawScreen();	        // 裏画面の描画を全て消去

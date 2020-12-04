@@ -24,6 +24,7 @@
     <ClCompile Include="..\lib\Bone.cpp" />
     <ClCompile Include="..\lib\BoxCollider.cpp" />
     <ClCompile Include="..\lib\BoxCollider2D.cpp" />
+    <ClCompile Include="..\lib\ChipCollider.cpp" />
     <ClCompile Include="..\lib\CircleCollider2D.cpp" />
     <ClCompile Include="..\lib\CollideManager.cpp" />
     <ClCompile Include="..\lib\CollideManager2D.cpp" />
@@ -42,6 +43,7 @@
     <ClCompile Include="..\lib\Light.cpp" />
     <ClCompile Include="..\lib\Loader.cpp" />
     <ClCompile Include="..\lib\MapChip.cpp" />
+    <ClCompile Include="..\lib\MapChipManager.cpp" />
     <ClCompile Include="..\lib\Material.cpp" />
     <ClCompile Include="..\lib\Mesh.cpp" />
     <ClCompile Include="..\lib\MeshRenderer.cpp" />
@@ -123,6 +125,7 @@
     <ClInclude Include="..\lib\Light.h" />
     <ClInclude Include="..\lib\Loader.h" />
     <ClInclude Include="..\lib\MapChip.h" />
+    <ClInclude Include="..\lib\MapChipManager.h" />
     <ClInclude Include="..\lib\Material.h" />
     <ClInclude Include="..\lib\Mesh.h" />
     <ClInclude Include="..\lib\MeshRenderer.h" />
