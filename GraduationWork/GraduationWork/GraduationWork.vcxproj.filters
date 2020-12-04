@@ -240,6 +240,12 @@
     <ClCompile Include="..\lib\Scroll.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="..\lib\SceneOption.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\PhysicalBehavior.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -471,6 +477,12 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\Scroll.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\SceneOption.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\PhysicalBehavior.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -29,6 +29,15 @@ void GameObject::Update()
 	}
 }
 
+void GameObject::PostUpdate()
+{
+	for (std::list<Component*>::iterator it = compList.begin(); it != compList.end(); ++it) {
+		if ((*it)->IsActive()) {
+			(*it)->PostUpdate();
+		}
+	}
+}
+
 GameObject* GameObject::GetParent() const
 {
 	return parent;

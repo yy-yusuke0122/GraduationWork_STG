@@ -6,6 +6,7 @@
 #include <typeinfo>
 #include <new>
 #include "GameObject.h"
+#include "SceneOption.h"
 
 class SceneManager;
 class AsyncComponent;
@@ -325,4 +326,5 @@ public:
 
 	float asyncMinTime;//”ñ“¯ŠúƒV[ƒ“Å’á¶‘¶ŠÔ
 
+	SceneOption option;
 };

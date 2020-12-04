@@ -181,15 +181,16 @@ void Scene::SceneUpdate()
 
 		Update();
 
-		//自身のトランスフォーム更新
+		//自身のオブジェクトの後更新
 		for (std::list<GameObject*>::iterator it = objectList.begin(); it != objectList.end(); ++it)
 		{
 			if ((*it)->IsActive())
 			{
-				if ((*it)->transform->usePhysics)
-					(*it)->transform->UpdatePysics();
+				(*it)->PostUpdate();
 			}
 		}
+
+		PostUpdate();
 	}
 
 	currentScene = nullptr;

@@ -16,6 +16,7 @@ private:
 	PlayerMover* mover;
 	PlayerAttacker* attacker;
 	JumpComponent* jumpComponent;
+	PhysicalBehavior* physics;
 
 	VECTOR2 faceDir;	// ³–Ê‚ÌŒü‚«
 };

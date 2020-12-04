@@ -26,6 +26,7 @@
 #include "Scroll.h"
 #include "MapChip.h"
 #include "Chip.h"
+#include "PhysicalBehavior.h"
 
 namespace UrLib {
 	int Init(int ScreenSizeX, int ScreenSizeY, int ColorBitDepth, int WindowMode, bool IsShadowCalc = true);

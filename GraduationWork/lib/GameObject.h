@@ -15,6 +15,7 @@ public:
 	virtual ~GameObject();
 
 	void Update() final;
+	void PostUpdate() final;
 
 	/// <summary>
 	/// Component‚ð’Ç‰Á‚·‚é

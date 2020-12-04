@@ -28,6 +28,9 @@ MainScene::~MainScene()
 
 void MainScene::Start()
 {
+	option.gravityDir = VECTOR3::up();
+	option.gravity = 20.0f;
+
 	Instantiate<ScreenCollider>();
 	player = Instantiate<Player>();
 	enemy = Instantiate<Enemy>();

@@ -18,6 +18,10 @@ void Object::Update()
 {
 }
 
+void Object::PostUpdate()
+{
+}
+
 std::string Object::GetTypeName() const
 {
     return className;

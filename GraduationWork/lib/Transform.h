@@ -72,10 +72,8 @@ public:
 
 	VECTOR3 position;
 	VECTOR3 scale;
-	bool usePhysics;
 
 private:
-	VECTOR3 velocity;
 	Quaternion foward;
 	Quaternion right;
 	Quaternion up;
