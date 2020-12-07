@@ -39,8 +39,6 @@ void PhysicalBehavior::PostUpdate()
         velocity -= velocity * drag;
     }
 
-    printfDx("vel.y : %f\n", velocity.y);
-
     // ‰Á‘¬’l‚ª0‚É‹ß‚¯‚ê‚Î0‚É‚µ‚ÄI—¹
     if (velocity.Length() < _OX_EPSILON_) {
         velocity.Clear();

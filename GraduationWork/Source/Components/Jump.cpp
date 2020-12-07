@@ -30,17 +30,32 @@ void JumpComponent::Update()
 	printfDx("jumpCount %d / %d\n", jumpCount, maxJumpCount);
 }
 
-void JumpComponent::Jump() 
+void JumpComponent::Jump(bool _velocityChange)
 {
-	if (jumpCount < maxJumpCount) {
-		++jumpCount;
-		physics->velocity += jumpDir * jumpPower;
-		physics->isLanding = false;
+	// Å‘åƒWƒƒƒ“ƒv‰ñ”ˆÈã‚È‚çI—¹
+	if (jumpCount >= maxJumpCount)
+		return;
+
+	++jumpCount;
+
+	if (_velocityChange) {
+		physics->velocity = jumpDir * jumpPower;
 	}
+	else {
+		physics->velocity += jumpDir * jumpPower;
+	}
+	
+	physics->isLanding = false;
 }
 
 void JumpComponent::Land()
 {
 	jumpCount = 0;
+	physics->velocity.y = 0.0f;
 	physics->isLanding = true;
+}
+
+bool JumpComponent::IsLanding() const
+{
+	return physics->isLanding;
 }

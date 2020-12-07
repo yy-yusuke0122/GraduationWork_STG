@@ -2,6 +2,7 @@
 #include "PlayerMover.h"
 #include "PlayerAttacker.h"
 #include "Jump.h"
+#include "../Objects/Stage.h"
 
 PlayerController::PlayerController()
 {
@@ -53,5 +54,27 @@ void PlayerController::Update()
 
 	if (Input::IsKeyDown(KEY::KEY_ENTER)) {
 		attacker->Attack(faceDir);
+	}
+
+	// 着地確認
+	CheckLanding();
+}
+
+void PlayerController::CheckLanding()
+{
+	if (jumpComponent->IsLanding())
+		return;
+
+	ImageRenderer* p = GetComponent<ImageRenderer>();
+	int size = p->GetSizeY();	// 画像の縦幅
+	float h = Stage::GetY();	// ステージの高さ
+	float foot = transform->position.y + size / 2;
+
+	if (foot > h) {
+		jumpComponent->Land();
+
+		VECTOR3 pos = transform->position;
+		pos.y = h - size / 2;
+		transform->SetPosition(pos);
 	}
 }

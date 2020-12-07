@@ -14,13 +14,20 @@ public:
 	/// ジャンプする
 	/// ジャンプ回数が上限を超える場合無視する
 	/// </summary>
-	void Jump();
+	/// <param name="_velocityChange">現在のvelocityを置き換えないならfalse</param>
+	void Jump(bool _velocityChange = true);
 
 	/// <summary>
 	/// 落下を終了させる
 	/// 着地した時に呼ぶ関数
 	/// </summary>
 	void Land();
+
+	/// <summary>
+	/// 着地しているか
+	/// </summary>
+	/// <returns>着地していたらtrue</returns>
+	bool IsLanding() const;
 
 	/// <summary>
 	/// ジャンプ方向を設定する

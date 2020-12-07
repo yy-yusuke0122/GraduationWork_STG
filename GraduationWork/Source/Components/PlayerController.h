@@ -19,4 +19,7 @@ private:
 	PhysicalBehavior* physics;
 
 	VECTOR2 faceDir;	// ³–Ê‚ÌŒü‚«
+
+private:
+	void CheckLanding();
 };
