@@ -1,5 +1,5 @@
 #include "../lib/UrLib.h"
-#include "Scenes/TitleScene.h"
+#include "Scenes/TestTitleScene.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -14,7 +14,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//Loader::isAsync = true;
 	//Saver::isAsync = true;
 
-	SceneManager::LoadScene<TitleScene>();
+	SceneManager::LoadScene<TestTitleScene>();
 
 	//メイン処理
 	UrLib::Update();

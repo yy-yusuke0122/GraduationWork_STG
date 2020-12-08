@@ -1,8 +1,6 @@
 #pragma once
 
-#include "GameObject.h"
-
-class Chip :public GameObject
+class Chip
 {
 public:
 	Chip()

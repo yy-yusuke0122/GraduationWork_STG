@@ -1,5 +1,5 @@
-#include "MainScene.h"
-#include "TitleScene.h"
+#include "TestMainScene.h"
+#include "TestTitleScene.h"
 #include "LoadingScene.h"
 #include "../Objects/Player.h"
 #include "../Objects/Enemy.h"
@@ -14,19 +14,19 @@ namespace
 	VECTOR2 s;
 }
 
-MainScene::MainScene()
+TestMainScene::TestMainScene()
 {
 	asyncMinTime = LoadingScene::asyncLoadMin;
 	AsyncScene<LoadingScene>();
 
 }
 
-MainScene::~MainScene()
+TestMainScene::~TestMainScene()
 {
 	SoundManager::Destroy();
 }
 
-void MainScene::Start()
+void TestMainScene::Start()
 {
 	option.gravityDir = VECTOR3::up();
 	option.gravity = 40.0f;
@@ -48,7 +48,7 @@ void MainScene::Start()
 	enemy->transform->AddPosition(add);
 }
 
-void MainScene::Update()
+void TestMainScene::Update()
 {
 	Scroll::value.x = player->transform->position.x - Screen::x / 2;
 	
@@ -67,17 +67,17 @@ void MainScene::Update()
 #endif // !_DEBUG
 }
 
-void MainScene::AsyncEnd()
+void TestMainScene::AsyncEnd()
 {
 	SoundManager::Get()->Play("MainBGM");
 
 }
 
-void MainScene::CheckInput()
+void TestMainScene::CheckInput()
 {
 	// 「0」キーの入力を受けたらメインシーンへ移動
 	if (Input::IsKeyDown(KEY::KEY_0)) {
-		SceneManager::LoadScene<TitleScene>();
+		SceneManager::LoadScene<TestTitleScene>();
 	}
 	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
 		SceneManager::End();

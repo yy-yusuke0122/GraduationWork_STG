@@ -147,12 +147,6 @@
     <ClCompile Include="..\lib\Debug.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\MainScene.cpp">
-      <Filter>Source\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\TitleScene.cpp">
-      <Filter>Source\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Objects\Player.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
@@ -251,6 +245,12 @@
     </ClCompile>
     <ClCompile Include="..\lib\MapChipManager.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\TestTitleScene.cpp">
+      <Filter>Source\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\TestMainScene.cpp">
+      <Filter>Source\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -389,12 +389,6 @@
     <ClInclude Include="..\Source\Objects\Player.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\MainScene.h">
-      <Filter>Source\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\TitleScene.h">
-      <Filter>Source\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Objects\Enemy.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
@@ -493,6 +487,12 @@
     </ClInclude>
     <ClInclude Include="..\lib\MapChipManager.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\TestTitleScene.h">
+      <Filter>Source\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\TestMainScene.h">
+      <Filter>Source\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

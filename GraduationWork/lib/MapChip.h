@@ -38,7 +38,7 @@ public:
 	/// </summary>
 	/// <param name="_object">当たり判定を付けるオブジェクト</param>
 	/// <returns>true：成功、false：失敗</returns>
-	bool SetChipCollide(GameObject* _object);
+	bool SetChipCollider(GameObject* _object);
 
 	/// <summary>
 	/// チップを取得

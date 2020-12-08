@@ -25,6 +25,7 @@
 #include "Debug.h"
 #include "Scroll.h"
 #include "MapChip.h"
+#include "Chip.h"
 #include "PhysicalBehavior.h"
 
 namespace UrLib {

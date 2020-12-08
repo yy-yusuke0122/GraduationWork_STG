@@ -1,10 +1,10 @@
 #pragma once
 #include "../../lib/UrLib.h"
 
-class TitleScene : public Scene {
+class TestTitleScene : public Scene {
 public:
-	TitleScene();
-	~TitleScene();
+	TestTitleScene();
+	~TestTitleScene();
 	void Start();
 	void Update();
 private:

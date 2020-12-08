@@ -92,8 +92,8 @@
     <ClCompile Include="..\Source\Objects\SoundManager.cpp" />
     <ClCompile Include="..\Source\Objects\Stage.cpp" />
     <ClCompile Include="..\Source\Scenes\LoadingScene.cpp" />
-    <ClCompile Include="..\Source\Scenes\MainScene.cpp" />
-    <ClCompile Include="..\Source\Scenes\TitleScene.cpp" />
+    <ClCompile Include="..\Source\Scenes\TestMainScene.cpp" />
+    <ClCompile Include="..\Source\Scenes\TestTitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\Anim2D.h" />
@@ -174,8 +174,8 @@
     <ClInclude Include="..\Source\Objects\SoundManager.h" />
     <ClInclude Include="..\Source\Objects\Stage.h" />
     <ClInclude Include="..\Source\Scenes\LoadingScene.h" />
-    <ClInclude Include="..\Source\Scenes\MainScene.h" />
-    <ClInclude Include="..\Source\Scenes\TitleScene.h" />
+    <ClInclude Include="..\Source\Scenes\TestMainScene.h" />
+    <ClInclude Include="..\Source\Scenes\TestTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\lib\Scene.h.rej" />

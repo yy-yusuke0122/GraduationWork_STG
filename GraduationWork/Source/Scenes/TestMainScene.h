@@ -4,10 +4,10 @@
 class Player;
 class Enemy;
 
-class MainScene : public Scene {
+class TestMainScene : public Scene {
 public:
-	MainScene();
-	~MainScene();
+	TestMainScene();
+	~TestMainScene();
 	void Start();
 	void Update();
 	void AsyncEnd()override;

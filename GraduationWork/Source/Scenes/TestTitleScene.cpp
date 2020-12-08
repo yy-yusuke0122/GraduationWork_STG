@@ -1,19 +1,19 @@
-#include "TitleScene.h"
-#include "MainScene.h"
+#include "TestTitleScene.h"
+#include "TestMainScene.h"
 
-TitleScene::TitleScene()
+TestTitleScene::TestTitleScene()
 {
 }
 
-TitleScene::~TitleScene()
+TestTitleScene::~TestTitleScene()
 {
 }
 
-void TitleScene::Start()
+void TestTitleScene::Start()
 {
 }
 
-void TitleScene::Update()
+void TestTitleScene::Update()
 {
 	CheckInput();
 
@@ -21,12 +21,12 @@ void TitleScene::Update()
 	printfDx("Press '1' : To 'MainScene'\n");
 }
 
-void TitleScene::CheckInput()
+void TestTitleScene::CheckInput()
 {
 	// 「1」キーの入力を受けたらメインシーンへ移動
 	if (Input::IsKeyDown(KEY::KEY_1)) {
 		SceneManager::isAsyncLoad = true;
-		SceneManager::LoadScene<MainScene>();
+		SceneManager::LoadScene<TestMainScene>();
 	}
 	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
 		SceneManager::End();

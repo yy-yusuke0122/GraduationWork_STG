@@ -113,7 +113,7 @@ bool MapChip::Create(int _height, int _width, int _sizeX, int _sizeY)
 	if (_sizeY > 0)
 		sizeY = _sizeY;
 
-	SceneManager::GetCurrentScene()->Instantiate(_height * _width, map);
+//	SceneManager::GetCurrentScene()->Instantiate(_height * _width, map);
 
 	return true;
 }
@@ -123,7 +123,7 @@ void MapChip::Clear()
 	map.clear();
 }
 
-bool MapChip::SetChipCollide(GameObject* _object)
+bool MapChip::SetChipCollider(GameObject* _object)
 {
 	if (_object != nullptr)
 	{
@@ -140,7 +140,7 @@ GameObject* MapChip::GetChip(int _h, int _w)
 	int i = GetIndex(_h, _w);
 	if (i != -1)
 	{
-		return &map[i];
+//		return &map[i];
 	}
 	return nullptr;
 }

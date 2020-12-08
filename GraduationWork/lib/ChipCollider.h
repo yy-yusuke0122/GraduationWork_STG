@@ -10,7 +10,8 @@ class ChipCollider :public Component
 {
 	struct CollisionState
 	{
-		CollisionState() :chip(nullptr), isCollide(false) {}
+		CollisionState() :
+			chip(nullptr), isCollide(false) {}
 		Chip* chip;
 		bool isCollide;
 	};
