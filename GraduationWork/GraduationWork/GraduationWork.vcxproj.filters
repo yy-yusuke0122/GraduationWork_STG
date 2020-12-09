@@ -252,6 +252,15 @@
     <ClCompile Include="..\Source\Scenes\TestMainScene.cpp">
       <Filter>Source\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\ProjectileMoveMent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\TestBullet.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\StateController.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -493,6 +502,15 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\TestMainScene.h">
       <Filter>Source\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\ProjectileMoveMent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\TestBullet.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\StateController.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

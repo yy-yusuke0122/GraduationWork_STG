@@ -123,7 +123,6 @@ public:
 	template<class C>
 	inline C* Instantiate(std::string _tag = "");
 
-public:
 	/// <summary>
 	/// Objectの有効状態をセットする
 	/// </summary>

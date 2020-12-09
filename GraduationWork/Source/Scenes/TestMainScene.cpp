@@ -8,17 +8,18 @@
 #include "../Objects/ScreenCollider.h"
 #include "../Components/CheckDeadObjects.h"
 #include "../Objects/SoundManager.h"
+#include "../Objects/TestBullet.h"
 
 namespace
 {
 	VECTOR2 s;
 }
 
-TestMainScene::TestMainScene()
+TestMainScene::TestMainScene() :
+	player(nullptr), enemy(nullptr)
 {
 	asyncMinTime = LoadingScene::asyncLoadMin;
 	AsyncScene<LoadingScene>();
-
 }
 
 TestMainScene::~TestMainScene()
@@ -50,7 +51,7 @@ void TestMainScene::Start()
 
 void TestMainScene::Update()
 {
-	Scroll::value.x = player->transform->position.x - Screen::x / 2;
+ 	Scroll::value.x = player->transform->position.x - Screen::x / 2;
 	
 	CheckInput();
 
@@ -70,7 +71,6 @@ void TestMainScene::Update()
 void TestMainScene::AsyncEnd()
 {
 	SoundManager::Get()->Play("MainBGM");
-
 }
 
 void TestMainScene::CheckInput()
@@ -81,4 +81,8 @@ void TestMainScene::CheckInput()
 	}
 	if (Input::IsKeyPush(KEY::KEY_ESCAPE))
 		SceneManager::End();
+
+	if (Input::IsKeyPush(KEY::KEY_SPACE)) {
+		Instantiate<TestBullet>();
+	}
 }
