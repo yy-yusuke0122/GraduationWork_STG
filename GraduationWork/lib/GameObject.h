@@ -10,6 +10,7 @@ class Transform;
 
 class GameObject : public Object {
 	friend Scene;
+	friend class MapChip;
 public:
 	GameObject();
 	virtual ~GameObject();

@@ -6,7 +6,11 @@ std::list<MapChip*> MapChipManager::mapchipList;
 void MapChipManager::Update()
 {
 	for (MapChip* p : mapchipList)
-		p->Judge();
+		p->ChipUpdate();
+	for (MapChip* p : mapchipList)
+		p->PostChipUpdate();
+	for (MapChip* p : mapchipList)
+		p->CheckCollide();
 }
 
 void MapChipManager::Add(MapChip* _map)

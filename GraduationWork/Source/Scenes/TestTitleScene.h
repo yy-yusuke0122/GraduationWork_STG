@@ -9,4 +9,8 @@ public:
 	void Update();
 private:
 	void CheckInput();
+
+	MapChip* map;
+	ImageRenderer* img;
+	GameObject* empty;
 };

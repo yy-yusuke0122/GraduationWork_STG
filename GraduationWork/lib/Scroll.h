@@ -24,6 +24,6 @@ private:
 public:
 	static VECTOR2 value;//スクロール目的値
 
-	static VECTOR2 velocity;//スクロール速度
+	static VECTOR2 speed;//スクロール速さ（0～1）
 
 };

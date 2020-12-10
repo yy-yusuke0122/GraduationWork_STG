@@ -25,8 +25,10 @@ bool ChipCollider::CheckCollide(Chip* _chip)
 
 		//見つかった場合、Stayを呼ぶ
 		hitChip[i].isCollide = true;
-		//for (Component* p : hitChip[i].chip->GetComponentAll())
-		//		p->OnChipStay(map, hitChip[i].chip);
+		for (Component* p : gameObject->GetComponentAll())
+			p->OnChipStay(hitChip[i].chip);
+		for (Component* p : hitChip[i].chip->GetComponentAll())
+			p->OnChipStay(gameObject);
 
 		return true;
 	}
@@ -42,8 +44,10 @@ void ChipCollider::ClearChip()
 		if (hitChip[i].isCollide)continue;//当たっているチップは無視
 
 		//当たっていなければExitを呼んで、配列から削除
-		//for (Component* p : hitChip[i].chip->GetComponentAll())
-		//	p->OnChipExit(map, hitChip[i].chip);
+		for (Component* p : gameObject->GetComponentAll())
+			p->OnChipExit(hitChip[i].chip);
+		for (Component* p : hitChip[i].chip->GetComponentAll())
+			p->OnChipExit(gameObject);
 
 		hitChip[i].chip = nullptr;
 		hitChip[i].isCollide = false;
@@ -58,9 +62,11 @@ void ChipCollider::AddChip(Chip* _chip)
 	
 		//Enterを呼び、配列に登録
 		hitChip[i].chip = _chip;
-		//for (Component* p : _chip->GetComponentAll())
-		//	p->OnChipEnter(map, _chip);
-		//for (Component* p : gameObject->GetComponentAll())
-		//	p->OnChipEnter();
+		for (Component* p : gameObject->GetComponentAll())
+			p->OnChipEnter(hitChip[i].chip);
+		for (Component* p : _chip->GetComponentAll())
+			p->OnChipEnter(gameObject);
+
+		break;
 	}
 }

@@ -86,6 +86,7 @@
     <ClCompile Include="..\Source\Components\PlayerMover.cpp" />
     <ClCompile Include="..\Source\Components\ProjectileMoveMent.cpp" />
     <ClCompile Include="..\Source\Components\ScreenOut.cpp" />
+    <ClCompile Include="..\Source\Components\TestMapColMover.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerAttack.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerIdle.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerMove.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="..\Source\Components\PlayerMover.h" />
     <ClInclude Include="..\Source\Components\ProjectileMoveMent.h" />
     <ClInclude Include="..\Source\Components\ScreenOut.h" />
+    <ClInclude Include="..\Source\Components\TestMapColMover.h" />
     <ClInclude Include="..\Source\Components\TestPlayerAttack.h" />
     <ClInclude Include="..\Source\Components\TestPlayerIdle.h" />
     <ClInclude Include="..\Source\Components\TestPlayerMove.h" />

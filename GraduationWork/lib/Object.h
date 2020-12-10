@@ -4,10 +4,13 @@
 class GameObject;
 
 class Scene;
+class MapChip;
 
 class Object {
 	friend Scene;
 	friend GameObject;
+	friend MapChip;
+
 public:
 	Object();
 	virtual ~Object();

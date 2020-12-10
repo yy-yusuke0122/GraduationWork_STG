@@ -18,7 +18,7 @@ class ChipCollider :public Component
 
 public:
 	ChipCollider() :
-		map(nullptr)
+		map(nullptr), sizeX(1), sizeY(1)
 	{
 	}
 
@@ -36,6 +36,8 @@ public:
 	MapChip* map;
 
 	CollisionState hitChip[4];
+
+	int sizeX, sizeY;
 
 private:
 

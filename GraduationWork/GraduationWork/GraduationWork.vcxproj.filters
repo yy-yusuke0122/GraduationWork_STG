@@ -276,6 +276,9 @@
     <ClCompile Include="..\Source\Components\TestPlayerMove.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Components\TestMapColMover.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -540,6 +543,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Components\TestPlayerMove.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\TestMapColMover.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

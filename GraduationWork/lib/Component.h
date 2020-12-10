@@ -5,6 +5,7 @@ class Transform;
 class Collider3D;
 class Collider2D;
 class MapChip;
+class Chip;
 
 class Component : public Object {
 public:
@@ -71,9 +72,15 @@ public:
 	virtual void OnTriggerStay(Collider3D* _collider) {}
 	virtual void OnTriggerExit(Collider3D* _collider) {}
 
-	virtual void OnChipEnter(MapChip* _map, GameObject* _chip) {}
-	virtual void OnChipStay(MapChip* _map, GameObject* _chip) {}
-	virtual void OnChipExit(MapChip* _map, GameObject* _chip) {}
+	//GameObjectから呼ばれる
+	virtual void OnChipEnter(Chip* _chip) {}
+	virtual void OnChipStay(Chip* _chip) {}
+	virtual void OnChipExit(Chip* _chip) {}
+
+	//Chipから呼ばれる
+	virtual void OnChipEnter(GameObject* _obj) {}
+	virtual void OnChipStay(GameObject* _obj) {}
+	virtual void OnChipExit(GameObject* _obj) {}
 
 public:
 	Transform* transform;			// 所有者のトランスフォーム

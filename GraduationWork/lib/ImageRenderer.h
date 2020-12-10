@@ -78,21 +78,38 @@ public:
 	void Release() { image.Destroy(); drawNum = 0u; }
 
 private:
-	void Initialize();
+	void Initialize()override;
 
 	int CheckAsyncLoading() override;
 
 	void DestroyParam()override;
 
 public:
-	VECTOR2 position;
-	float rotation;
-	VECTOR2 scale;
-	float alpha;
-	int transFlag;
-	bool turnXFlag;
-	bool turnYFlag;
-	int order;
+	VECTOR2 position;//画像座標
+
+	float rotation;//画像回転度（rad）
+	
+	VECTOR2 scale;//画像スケール
+	
+	int alpha;//透明度（0～255）
+
+	int add;//加算（-1は無効）、描画先と画像の値を足して（0～1）この値を掛けて出力（0～255）
+
+	int sub;//減算（-1は無効）、描画先の値から画像の値を引いて（0～1）この値を掛けて出力（0～255）
+
+	int mul;//乗算する値（-1は無効）、描画先と画像の色（0～1）を乗算した結果にこの値を掛けて出力（0～255）
+
+	int inv;//色反転（-1は無効）、反転後の透明度（0～255）
+	
+	int transFlag;//画像透明度有効フラグ
+	
+	bool turnXFlag;//横反転フラグ
+	
+	bool turnYFlag;//縦反転フラグ
+	
+	int order;//描画の順番（0が先）
+
+	int red, green, blue;//0～255（色の強さ）
 
 private:
 	Image image;
