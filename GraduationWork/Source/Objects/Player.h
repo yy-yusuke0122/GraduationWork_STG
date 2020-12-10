@@ -10,5 +10,4 @@ public:
 	void Start();
 private:
 	PlayerController* playerController;
-
 };

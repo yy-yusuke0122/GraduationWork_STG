@@ -258,7 +258,22 @@
     <ClCompile Include="..\Source\Objects\TestBullet.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Components\StateController.cpp">
+    <ClCompile Include="..\Source\Components\TestPlayerState.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\StateManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\StateController.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\TestPlayerIdle.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\TestPlayerAttack.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\TestPlayerMove.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -509,7 +524,22 @@
     <ClInclude Include="..\Source\Objects\TestBullet.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Components\StateController.h">
+    <ClInclude Include="..\Source\Components\TestPlayerState.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\StateManager.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\StateController.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\TestPlayerIdle.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\TestPlayerAttack.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\TestPlayerMove.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

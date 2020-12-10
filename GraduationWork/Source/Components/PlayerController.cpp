@@ -1,10 +1,11 @@
 #include "PlayerController.h"
-#include "PlayerMover.h"
-#include "PlayerAttacker.h"
-#include "Jump.h"
-#include "../Objects/Stage.h"
+#include "TestPlayerState.h"
+#include "TestPlayerIdle.h"
+#include "TestPlayerMove.h"
+#include "TestPlayerAttack.h"
 
-PlayerController::PlayerController()
+PlayerController::PlayerController() :
+	currentState(""), stateComp(nullptr)
 {
 }
 
@@ -14,47 +15,32 @@ PlayerController::~PlayerController()
 
 void PlayerController::Start()
 {
-	mover = AddComponent<PlayerMover>();
-	attacker = AddComponent<PlayerAttacker>();
-	jumpComponent = AddComponent<JumpComponent>();
-	physics = GetComponent<PhysicalBehavior>();
-	faceDir = VECTOR2(1.0f, 0.0f);
+	state = AddComponent<StateController>();
+	state->SetStateManager<TestPlayerState>();
 
-	jumpComponent->jumpPower = 20.0f;
-	jumpComponent->maxJumpCount = 20;
+	AddComponent<TestPlayerIdle>()->SetActive(false);
+	AddComponent<TestPlayerMove>()->SetActive(false);
+	AddComponent<TestPlayerAttack>()->SetActive(false);
 }
 
 void PlayerController::Update()
 {
-	if (Input::IsKeyPush(KEY::KEY_LEFT)) {
-		mover->Move(false);
-		faceDir = VECTOR2(-1.0f, 0.0f);
-	}
-	else if (Input::IsKeyPush(KEY::KEY_RIGHT)) {
-		mover->Move(true);
-		faceDir = VECTOR2(1.0f, 0.0f);
-	}
-	if (Input::IsKeyDown(KEY::KEY_UP)) {
-		// mover->Jump();
-		jumpComponent->Jump();
+	if (currentState != state->GetState()) {
+		currentState = state->GetState();
+
+		if (stateComp != nullptr)
+			stateComp->SetActive(false);
+
+		if (currentState == "Idle") stateComp = GetComponent<TestPlayerIdle>();
+		else if (currentState == "Move") stateComp = GetComponent<TestPlayerMove>();
+		else if (currentState == "Attack") stateComp = GetComponent<TestPlayerAttack>();
+
+		stateComp->SetActive(true);
 	}
 
-	if (Input::IsKeyDown(KEY::KEY_L)) {
-		physics->gravityDir = -VECTOR3::right();
-		jumpComponent->SetJumpDir(VECTOR3::right());
-	}
-	if (Input::IsKeyDown(KEY::KEY_R)) {
-		physics->gravityDir = VECTOR3::right();
-		jumpComponent->SetJumpDir(-VECTOR3::right());
-	}
-	if (Input::IsKeyDown(KEY::KEY_D)) {
-		physics->gravityDir = VECTOR3::up();
-		jumpComponent->SetJumpDir(-VECTOR3::up());
-	}
-
-	if (Input::IsKeyDown(KEY::KEY_ENTER)) {
-		attacker->Attack(faceDir);
-	}
+	printfDx("%s\n", state->GetState().c_str());
+	printfDx("px : %f\n", transform->position.x);
+	printfDx("py : %f\n", transform->position.y);
 
 	// 着地確認
 	CheckLanding();
@@ -62,19 +48,19 @@ void PlayerController::Update()
 
 void PlayerController::CheckLanding()
 {
-	if (jumpComponent->IsLanding())
-		return;
+	//if (jumpComponent->IsLanding())
+	//	return;
 
-	ImageRenderer* p = GetComponent<ImageRenderer>();
-	int size = p->GetSizeY();	// 画像の縦幅
-	float h = Stage::GetY();	// ステージの高さ
-	float foot = transform->position.y + size / 2;
+	//ImageRenderer* p = GetComponent<ImageRenderer>();
+	//int size = p->GetSizeY();	// 画像の縦幅
+	//float h = Stage::GetY();	// ステージの高さ
+	//float foot = transform->position.y + size / 2;
 
-	if (foot > h) {
-		jumpComponent->Land();
+	//if (foot > h) {
+	//	jumpComponent->Land();
 
-		VECTOR3 pos = transform->position;
-		pos.y = h - size / 2;
-		transform->SetPosition(pos);
-	}
+	//	VECTOR3 pos = transform->position;
+	//	pos.y = h - size / 2;
+	//	transform->SetPosition(pos);
+	//}
 }

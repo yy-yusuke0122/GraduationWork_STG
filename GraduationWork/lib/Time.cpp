@@ -27,5 +27,10 @@ void Time::Update()
 
 	deltaTime = unscaledDeltaTime * timeScale;
 
+	if (deltaTime == 0.f)
+	{
+		int a = 0;
+	}
+
 	lastTime = time;
 }

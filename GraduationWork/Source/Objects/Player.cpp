@@ -2,7 +2,8 @@
 #include "../Components/Life.h"
 #include "../Components/PlayerController.h"
 
-Player::Player()
+Player::Player() :
+	playerController(nullptr)
 {
 }
 

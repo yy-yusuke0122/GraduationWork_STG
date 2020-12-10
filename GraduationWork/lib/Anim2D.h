@@ -2,18 +2,18 @@
 
 class Anim2D {
 public:
-	Anim2D(unsigned int _start, unsigned int _end, std::string _name, float _speed, bool _isLoop) :
-		start(_start), end(_end), name(_name), speed(_speed), isLoop(_isLoop), destroyFlag(false) {}
+	Anim2D(int _handle, unsigned int _start, unsigned int _end, float _speed, bool _isLoop) :
+		start(_start), end(_end), currentNum(_start), speed(_speed), isLoop(_isLoop) {}
 	~Anim2D() {}
 
-	void Destroy() { destroyFlag = true; }
-
-	bool IsDestroy() { return destroyFlag; }
+	/// <summary>
+	/// 最後のアニメーションかどうか
+	/// </summary>
+	/// <returns>最後のアニメーション番号ならtrue</returns>
+	bool IsEndAnim() const { return currentNum == end; }
 
 	unsigned int start, end;
-	std::string name;
+	unsigned int currentNum;
 	float speed;
 	bool isLoop;
-private:
-	bool destroyFlag;
 };
