@@ -61,7 +61,7 @@ void TestTitleScene::Update()
 
 	printfDx("x : %d, y : %d\n", x, y);
 
-	DEBUG_LOG("hogehoge");
+//	DEBUG_LOG("hogehoge");
 }
 
 void TestTitleScene::CheckInput()

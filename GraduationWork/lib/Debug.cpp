@@ -1,6 +1,6 @@
 #include "Debug.h"
 #include <stdio.h>
-#include <consoleapi.h>
+//#include <consoleapi.h>
 #include <fcntl.h>
 #include <io.h>
 #include <iostream>
@@ -24,36 +24,36 @@ namespace
 
 	void ReleaseConsoleWindow()
 	{
-		if (file != nullptr)
-		{
-			fclose(file);
-			FreeConsole();
-			file = nullptr;
-		}
+		//if (file != nullptr)
+		//{
+		//	fclose(file);
+		//	FreeConsole();
+		//	file = nullptr;
+		//}
 	}
 
-	BOOL WINAPI proc(DWORD _type)
-	{
-		switch (_type)
-		{
-		case CTRL_C_EVENT:
-		case CTRL_BREAK_EVENT:
-		case CTRL_CLOSE_EVENT:
-			return TRUE;
-		}
-		return FALSE;
-	}
+	//BOOL WINAPI proc(DWORD _type)
+	//{
+	//	switch (_type)
+	//	{
+	//	case CTRL_C_EVENT:
+	//	case CTRL_BREAK_EVENT:
+	//	case CTRL_CLOSE_EVENT:
+	//		return TRUE;
+	//	}
+	//	return FALSE;
+	//}
 
 	void CreateConsoleWindow()
 	{
-		if (file == nullptr)
-		{
-			//コンソールウィンドウ作成
-			if (!AllocConsole())return;
+		//if (file == nullptr)
+		//{
+		//	//コンソールウィンドウ作成
+		//	if (!AllocConsole())return;
 
-			freopen_s(&file, "CON", "w", stdout);
-			SetConsoleCtrlHandler(proc, TRUE);//TODO
-		}
+		//	freopen_s(&file, "CON", "w", stdout);
+		//	SetConsoleCtrlHandler(proc, TRUE);//TODO
+		//}
 	}
 
 #endif // DEBUG || _DEBUG
