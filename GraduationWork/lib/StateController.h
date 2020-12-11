@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "StateManager.h"
+#include "StateMachine.h"
 
 class StateController : public Component {
 public:
@@ -37,7 +37,7 @@ public:
 	bool SetBool(const std::string& _boolName, bool _bool);
 
 private:
-	StateManager* state;
+	StateMachine* state;
 };
 
 template<class C>

@@ -1,6 +1,8 @@
 #include "TestPlayerIdle.h"
+#include "TestPlayerManager.h"
 
-TestPlayerIdle::TestPlayerIdle()
+TestPlayerIdle::TestPlayerIdle() :
+	manager(nullptr), state(nullptr)
 {
 }
 
@@ -10,6 +12,7 @@ TestPlayerIdle::~TestPlayerIdle()
 
 void TestPlayerIdle::Start()
 {
+	manager = GetComponent<TestPlayerManager>();
 	state = GetComponent<StateController>();
 }
 
@@ -17,8 +20,6 @@ void TestPlayerIdle::Update()
 {
 	CheckMoveInput();
 	CheckAttackInput();
-
-	transform->AddPosition(VECTOR3::right() * 3.0f);
 }
 
 void TestPlayerIdle::CheckMoveInput()

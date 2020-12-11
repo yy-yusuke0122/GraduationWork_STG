@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\lib\Anim2D.cpp" />
     <ClCompile Include="..\lib\Animator2D.cpp" />
     <ClCompile Include="..\lib\AsyncComponent.cpp" />
     <ClCompile Include="..\lib\Bone.cpp" />
@@ -62,7 +63,7 @@
     <ClCompile Include="..\lib\SphereCollider.cpp" />
     <ClCompile Include="..\lib\SpotLight.cpp" />
     <ClCompile Include="..\lib\StateController.cpp" />
-    <ClCompile Include="..\lib\StateManager.cpp" />
+    <ClCompile Include="..\lib\StateMachine.cpp" />
     <ClCompile Include="..\lib\Texture.cpp" />
     <ClCompile Include="..\lib\Time.cpp" />
     <ClCompile Include="..\lib\Transform.cpp" />
@@ -82,13 +83,13 @@
     <ClCompile Include="..\Source\Components\PlayerAttack01.cpp" />
     <ClCompile Include="..\Source\Components\PlayerAttack02.cpp" />
     <ClCompile Include="..\Source\Components\PlayerAttacker.cpp" />
-    <ClCompile Include="..\Source\Components\PlayerController.cpp" />
     <ClCompile Include="..\Source\Components\PlayerMover.cpp" />
     <ClCompile Include="..\Source\Components\ProjectileMoveMent.cpp" />
     <ClCompile Include="..\Source\Components\ScreenOut.cpp" />
     <ClCompile Include="..\Source\Components\TestMapColMover.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerAttack.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerIdle.cpp" />
+    <ClCompile Include="..\Source\Components\TestPlayerManager.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerMove.cpp" />
     <ClCompile Include="..\Source\Components\TestPlayerState.cpp" />
     <ClCompile Include="..\Source\Main.cpp" />
@@ -154,7 +155,7 @@
     <ClInclude Include="..\lib\SphereCollider.h" />
     <ClInclude Include="..\lib\SpotLight.h" />
     <ClInclude Include="..\lib\StateController.h" />
-    <ClInclude Include="..\lib\StateManager.h" />
+    <ClInclude Include="..\lib\StateMachine.h" />
     <ClInclude Include="..\lib\Texture.h" />
     <ClInclude Include="..\lib\Time.h" />
     <ClInclude Include="..\lib\Transform.h" />
@@ -174,13 +175,13 @@
     <ClInclude Include="..\Source\Components\PlayerAttack01.h" />
     <ClInclude Include="..\Source\Components\PlayerAttack02.h" />
     <ClInclude Include="..\Source\Components\PlayerAttacker.h" />
-    <ClInclude Include="..\Source\Components\PlayerController.h" />
     <ClInclude Include="..\Source\Components\PlayerMover.h" />
     <ClInclude Include="..\Source\Components\ProjectileMoveMent.h" />
     <ClInclude Include="..\Source\Components\ScreenOut.h" />
     <ClInclude Include="..\Source\Components\TestMapColMover.h" />
     <ClInclude Include="..\Source\Components\TestPlayerAttack.h" />
     <ClInclude Include="..\Source\Components\TestPlayerIdle.h" />
+    <ClInclude Include="..\Source\Components\TestPlayerManager.h" />
     <ClInclude Include="..\Source\Components\TestPlayerMove.h" />
     <ClInclude Include="..\Source\Components\TestPlayerState.h" />
     <ClInclude Include="..\Source\Objects\Character.h" />

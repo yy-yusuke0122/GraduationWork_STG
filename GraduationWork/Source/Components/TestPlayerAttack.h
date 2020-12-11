@@ -1,6 +1,8 @@
 #pragma once
 #include "../../lib/UrLib.h"
 
+class TestPlayerManager;
+
 class TestPlayerAttack : public Component {
 public:
 	TestPlayerAttack();
@@ -10,8 +12,11 @@ public:
 
 private:
 	void Attack();
+	bool CanAttack();
+	void CheckAxisInput();
 
 private:
+	TestPlayerManager* manager;
 	StateController* state;
 
 	int attackCount;

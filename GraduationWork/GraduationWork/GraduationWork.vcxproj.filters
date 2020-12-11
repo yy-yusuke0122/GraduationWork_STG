@@ -162,9 +162,6 @@
     <ClCompile Include="..\Source\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Components\PlayerController.cpp">
-      <Filter>Source\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Components\PlayerMover.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
@@ -261,9 +258,6 @@
     <ClCompile Include="..\Source\Components\TestPlayerState.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\StateManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\StateController.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -278,6 +272,15 @@
     </ClCompile>
     <ClCompile Include="..\Source\Components\TestMapColMover.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Components\TestPlayerManager.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\Anim2D.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\StateMachine.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -425,9 +428,6 @@
     <ClInclude Include="..\Source\Components\Life.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Components\PlayerController.h">
-      <Filter>Source\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Components\PlayerMover.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
@@ -530,9 +530,6 @@
     <ClInclude Include="..\Source\Components\TestPlayerState.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\lib\StateManager.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\StateController.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
@@ -547,6 +544,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\Components\TestMapColMover.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Components\TestPlayerManager.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\StateMachine.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

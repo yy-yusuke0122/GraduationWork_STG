@@ -2,7 +2,7 @@
 
 StateController::StateController()
 {
-    state = new StateManager();
+    state = new StateMachine();
 }
 
 StateController::~StateController()

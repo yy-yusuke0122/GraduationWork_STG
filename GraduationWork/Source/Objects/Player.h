@@ -1,7 +1,7 @@
 #pragma once
 #include "Character.h"
 
-class PlayerController;
+class TestPlayerManager;
 
 class Player : public Character {
 public:
@@ -9,5 +9,5 @@ public:
 	~Player();
 	void Start();
 private:
-	PlayerController* playerController;
+	TestPlayerManager* playerController;
 };

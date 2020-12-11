@@ -5,10 +5,10 @@
 
 class TransBool;
 
-class StateManager {
+class StateMachine {
 public:
-	StateManager();
-	~StateManager();
+	StateMachine();
+	~StateMachine();
 	virtual void Start();
 	void Update();
 

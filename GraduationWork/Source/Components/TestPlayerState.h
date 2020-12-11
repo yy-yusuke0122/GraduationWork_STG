@@ -1,7 +1,7 @@
 #pragma once
 #include "../../lib/UrLib.h"
 
-class TestPlayerState : public StateManager {
+class TestPlayerState : public StateMachine {
 public:
 	TestPlayerState();
 	~TestPlayerState();

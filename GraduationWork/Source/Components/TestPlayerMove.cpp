@@ -13,7 +13,7 @@ void TestPlayerMove::Start()
 {
 	state = GetComponent<StateController>();
 
-	speed = 5.0f;
+	speed = 50.0f;
 }
 
 void TestPlayerMove::Update()

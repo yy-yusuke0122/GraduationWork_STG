@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "../Components/Life.h"
-#include "../Components/PlayerController.h"
+#include "../Components/TestPlayerManager.h"
 
 Player::Player() :
 	playerController(nullptr)
@@ -14,7 +14,7 @@ Player::~Player()
 void Player::Start()
 {
 	// コンポーネントのアタッチ
-	playerController = AddComponent<PlayerController>();		// 移動機能・攻撃機能
+	playerController = AddComponent<TestPlayerManager>();		// 移動機能・攻撃機能
 
 	// コンポーネント毎の設定
 	imageRenderer->SetImage("Media/Player.png");	// 描画する画像をセット

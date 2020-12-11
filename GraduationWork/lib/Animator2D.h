@@ -5,16 +5,16 @@
 
 class ImageRenderer;
 class Anim2D;
-class StateManager;
+class StateController;
 
 class Animator2D : public Component {
 public:
 	Animator2D();
 	virtual ~Animator2D();
-	void Start() final override;
+	/*void Start() final override;
 	void Update() final override;
 
-	/*/// <summary>
+	/// <summary>
 	/// 新規アニメーションを追加する
 	/// </summary>
 	/// <param name="_start">開始要素番号</param>
@@ -58,45 +58,6 @@ public:
 	/// <returns>true:成功, false:範囲外の描画番号を指定しているため、エラー</returns>
 	bool SetDrawNum(unsigned int _num);
 
-	/// <summary>
-	/// 指定したアニメーション用bool型の状態を取得
-	/// </summary>
-	/// <param name="_boolName">アニメーションboolの名前</param>
-	/// <returns>アニメーションboolの値</returns>
-	bool GetBool(std::string _boolName);
-
-	/// <summary>
-	/// 指定したアニメーション用bool型の状態を変更
-	/// </summary>
-	/// <param name="_boolName">アニメーションboolの名前</param>
-	/// <param name="_bool">設定したい値</param>
-	void SetBool(std::string _boolName, bool _bool);
-
-	/// <summary>
-	/// アニメーション用bool型を新に追加する
-	/// </summary>
-	/// <param name="_boolName">設定したい名前</param>
-	/// <returns>true:成功, false:既に存在している</returns>
-	bool CreateBool(std::string _boolName);
-
-	/// <summary>
-	/// アニメーション遷移の流れを新たに追加する
-	/// </summary>
-	/// <param name="_sourceName">遷移前のアニメーション名</param>
-	/// <param name="_dirName">遷移先のアニメーション名</param>
-	/// <returns>true:成功, false:既に存在している</returns>
-	bool CreateTransDirection(std::string _sourceName, std::string _dirName);
-
-	/// <summary>
-	/// アニメーション遷移の流れを表す矢印に、遷移条件を追加する
-	/// </summary>
-	/// <param name="_sourceName">遷移前のアニメーション名</param>
-	/// <param name="_dirName">遷移先のアニメーション名</param>
-	/// <param name="_boolName">アニメーションboolの名前</param>
-	/// <param name="_enable">設定したい値</param>
-	/// <returns>true:成功, false:失敗</returns>
-	bool AddTransDirInfo(std::string _sourceName, std::string _dirName, std::string _boolName, bool _enable);
-
 private:
 	StateController* controller;
 	ImageRenderer* imageRenderer;
@@ -104,12 +65,5 @@ private:
 	Anim2D* currentAnim;
 	std::string currentAnimName;
 	std::string nextAnimName;
-	float animCount;
-	unsigned int drawNum;
-
-private:
-	/// <summary>
-	/// アニメーション切り替える
-	/// </summary>
-	void TransAnimation();*/
+	unsigned int drawNum;*/
 };

@@ -1,6 +1,6 @@
-#include "StateManager.h"
+#include "StateMachine.h"
 
-StateManager::StateManager() :
+StateMachine::StateMachine() :
 	currentState("")
 {
 	boolList.clear();
@@ -8,7 +8,7 @@ StateManager::StateManager() :
 	states.clear();
 }
 
-StateManager::~StateManager()
+StateMachine::~StateMachine()
 {
 	for (std::list<TransBool*>::iterator it = boolList.begin(); it != boolList.end();) {
 		delete (*it);
@@ -21,11 +21,11 @@ StateManager::~StateManager()
 	}
 }
 
-void StateManager::Start()
+void StateMachine::Start()
 {
 }
 
-void StateManager::Update()
+void StateMachine::Update()
 {
 	// 初期ステータスが設定されていない場合無視する
 	if (currentState == "") return;
@@ -37,19 +37,19 @@ void StateManager::Update()
 	}
 }
 
-std::string StateManager::GetState() const
+std::string StateMachine::GetState() const
 {
 	return currentState;
 }
 
-void StateManager::SetDefaultState(const std::string& _stateName)
+void StateMachine::SetDefaultState(const std::string& _stateName)
 {
 	if (isExistState(_stateName)) {
 		currentState = _stateName;
 	}
 }
 
-void StateManager::CreateNewState(const std::string& _stateName)
+void StateMachine::CreateNewState(const std::string& _stateName)
 {
 	// 既に存在するステータスなら無視する
 	for (std::list<std::string>::iterator it = states.begin(); it != states.end(); ++it) {
@@ -62,7 +62,7 @@ void StateManager::CreateNewState(const std::string& _stateName)
 	states.push_back(_stateName);
 }
 
-void StateManager::CreateNewTransDir(const std::string& _sourceState, const std::string& _dirState)
+void StateMachine::CreateNewTransDir(const std::string& _sourceState, const std::string& _dirState)
 {
 	bool end = false;
 
@@ -83,7 +83,7 @@ void StateManager::CreateNewTransDir(const std::string& _sourceState, const std:
 	transDirList.push_back(dir);
 }
 
-void StateManager::CreateNewTransBool(const std::string& _name)
+void StateMachine::CreateNewTransBool(const std::string& _name)
 {
 	// 既に存在する遷移条件なら無視する
 	if (isExistTransBool(_name))
@@ -94,7 +94,7 @@ void StateManager::CreateNewTransBool(const std::string& _name)
 	boolList.push_back(newBool);
 }
 
-void StateManager::SetTransInfo(const std::string& _sourceState, const std::string& _dirState, const std::string& _boolName, bool _enable)
+void StateMachine::SetTransInfo(const std::string& _sourceState, const std::string& _dirState, const std::string& _boolName, bool _enable)
 {
 	TransDirection* dir = nullptr;
 
@@ -126,7 +126,7 @@ void StateManager::SetTransInfo(const std::string& _sourceState, const std::stri
 	}
 }
 
-bool StateManager::GetBool(const std::string& _boolName)
+bool StateMachine::GetBool(const std::string& _boolName)
 {
 	for (std::list<TransBool*>::iterator it = boolList.begin(); it != boolList.end(); ++it) {
 		if ((*it)->name == _boolName) {
@@ -136,7 +136,7 @@ bool StateManager::GetBool(const std::string& _boolName)
 	return false;
 }
 
-bool StateManager::SetBool(const std::string& _boolName, bool _bool)
+bool StateMachine::SetBool(const std::string& _boolName, bool _bool)
 {
 	for (std::list<TransBool*>::iterator it = boolList.begin(); it != boolList.end(); ++it) {
 		if ((*it)->name == _boolName) {
@@ -147,7 +147,7 @@ bool StateManager::SetBool(const std::string& _boolName, bool _bool)
 	return false;
 }
 
-bool StateManager::isExistState(const std::string& _name)
+bool StateMachine::isExistState(const std::string& _name)
 {
 	for (std::list<std::string>::iterator it = states.begin(); it != states.end(); ++it) {
 		if ((*it) == _name) {
@@ -158,7 +158,7 @@ bool StateManager::isExistState(const std::string& _name)
 	return false;
 }
 
-bool StateManager::isExistTransDir(const std::string& _sourceState, const std::string& _dirState)
+bool StateMachine::isExistTransDir(const std::string& _sourceState, const std::string& _dirState)
 {
 	for (std::list<TransDirection*>::iterator it = transDirList.begin(); it != transDirList.end(); ++it) {
 		bool isSameSource = (*it)->sourceState == _sourceState;
@@ -171,7 +171,7 @@ bool StateManager::isExistTransDir(const std::string& _sourceState, const std::s
 	return false;
 }
 
-bool StateManager::isExistTransBool(const std::string& _name)
+bool StateMachine::isExistTransBool(const std::string& _name)
 {
 	for (std::list<TransBool*>::iterator it = boolList.begin(); it != boolList.end(); ++it) {
 		if ((*it)->name == _name) {
@@ -182,7 +182,7 @@ bool StateManager::isExistTransBool(const std::string& _name)
 	return false;
 }
 
-bool StateManager::IsTranslate(TransDirection*& _dir)
+bool StateMachine::IsTranslate(TransDirection*& _dir)
 {
 	// 現在のステータスからの遷移の流れを全て抽出
 		std::list<TransDirection*> checkDir;
@@ -208,7 +208,7 @@ bool StateManager::IsTranslate(TransDirection*& _dir)
 	return true;
 }
 
-bool StateManager::TransDirInfo::IsTranslate()
+bool StateMachine::TransDirInfo::IsTranslate()
 {
 	int size = static_cast<int>(transBool.size());
 	for (int i = 0; i < size; ++i) {
@@ -219,7 +219,7 @@ bool StateManager::TransDirInfo::IsTranslate()
 	return true;
 }
 
-bool StateManager::TransDirInfo::IsExistInfo(const std::string& _boolName)
+bool StateMachine::TransDirInfo::IsExistInfo(const std::string& _boolName)
 {
 	for (int i = 0; i < transBool.size(); ++i) {
 		if (transBool.at(i)->name == _boolName) {
@@ -230,7 +230,7 @@ bool StateManager::TransDirInfo::IsExistInfo(const std::string& _boolName)
 	return false;
 }
 
-bool StateManager::TransDirection::IsTranslate()
+bool StateMachine::TransDirection::IsTranslate()
 {
 	return info.IsTranslate();
 }
