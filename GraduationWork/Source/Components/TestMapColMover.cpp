@@ -2,14 +2,7 @@
 
 void TMCMover::Update()
 {
-	if (Input::IsKeyPush(KEY::KEY_RIGHT))
-		transform->position.x++;
-	if (Input::IsKeyPush(KEY::KEY_LEFT))
-		transform->position.x--;
-	if (Input::IsKeyPush(KEY::KEY_UP))
-		transform->position.y--;
-	if (Input::IsKeyPush(KEY::KEY_DOWN))
-		transform->position.y++;
+	transform->position += Input::GetAxis() * VECTOR2(1.f, -1.f) * 3.f;
 
 	printfDx("enter\n"); PrintInfo(enter);
 	printfDx("exit\n"); PrintInfo(exit_);

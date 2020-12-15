@@ -1,4 +1,6 @@
 #include "Input.h"
+#include "Time.h"
+#include "Function.h"
 #include "dxlib/DxLib.h"
 
 int Input::key[256] = {};
@@ -8,6 +10,8 @@ std::vector<Input::PAD_INFO> Input::pad;
 int Input::mouseX = 0, Input::mouseY = 0;
 
 int Input::mouseWheel = 0;
+
+std::unordered_map<std::string, Input::MappingInfo> Input::mapping;
 
 bool Input::anyKey = false;
 
@@ -27,6 +31,7 @@ namespace
 		}
 		Input::anyKey = true;
 	}
+
 	void nonPush(int& _input)
 	{
 		switch (_input)
@@ -52,7 +57,25 @@ bool Input::Start()
 			pad.resize(count);
 		}
 
-		return isInit = true;
+		AddKeyMapping("X", KEY::KEY_D,		true);
+		AddKeyMapping("X", KEY::KEY_A,		false);
+		AddKeyMapping("X", KEY::KEY_RIGHT,	true);
+		AddKeyMapping("X", KEY::KEY_LEFT,	false);
+
+		AddKeyMapping("Y", KEY::KEY_W,		true);
+		AddKeyMapping("Y", KEY::KEY_S,		false);
+		AddKeyMapping("Y", KEY::KEY_UP,		true);
+		AddKeyMapping("Y", KEY::KEY_DOWN,	false);
+
+		AddPadMapping("X", 0, PAD::PAD_RIGHT, true);
+		AddPadMapping("X", 0, PAD::PAD_LEFT,  false);
+
+		AddPadMapping("Y", 0, PAD::PAD_UP,	  true);
+		AddPadMapping("Y", 0, PAD::PAD_DOWN,  false);
+
+		isInit = true;
+		
+		return true;
 	}
 	return false;
 }
@@ -118,6 +141,100 @@ void Input::Update()
 
 	}
 
+	//マッピングの更新
+	for (std::unordered_map<std::string, Input::MappingInfo>::iterator ait = mapping.begin(),
+		aend = mapping.end(); ait != aend; ++ait)
+	{
+		bool isplus  = false;
+		bool isminus = false;
+
+		Info&  info = ait->second.info;
+
+		//キーマッピング
+		for (std::unordered_map<KEY, bool>::iterator kit = info.keyList.begin(),
+			kend = info.keyList.end(); kit != kend; ++kit)
+		{
+			if ( ! IsKeyNone(kit->first))
+			{
+				if (kit->second)isplus = true;
+				else isminus = true;
+			}
+		}
+
+		//マウスマッピング
+		if (isplus && isminus)continue;
+		for (std::unordered_map<MOUSE, bool>::iterator mit = info.mouseList.begin(),
+			mend = info.mouseList.end(); mit != mend; ++mit)
+		{
+			if ( ! IsMouseNone(mit->first))
+			{
+				if (mit->second)isplus = true;
+				else isminus = true;
+			}
+		}
+
+		//パッドマッピング
+		if (isplus && isminus)continue;
+		for (std::unordered_map<std::string, Info::PADInfo>::iterator pit = info.padList.begin(),
+			pend = info.padList.end(); pit != pend; ++pit)
+		{
+			if ( ! IsPadNone(pit->second.no, pit->second.pad))
+			{
+				if (pit->second.isplus)isplus = true;
+				else isminus = true;
+			}
+		}
+
+		if (isplus && isminus)continue;
+
+		InputInfo& input = ait->second.inputInfo;
+
+		float delta = Time::DeltaTime();
+
+		if (isplus)
+		{
+			//プラス
+			if (input.isSnap && input.value < 0.f)
+			{
+				input.value = 0.f;
+			}
+			input.speed += input.accele * delta;
+			if (input.speed > 10000.f)input.speed = 10000.f;//上限
+		}
+		else if (isminus)
+		{
+			//マイナス
+			if (input.isSnap && input.value > 0.f)
+			{
+				input.value = 0.f;
+			}
+			input.speed -= input.accele * delta;
+			if (input.speed < -10000.f)input.speed = -10000.f;//下限
+		}
+		else
+		{
+			float weak = input.weak * delta;
+
+			//減速
+			if (input.value > 0.f)
+			{
+				input.value -= weak;
+				if (input.value < input.dead)
+					input.value = 0.f;
+			}
+			else
+			{
+				input.value += weak;
+				if (input.value > input.dead)
+					input.value = 0.f;
+			}
+			input.speed = 0.f;
+		}
+
+		input.value += input.speed * delta;		
+
+		Clamp(input.value, -1.f, 1.f);
+	}
 }
 
 bool Input::SetMousePos(int _x, int _y)
@@ -169,7 +286,7 @@ bool Input::IsPadNone(int _padCount, PAD _pad)
 	{
 		return pad[_padCount].info[_pad] == 0;
 	}
-	return false;
+	return true;
 }
 
 bool Input::SetPadDeadZone(int _padCount, float _zone)
@@ -206,4 +323,66 @@ bool Input::GetPadAnalog(int _padCount, int& _x, int& _y)
 		return true;
 	}
 	return false;
+}
+
+void Input::AddKeyMapping(const std::string& _name, KEY _key, bool _isPlus)
+{
+	mapping[_name].info.keyList[_key] = _isPlus;
+}
+
+void Input::AddMouseMapping(const std::string& _name, MOUSE _mouse, bool _isPlus)
+{
+	mapping[_name].info.mouseList[_mouse] = _isPlus;
+}
+
+void Input::AddPadMapping(const std::string& _name, int _padCount, PAD _pad, bool _isPlus)
+{
+	std::string str = std::to_string(_padCount) + "_" + std::to_string(_pad);
+	Info::PADInfo* p = &mapping[_name].info.padList[str];
+	p->isplus = _isPlus;
+	p->no = _padCount;
+	p->pad = _pad;
+}
+
+void Input::EraseMapping(const std::string& _name)
+{
+	mapping.erase(_name);
+}
+
+void Input::EraseKeyMapping(const std::string& _name, KEY _key)
+{
+	mapping[_name].info .keyList.erase(_key);
+}
+
+void Input::EraseMouseMapping(const std::string& _name, MOUSE _mouse)
+{
+	mapping[_name].info .mouseList.erase(_mouse);
+}
+
+void Input::ErasePadMapping(const std::string& _name, int _padCount, PAD _pad)
+{
+	mapping[_name].info .padList.erase(std::to_string(_padCount) + "_" + std::to_string(_pad));
+}
+
+InputInfo Input::GetInfo(const std::string& _name, float* _accele, float* _weak, float* _dead, bool* _isSnap)
+{
+	InputInfo& info = mapping[_name].inputInfo;
+	if (_accele != nullptr)info.accele = *_accele;
+	if (_weak != nullptr)info.weak = *_weak;
+	if (_dead != nullptr)info.dead = *_dead;
+	if (_isSnap != nullptr)info.isSnap = *_isSnap;
+	return info;
+}
+
+float Input::GetInput(const std::string& _name)
+{
+	std::unordered_map<std::string, MappingInfo>::iterator it = mapping.find(_name);
+	if (it == mapping.end())
+		return 0.0f;
+	return it->second.inputInfo.value;
+}
+
+VECTOR2 Input::GetAxis()
+{
+	return VECTOR2(mapping["X"].inputInfo.value, mapping["Y"].inputInfo.value);
 }

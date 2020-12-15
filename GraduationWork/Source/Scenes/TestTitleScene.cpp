@@ -12,6 +12,10 @@ TestTitleScene::TestTitleScene()
 	Scroll::value.x = -200.f;
 	Scroll::value.y = -100.f;
 	Scroll::speed.x = 1.f;
+//	Scroll::isUseDeltaTime = true;
+
+	Scroll::QuakeEndCallback(this, &TestTitleScene::CheckInput);
+
 }
 
 TestTitleScene::~TestTitleScene()
@@ -62,6 +66,29 @@ void TestTitleScene::Update()
 	printfDx("x : %d, y : %d\n", x, y);
 
 //	DEBUG_LOG("hogehoge");
+
+	if (Input::IsKeyDown(KEY::KEY_ENTER))
+		Scroll::isUseDeltaTime = !Scroll::isUseDeltaTime;
+
+	InputInfo info = Input::GetInfo("X");
+
+	printfDx("\nXÅ´Å´\n");
+	printfDx("accele : %f\n", info.accele);
+	printfDx("dead	 : %f\n", info.dead);
+	printfDx("speed	 : %f\n", info.speed);
+	printfDx("value	 : %f\n", info.value);
+	printfDx("weak	 : %f\n", info.weak);
+	printfDx("isSnap : %d\n", info.isSnap);
+
+	info = Input::GetInfo("Y");
+	printfDx("\nYÅ´Å´\n");
+	printfDx("accele : %f\n", info.accele);
+	printfDx("dead	 : %f\n", info.dead);
+	printfDx("speed	 : %f\n", info.speed);
+	printfDx("value	 : %f\n", info.value);
+	printfDx("weak	 : %f\n", info.weak);
+	printfDx("isSnap : %d\n", info.isSnap);
+
 }
 
 void TestTitleScene::CheckInput()

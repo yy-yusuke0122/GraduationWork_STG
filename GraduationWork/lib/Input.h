@@ -1,6 +1,10 @@
 #pragma once
 
+#include <string>
 #include <vector>
+#include <unordered_map>
+
+#include "typedef.h"
 
 enum KEY
 {
@@ -195,8 +199,35 @@ enum PAD
 	PAD_28
 };
 
+struct InputInfo
+{
+	InputInfo() :
+		value(0.f), accele(3.f), weak(3.f), dead(0.001f), speed(0.f), isSnap(false) {}
+	float value;//現在値（-1～1）
+	float accele;//加速度
+	float weak;//弱まる力
+	float dead;//0範囲
+	float speed;//速度
+	bool isSnap;//反対入力でspeedを0にする
+};
+
 class Input
 {
+	struct Info
+	{
+		using IsPlus = bool;
+		struct PADInfo { int no; PAD pad; IsPlus isplus; };
+		std::unordered_map<KEY, IsPlus> keyList;
+		std::unordered_map<MOUSE, IsPlus> mouseList;
+		std::unordered_map<std::string, PADInfo> padList;
+	};
+
+	struct MappingInfo
+	{
+		InputInfo inputInfo;
+		Info info;
+	};
+
 private:
 	Input()
 	{
@@ -395,6 +426,89 @@ public://パッド入力取得
 	/// <returns>true：有効、false：無効</returns>
 	static bool IsPadCountRange(int _padCount) { return _padCount >= 0 && GetPadCount() > _padCount; }
 
+public://入力マッピング関数
+	/// <summary>
+	/// 入力マッピングにキーを追加
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_key">追加するキー</param>
+	/// <param name="_isPlus">プラス方向か</param>
+	static void AddKeyMapping(const std::string& _name, KEY _key, bool _isPlus);
+
+	/// <summary>
+	/// 入力マッピングにマウスを追加
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_mouse">追加するマウス</param>
+	/// <param name="_isPlus">プラス方向か</param>
+	static void AddMouseMapping(const std::string& _name, MOUSE _mouse, bool _isPlus);
+
+	/// <summary>
+	/// 入力マッピングにパッドを追加
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_padCount">追加するパッド番号</param>
+	/// <param name="_pad">追加するパッド</param>
+	/// <param name="_isPlus">プラス方向か</param>
+	static void AddPadMapping(const std::string& _name,int _padCount, PAD _pad, bool _isPlus);
+
+	/// <summary>
+	/// 入力マッピングを削除
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	static void EraseMapping(const std::string& _name);
+
+	/// <summary>
+	/// 入力マッピングにキーを削除
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_key">削除するキー</param>
+	static void EraseKeyMapping(const std::string& _name, KEY _key);
+
+	/// <summary>
+	/// 入力マッピングにマウスを削除
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_mouse">削除するマウス</param>
+	static void EraseMouseMapping(const std::string& _name, MOUSE _mouse);
+
+	/// <summary>
+	/// 入力マッピングにパッドを削除
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_padCount">追加するパッド番号</param>
+	/// <param name="_pad">削除するパッド</param>
+	static void ErasePadMapping(const std::string& _name, int _padCount, PAD _pad);
+	
+	/// <summary>
+	/// 入力マッピングの速さ情報
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <param name="_accele">セットする加速度、nullで無視</param>
+	/// <param name="_weak">セットする減速、nullで無視</param>
+	/// <param name="_dead">セットする0にする範囲、nullで無視</param>
+	/// <param name="_isSnap">trueで反対方向の入力取得時、現在の値を0にする、nullで無視</param>
+	/// <returns>現在のインプット情報</returns>
+	static InputInfo GetInfo(const std::string& _name, float* _accele = nullptr, float* _weak = nullptr, float* _dead = nullptr, bool* _isSnap = nullptr);
+
+	/// <summary>
+	/// マッピング名から現在の入力値を取得
+	/// </summary>
+	/// <param name="_name">マッピング名</param>
+	/// <returns>現在の入力値（-1～1）</returns>
+	static float GetInput(const std::string& _name);
+
+public://デフォルトマッピング取得
+	/// <summary>
+	/// デフォルト動作
+	/// X+方向：D、→キー、パッド→
+	/// X-方向：A、←キー、パッド←
+	/// Y+方向：S、↓キー、パッド↓
+	/// Y-方向：W、↑キー、パッド↑
+	/// </summary>
+	/// <returns>入力値</returns>
+	static VECTOR2 GetAxis();
+
 private:
 	struct PAD_INFO { int info[34]; };
 
@@ -405,6 +519,8 @@ private:
 	static int mouseX, mouseY;//マウス座標
 
 	static int mouseWheel;//マウスホイール
+
+	static std::unordered_map<std::string, MappingInfo> mapping;//マッピングデータ
 
 public:
 	static bool anyKey;//何かしらのキー入力
