@@ -16,5 +16,5 @@ private:
 
 private:
 	TestPlayerManager* manager;
-	StateController* state;
+	ComponentSwitcher* state;
 };

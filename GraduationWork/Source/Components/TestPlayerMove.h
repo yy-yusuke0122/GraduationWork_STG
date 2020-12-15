@@ -1,6 +1,8 @@
 #pragma once
 #include "../../lib/UrLib.h"
 
+class TestPlayerManager;
+
 class TestPlayerMove : public Component {
 public:
 	TestPlayerMove();
@@ -13,7 +15,8 @@ private:
 	void Move();
 
 private:
-	StateController* state;
+	TestPlayerManager* manager;
+	ComponentSwitcher* state;
 
 	VECTOR3 dir;
 	float speed;

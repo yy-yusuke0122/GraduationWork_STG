@@ -13,7 +13,7 @@ TestPlayerIdle::~TestPlayerIdle()
 void TestPlayerIdle::Start()
 {
 	manager = GetComponent<TestPlayerManager>();
-	state = GetComponent<StateController>();
+	state = manager->GetStateController();
 }
 
 void TestPlayerIdle::Update()
@@ -24,16 +24,16 @@ void TestPlayerIdle::Update()
 
 void TestPlayerIdle::CheckMoveInput()
 {
-	if (Input::IsKeyDown(KEY::KEY_LEFT)) {
+	if (Input::IsKeyPush(KEY::KEY_LEFT)) {
 		state->SetBool("isMove", true);
 	}
-	else if (Input::IsKeyDown(KEY::KEY_RIGHT)) {
+	else if (Input::IsKeyPush(KEY::KEY_RIGHT)) {
 		state->SetBool("isMove", true);
 	}
-	else if (Input::IsKeyDown(KEY::KEY_UP)) {
+	else if (Input::IsKeyPush(KEY::KEY_UP)) {
 		state->SetBool("isMove", true);
 	}
-	else if (Input::IsKeyDown(KEY::KEY_DOWN)) {
+	else if (Input::IsKeyPush(KEY::KEY_DOWN)) {
 		state->SetBool("isMove", true);
 	}
 }

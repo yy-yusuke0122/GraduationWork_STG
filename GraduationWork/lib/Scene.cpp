@@ -30,6 +30,7 @@ Scene::~Scene()
 
 void Scene::SceneStart()
 {
+	currentScene = this;
 	Start();
 }
 

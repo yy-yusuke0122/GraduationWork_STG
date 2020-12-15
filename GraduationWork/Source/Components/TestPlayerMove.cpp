@@ -1,4 +1,5 @@
 #include "TestPlayerMove.h"
+#include "TestPlayerManager.h"
 
 TestPlayerMove::TestPlayerMove() :
 	state(nullptr)
@@ -11,7 +12,8 @@ TestPlayerMove::~TestPlayerMove()
 
 void TestPlayerMove::Start()
 {
-	state = GetComponent<StateController>();
+	manager = GetComponent<TestPlayerManager>();
+	state = manager->GetStateController();
 
 	speed = 50.0f;
 }
@@ -25,6 +27,7 @@ void TestPlayerMove::Update()
 	if (Input::IsKeyDown(KEY::KEY_ENTER)) {
 		state->SetBool("isAttack", true);
 	}
+	printfDx("MoveÇ≈Ç∑ÇÊÅI\n");
 }
 
 void TestPlayerMove::CheckMoveInput()

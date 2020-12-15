@@ -23,7 +23,7 @@ TestPlayerAttack::~TestPlayerAttack()
 void TestPlayerAttack::Start()
 {
 	manager = GetComponent<TestPlayerManager>();
-	state = GetComponent<StateController>();
+	state = manager->GetStateController();
 	
 	Attack();
 }

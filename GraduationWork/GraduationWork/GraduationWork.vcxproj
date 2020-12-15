@@ -62,7 +62,7 @@
     <ClCompile Include="..\lib\SoundListener.cpp" />
     <ClCompile Include="..\lib\SphereCollider.cpp" />
     <ClCompile Include="..\lib\SpotLight.cpp" />
-    <ClCompile Include="..\lib\StateController.cpp" />
+    <ClCompile Include="..\lib\ComponentSwitcher.cpp" />
     <ClCompile Include="..\lib\StateMachine.cpp" />
     <ClCompile Include="..\lib\Texture.cpp" />
     <ClCompile Include="..\lib\Time.cpp" />
@@ -154,7 +154,7 @@
     <ClInclude Include="..\lib\SoundListener.h" />
     <ClInclude Include="..\lib\SphereCollider.h" />
     <ClInclude Include="..\lib\SpotLight.h" />
-    <ClInclude Include="..\lib\StateController.h" />
+    <ClInclude Include="..\lib\ComponentSwitcher.h" />
     <ClInclude Include="..\lib\StateMachine.h" />
     <ClInclude Include="..\lib\Texture.h" />
     <ClInclude Include="..\lib\Time.h" />

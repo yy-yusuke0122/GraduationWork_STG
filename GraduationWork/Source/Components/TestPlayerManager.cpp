@@ -7,19 +7,24 @@
 #include "../Objects/Stage.h"
 
 TestPlayerManager::TestPlayerManager() :
-	currentState(""), faceDir(VECTOR3::right()),
-	state(nullptr), stateComp(nullptr), physics(nullptr), jumpComp(nullptr), renderer(nullptr)
+	faceDir(VECTOR3::right()),
+	physics(nullptr), jumpComp(nullptr), renderer(nullptr)
 {
+	state = new ComponentSwitcher();
 }
 
 TestPlayerManager::~TestPlayerManager()
 {
+	delete state;
 }
 
 void TestPlayerManager::Start()
 {
-	state = AddComponent<StateController>();
-	state->SetStateManager<TestPlayerState>();
+	state->SetStateMachine<TestPlayerState>();
+	state->SetComponent("Idle", AddComponent<TestPlayerIdle>());
+	state->SetComponent("Move", AddComponent<TestPlayerMove>());
+	state->SetComponent("Attack", AddComponent<TestPlayerAttack>());
+
 	jumpComp = AddComponent<JumpComponent>();
 	physics = GetComponent<PhysicalBehavior>();
 	renderer = GetComponent<ImageRenderer>();
@@ -27,18 +32,8 @@ void TestPlayerManager::Start()
 
 void TestPlayerManager::Update()
 {
-	if (currentState != state->GetState()) {
-		currentState = state->GetState();
+	state->Update();
 
-		if (stateComp != nullptr)
-			stateComp->Destroy();
-
-		if (currentState == "Idle") stateComp = AddComponent<TestPlayerIdle>();
-		else if (currentState == "Move") stateComp = AddComponent<TestPlayerMove>();
-		else if (currentState == "Attack") stateComp = AddComponent<TestPlayerAttack>();
-	}
-
-	printfDx("%s\n", state->GetState().c_str());
 	printfDx("px : %f\n", transform->position.x);
 	printfDx("py : %f\n", transform->position.y);
 
@@ -61,6 +56,11 @@ void TestPlayerManager::FaceRight()
 VECTOR3 TestPlayerManager::GetFaceDir() const
 {
 	return faceDir;
+}
+
+ComponentSwitcher* TestPlayerManager::GetStateController()
+{
+	return state;
 }
 
 void TestPlayerManager::CheckLanding()

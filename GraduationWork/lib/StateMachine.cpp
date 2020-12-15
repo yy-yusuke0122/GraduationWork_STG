@@ -42,6 +42,11 @@ std::string StateMachine::GetState() const
 	return currentState;
 }
 
+std::list<std::string> StateMachine::GetStateAll() const
+{
+	return states;
+}
+
 void StateMachine::SetDefaultState(const std::string& _stateName)
 {
 	if (isExistState(_stateName)) {

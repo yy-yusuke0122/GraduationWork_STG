@@ -258,9 +258,6 @@
     <ClCompile Include="..\Source\Components\TestPlayerState.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\StateController.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Components\TestPlayerIdle.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
@@ -280,6 +277,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\StateMachine.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ComponentSwitcher.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -530,9 +530,6 @@
     <ClInclude Include="..\Source\Components\TestPlayerState.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\lib\StateController.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Components\TestPlayerIdle.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
@@ -549,6 +546,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\StateMachine.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ComponentSwitcher.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

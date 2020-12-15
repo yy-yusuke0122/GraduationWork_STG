@@ -17,7 +17,7 @@ private:
 
 private:
 	TestPlayerManager* manager;
-	StateController* state;
+	ComponentSwitcher* state;
 
 	int attackCount;
 	float attackTime;

@@ -29,6 +29,7 @@ TestMainScene::~TestMainScene()
 
 void TestMainScene::Start()
 {
+	SoundManager::Create(this);
 	option.gravityDir = VECTOR3::up();
 	option.gravity = 40.0f;
 
@@ -37,7 +38,6 @@ void TestMainScene::Start()
 	enemy = Instantiate<Enemy>();
 	Instantiate<Stage>();
 	Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
-	SoundManager::Create(this);
 
 	SoundManager::Get()->Push("Sound/BGM.mp3", "MainBGM");
 

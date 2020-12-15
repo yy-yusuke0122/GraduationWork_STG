@@ -15,6 +15,12 @@ public:
 	std::string GetState() const;
 
 	/// <summary>
+	/// ステータス名を全て取得する
+	/// </summary>
+	/// <returns></returns>
+	std::list<std::string> GetStateAll() const;
+
+	/// <summary>
 	/// 初期のステータスを設定する
 	/// </summary>
 	/// <param name="_stateName">ステータス名</param>
@@ -63,6 +69,28 @@ public:
 	/// <returns>true:成功, false:存在しない遷移条件</returns>
 	bool SetBool(const std::string& _boolName, bool _bool);
 
+	/// <summary>
+	/// 存在するステータスかどうか
+	/// </summary>
+	/// <param name="_name">確認したいステータス名</param>
+	/// <returns>存在していたらtrue</returns>
+	bool isExistState(const std::string& _name);
+
+	/// <summary>
+	/// 存在する遷移の流れかどうか
+	/// </summary>
+	/// <param name="_sourceState">遷移前のステータス名</param>
+	/// <param name="_dirState">遷移後のステータス名</param>
+	/// <returns>存在していたらtrue</returns>
+	bool isExistTransDir(const std::string& _sourceState, const std::string& _dirState);
+
+	/// <summary>
+	/// 存在する遷移条件かどうか
+	/// </summary>
+	/// <param name="_name">確認したいbool名</param>
+	/// <returns>存在していたらtrue</returns>
+	bool isExistTransBool(const std::string& _name);
+
 private:
 	/// <summary>
 	/// ステータスの遷移条件に用いるbool型
@@ -94,28 +122,6 @@ private:
 		TransDirInfo info;
 		bool IsTranslate();
 	};
-	
-	/// <summary>
-	/// 存在するステータスかどうか
-	/// </summary>
-	/// <param name="_name">確認したいステータス名</param>
-	/// <returns>存在していたらtrue</returns>
-	bool isExistState(const std::string& _name);
-
-	/// <summary>
-	/// 存在する遷移の流れかどうか
-	/// </summary>
-	/// <param name="_sourceState">遷移前のステータス名</param>
-	/// <param name="_dirState">遷移後のステータス名</param>
-	/// <returns>存在していたらtrue</returns>
-	bool isExistTransDir(const std::string& _sourceState, const std::string& _dirState);
-
-	/// <summary>
-	/// 存在する遷移条件かどうか
-	/// </summary>
-	/// <param name="_name">確認したいbool名</param>
-	/// <returns>存在していたらtrue</returns>
-	bool isExistTransBool(const std::string& _name);
 
 	/// <summary>
 	/// ステータスを切り替える必要があるかを確認する

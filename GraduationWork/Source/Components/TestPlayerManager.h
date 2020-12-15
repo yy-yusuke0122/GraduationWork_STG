@@ -28,12 +28,16 @@ public:
 	/// <returns>顔の向きベクトル</returns>
 	VECTOR3 GetFaceDir() const;
 
+	/// <summary>
+	/// ステートコントローラーを取得
+	/// </summary>
+	/// <returns>ステートコントローラーのポインター</returns>
+	ComponentSwitcher* GetStateController();
+
 private:
 	// 状態管理変数
-	std::string currentState;	// 現在の状態
 	VECTOR3 faceDir;			// 顔の向き
-	StateController* state;		// 状態操作
-	Component* stateComp;		// 状態毎のコンポーネント
+	ComponentSwitcher* state;		// 状態操作
 
 	// 物理挙動変数
 	JumpComponent* jumpComp;	// ジャンプコンポーネント
