@@ -30,26 +30,38 @@ namespace UrLib {
 	}
 
 	template<typename T>
-	inline bool Clamp(T& val, T min, T max)
+	inline void ReplaceValue(T& _a, T& _b)
 	{
-		if (min > max) return false;
-		else if (val < min) val = min;
-		else if (val > max) val = max;
-		return true;
+		T tmp = _b;
+		_b = _a;
+		_a = tmp;
 	}
 
 	template<typename T>
-	inline bool LoopClamp(T& val, T min, T max)
+	inline void Clamp(T& _val, T _min, T _max)
 	{
-		if (min > max) return false;
-		while (val < min) {
-			T temp = val - min;
-			val = max + temp;
+		if (_val < _min) _val = _min;
+		else if (_val > _max) _val = _max;
+	}
+
+	template<typename T>
+	inline bool LoopClamp(T& _val, T _min, T _max)
+	{
+		if (_min > _max || _min == _max) return false;
+
+		T sub = _max - _min;
+
+		if (_val < _min) {
+			T over = _val - _min;
+			int include = static_cast<int>(over / sub);
+			_val = _max - (over - (include * sub));
 		}
-		while (val > max) {
-			T temp = val - max;
-			val = min + temp;
+		else if (_val >= _max) {
+			T over = _val - _max;
+			int include = static_cast<int>(over / sub);
+			_val = _min + (over - (include * sub));
 		}
+		
 		return true;
 	}
 

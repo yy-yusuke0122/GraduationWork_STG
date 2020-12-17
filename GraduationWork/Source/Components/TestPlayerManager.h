@@ -4,6 +4,7 @@
 class PlayerMover;
 class PlayerAttacker;
 class JumpComponent;
+class TestPlayerState;
 
 class TestPlayerManager : public Component {
 public:
@@ -34,10 +35,17 @@ public:
 	/// <returns>ステートコントローラーのポインター</returns>
 	ComponentSwitcher* GetStateController();
 
+	/// <summary>
+	/// ステートマシーンを取得
+	/// </summary>
+	/// <returns>使用しているステートマシーンのポインター</returns>
+	TestPlayerState* GetStateMachine();
+
 private:
 	// 状態管理変数
 	VECTOR3 faceDir;			// 顔の向き
-	ComponentSwitcher* state;		// 状態操作
+	ComponentSwitcher* state;	// 状態操作
+	TestPlayerState* stateMachine;
 
 	// 物理挙動変数
 	JumpComponent* jumpComp;	// ジャンプコンポーネント
@@ -45,6 +53,7 @@ private:
 
 	// 描画用変数
 	ImageRenderer* renderer;	// 画像描画コンポーネント
+	Animator2D* animator;		// アニメーションコンポーネント
 
 private:
 	void CheckLanding();

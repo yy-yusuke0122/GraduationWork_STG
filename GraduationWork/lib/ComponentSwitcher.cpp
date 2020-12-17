@@ -1,4 +1,5 @@
 #include "ComponentSwitcher.h"
+#include "StateMachine.h"
 #include "Component.h"
 
 ComponentSwitcher::ComponentSwitcher() :
@@ -9,8 +10,6 @@ ComponentSwitcher::ComponentSwitcher() :
 
 ComponentSwitcher::~ComponentSwitcher()
 {
-    if (state != nullptr)
-        delete state;
 }
 
 void ComponentSwitcher::Update()
@@ -21,6 +20,24 @@ void ComponentSwitcher::Update()
         if (currentState != state->GetState()) {
             ChangeStateComp();
         }
+    }
+}
+
+bool ComponentSwitcher::SetStateMachine(StateMachine* _stateMachine)
+{
+    if (state != nullptr)
+        return false;
+
+    state = _stateMachine;
+    state->Start();
+
+    // 現在のステータスを設定
+    currentState = state->GetState();
+
+    // ステータス名をからmapを初期化
+    std::list<std::string> states = state->GetStateAll();
+    for (std::list<std::string>::iterator it = states.begin(); it != states.end(); ++it) {
+        components.emplace((*it), nullptr);
     }
 }
 

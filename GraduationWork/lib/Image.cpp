@@ -80,12 +80,12 @@ bool Image::LoadDiv(const std::string& _path, unsigned _xdiv, unsigned _ydiv, un
 
 		p = &loadDivInfo[_path];//“o˜^‚µ‚½INFO‚ÌƒAƒhƒŒƒX‚ğ•Û
 
+		*p = info;
+
 		if (GetUseASyncLoadFlag())
 			AsyncLoad();
 		else
 			Initialize(p);
-
-		*p = info;
 	}
 	else
 	{

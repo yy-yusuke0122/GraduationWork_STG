@@ -7,6 +7,7 @@
 #include "ImageRenderer.h"
 #include "ComponentSwitcher.h"
 #include "Animator2D.h"
+#include "Anim2D.h"
 #include "Input.h"
 #include "Time.h"
 #include "Delay.h"

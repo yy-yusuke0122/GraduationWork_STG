@@ -5,12 +5,14 @@
 #include "TestPlayerAttack.h"
 #include "../Components/Jump.h"
 #include "../Objects/Stage.h"
+#include "../Objects/Player.h"
 
 TestPlayerManager::TestPlayerManager() :
 	faceDir(VECTOR3::right()),
 	physics(nullptr), jumpComp(nullptr), renderer(nullptr)
 {
 	state = new ComponentSwitcher();
+	stateMachine = new TestPlayerState();
 }
 
 TestPlayerManager::~TestPlayerManager()
@@ -20,19 +22,28 @@ TestPlayerManager::~TestPlayerManager()
 
 void TestPlayerManager::Start()
 {
-	state->SetStateMachine<TestPlayerState>();
+	jumpComp = AddComponent<JumpComponent>();
+	physics = GetComponent<PhysicalBehavior>();
+	renderer = GetComponent<ImageRenderer>();
+	animator = AddComponent<Animator2D>();
+
+	state->SetStateMachine(stateMachine);
 	state->SetComponent("Idle", AddComponent<TestPlayerIdle>());
 	state->SetComponent("Move", AddComponent<TestPlayerMove>());
 	state->SetComponent("Attack", AddComponent<TestPlayerAttack>());
 
-	jumpComp = AddComponent<JumpComponent>();
-	physics = GetComponent<PhysicalBehavior>();
-	renderer = GetComponent<ImageRenderer>();
+	animator->SetStateMachine(stateMachine);
+	animator->SetAnim("Idle", "Media/Player.png", 2, 2, 4, 1.0f, 0, 3);
+	animator->SetAnim("Move", "Media/Enemy.png", 2, 2, 4, 1.0f, 0, 3);
+	animator->SetAnim("Attack", "Media/EnemyBullet.png", 2, 2, 4, 1.0f, 0, 3);
 }
 
 void TestPlayerManager::Update()
 {
 	state->Update();
+	if (Input::IsKeyDown(KEY::KEY_A)) {
+		animator->GetCurrentAnim()->Reverse();
+	}
 
 	printfDx("px : %f\n", transform->position.x);
 	printfDx("py : %f\n", transform->position.y);
@@ -61,6 +72,11 @@ VECTOR3 TestPlayerManager::GetFaceDir() const
 ComponentSwitcher* TestPlayerManager::GetStateController()
 {
 	return state;
+}
+
+TestPlayerState* TestPlayerManager::GetStateMachine()
+{
+	return nullptr;
 }
 
 void TestPlayerManager::CheckLanding()

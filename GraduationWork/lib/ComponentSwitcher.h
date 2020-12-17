@@ -1,8 +1,9 @@
 #pragma once
-#include "StateMachine.h"
 #include <map>
+#include <string>
 
 class Component;
+class StateMachine;
 
 class ComponentSwitcher {
 public:
@@ -13,9 +14,9 @@ public:
 	/// <summary>
 	/// ステータスマシンをセットする
 	/// </summary>
-	/// <typeparam name="C">クラス名</typeparam>
-	template<class C>
-	void SetStateMachine();
+	/// <param name="_stateMachine">設定するステートマシーン</param>
+	/// <returns>true:成功, false:既に設定したステートマシーンが存在する</returns>
+	bool SetStateMachine(StateMachine* _stateMachine);
 
 	/// <summary>
 	/// 現在のステータスを取得する
@@ -65,23 +66,3 @@ private:
 	std::string currentState;
 	std::map<std::string, Component*> components;
 };
-
-template<class C>
-inline void ComponentSwitcher::SetStateMachine()
-{
-	if (state != nullptr)
-		return;
-
-	// ステートマシーン生成
-	state = new C();
-	state->Start();
-
-	// 現在のステータスを設定
-	currentState = state->GetState();
-
-	// ステータス名をからmapを初期化
-	std::list<std::string> states = state->GetStateAll();
-	for (std::list<std::string>::iterator it = states.begin(); it != states.end(); ++it) {
-		components.emplace((*it), nullptr);
-	}
-}
