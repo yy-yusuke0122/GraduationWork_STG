@@ -273,10 +273,196 @@ Chip* MapChip::GetChip(int _h, int _w)
 	return nullptr;
 }
 
+bool MapChip::FindRoute(int _h, int _w, int _desH, int _desW, GameObject* _callObj, bool(GameObject::* _isContinue)(int), int& _outH, int& _outW)
+{
+	_outH = _outW = -1;
+	if (_isContinue == nullptr || _callObj == nullptr)
+		return false;
+
+	Searcher search;
+	search.SetO(_callObj, _isContinue);
+
+	return RouteSearch(_h, _w, _desH, _desW, search, _outH, _outW);
+}
+
+bool MapChip::FindRoute(int _h, int _w, int _desH, int _desW, Component* _callComp, bool(Component::* _isContinue)(int), int& _outH, int& _outW)
+{
+	_outH = _outW = -1;
+	if (_isContinue == nullptr || _callComp == nullptr)
+		return false;
+
+	Searcher search;
+	search.SetC(_callComp, _isContinue);
+
+	return RouteSearch(_h, _w, _desH, _desW, search, _outH, _outW);
+}
+
+bool MapChip::FindRoute(int _h, int _w, int _desH, int _desW, bool(*_isContinue)(int), int& _outH, int& _outW)
+{
+	_outH = _outW = -1;
+	if (_isContinue == nullptr)
+		return false;
+
+	Searcher search;
+	search.SetG(_isContinue);
+
+	return RouteSearch(_h, _w, _desH, _desW, search, _outH, _outW);
+}
+
+bool MapChip::RouteSearch(int _h, int _w, int _desH, int _desW, Searcher& _searcher, int& _outH, int& _outW)
+{
+	//範囲チェック
+	if (_h >= height)_h = height - 1;
+	if (_w >= width)_w = width - 1;
+	if (_desH >= height)_desH = height - 1;
+	if (_desW >= width)_desW = width - 1;
+
+	//開始位置と目的地が重なっている場合終了
+	if (_h == _desH && _w == _desW)
+	{
+		_outH = _desH;
+		_outW = _desW;
+		return true;
+	}
+
+	//ルート確保
+	std::vector<int> route;
+	route.resize(map.size());
+
+	//目印
+	int objIdx = GetIndex(_h, _w);
+	int n = 0;
+	for (int& r : route)
+		r = -1;
+	route[objIdx] = n;
+
+	//ルートが確定してから、次のマスを探す関数を定義
+	struct FindNext
+	{
+		std::vector<int>* route;
+		MapChip* map;
+		bool func(int _h, int _w, int _n, int& _outH, int& _outW)
+		{
+			int idx = map->GetIndex(_h, _w);
+			if (idx != -1 && (*route)[idx] == _n)
+			{
+				if (_n == 1)
+				{
+					_outH = _h;
+					_outW = _w;
+					return true;
+				}
+				if (func(_h - 1, _w, _n - 1, _outH, _outW)) return true;
+				if (func(_h + 1, _w, _n - 1, _outH, _outW)) return true;
+				if (func(_h, _w - 1, _n - 1, _outH, _outW)) return true;
+				return func(_h, _w + 1, _n - 1, _outH, _outW);
+			}
+			return false;
+		}
+	};
+
+	bool isContinue;
+	do
+	{
+		isContinue = false;
+
+		for (int h = 0; h < height; ++h)
+		{
+			for (int w = 0; w < width; ++w)
+			{
+				int i = GetIndex(h, w);
+				if (route[i] != n)continue;
+				if (h == _desH && w == _desW)
+				{
+					//見つかった
+					if (route[i] == 1)
+					{
+						//目的地と次の位置が重なっている
+						_outH = _desH;
+						_outW = _desW;
+					}
+
+					std::vector<int> mark;
+					mark.resize(map.size());
+					for (int& r : mark)r = 0;
+
+					FindNext findNext;
+					findNext.map = this;
+					findNext.route = &route;
+
+					--n;
+
+					if (findNext.func(h - 1, w, n, _outH, _outW))return true;
+					if (findNext.func(h + 1, w, n, _outH, _outW))return true;
+					if (findNext.func(h, w - 1, n, _outH, _outW))return true;
+
+					return findNext.func(h, w + 1, n, _outH, _outW);
+				}
+
+				auto check = [route, n, this](int _i, Searcher& _s) {
+					return (_i != -1) && (route[_i] == -1 || route[_i] > n) && (_s.Search(this->map[_i].type)); };
+
+				//上下左右が通れれば目印をつける
+				int next = n;
+
+				i = GetIndex(h - 1, w);
+				if (check(i, _searcher))next = route[i] = n + 1;
+
+				i = GetIndex(h + 1, w);
+				if (check(i, _searcher))next = route[i] = n + 1;
+
+				i = GetIndex(h, w - 1);
+				if (check(i, _searcher))next = route[i] = n + 1;
+
+				i = GetIndex(h, w + 1);
+				if (check(i, _searcher))next = route[i] = n + 1;
+
+				if (n != next)
+				{
+					isContinue = true;
+				}
+			}
+		}
+
+		++n;
+
+	} while (isContinue);
+
+	//見つからなかった場合、最近点を見つける
+	int disH, disW, outH, outW;
+	auto absi = [](int _i) {return (_i > 0) ? _i : -_i; };
+	disH = absi(_h - _desH);
+	disW = absi(_w - _desW);
+	outH = _h;
+	outW = _w;
+	for (int h = 0; h < height; ++h)
+	{
+		for (int w = 0; w < width; ++w)
+		{
+			if (route[GetIndex(h, w)] == -1)continue;
+
+			int judgeH = absi(_desH - h);
+			int judgeW = absi(_desW - w);
+			if (judgeH + judgeW < disH + disW)
+			{
+				disH = judgeH;
+				disW = judgeW;
+				outH = h;
+				outW = w;
+			}
+		}
+	}
+
+	_outH = outH;
+	_outW = outW;
+	
+	return false;
+}
+
 int MapChip::GetIndex(int _h, int _w) const
 {
-	if (_h < height && _w < width)
-		return _h * height + _w;
+	if ((_h >= 0 && _w >= 0) && (_h < height && _w < width))
+		return _h * width + _w;
 	return -1;
 }
 

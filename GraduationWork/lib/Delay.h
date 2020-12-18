@@ -8,7 +8,7 @@ class Delay : public Component
 {
 public:
 	Delay() :
-		time(0.f), endTime(0.f), isUseScale(true), instance(nullptr)
+		time(0.f), endTime(0.f), isUseScale(true), instance(nullptr), call(nullptr)
 	{
 	}
 

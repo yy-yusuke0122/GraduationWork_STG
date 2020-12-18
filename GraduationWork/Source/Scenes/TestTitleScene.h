@@ -13,4 +13,5 @@ private:
 	MapChip* map;
 	ImageRenderer* img;
 	GameObject* empty;
+	GameObject* dest;
 };

@@ -11,6 +11,30 @@ class MapChip :public GameObject
 {
 	friend ChipCollider;
 
+private:
+	struct Searcher
+	{
+		bool Search(int _type) { return (this->*search)(_type); };
+
+		void SetG(bool (*_f)(int)) { g_search = _f; search = &Searcher::SearchG; }
+		void SetO(GameObject* _obj, bool(GameObject::* _f)(int))
+			{ obj = _obj; o_search = _f; search = &Searcher::SearchM; }
+		void SetC(Component* _comp, bool (Component::* _f)(int))
+			{ comp = _comp; c_search = _f; search = &Searcher::SearchC; }
+
+	private:
+		bool (Searcher::* search)(int);
+		
+		bool SearchG(int _type) { return g_search(_type); }
+		bool SearchM(int _type) { return (obj->*o_search)(_type); }
+		bool SearchC(int _type) { return (comp->*c_search)(_type); }
+		bool (GameObject::* o_search)(int);
+		bool (Component::* c_search)(int);
+		bool (*g_search)(int);
+		GameObject* obj;
+		Component* comp;
+	};
+
 public:
 	MapChip();
 
@@ -96,7 +120,51 @@ public:
 	/// <returns>幅</returns>
 	int GetSizeX()const { return sizeX; }
 
+	/// <summary>
+	/// 経路探索
+	/// </summary>
+	/// <param name="_obj">経路探索を行うオブジェクト</param>
+	/// <param name="_h">開始のY位置</param>
+	/// <param name="_w">開始のX位置</param>
+	/// <param name="_desH">目的地のY位置</param>
+	/// <param name="_desW">目的地のX位置</param>
+	/// <param name="_callObj">コールバックするオブジェクト</param>
+	/// <param name="_isContinue">チップの種類が通り抜けられるか判定、戻り値・true：通れる、false：通れない</param>
+	/// <param name="_outH">最端ルートの次に進むY位置</param>
+	/// <param name="_outW">最端ルートの次に進むX位置</param>
+	/// <returns>true：成功、false：失敗（引数が不正、たどり着かない、最端ルートは格納します）</returns>
+	bool FindRoute(int _h, int _w, int _desH, int _desW, GameObject* _callObj, bool (GameObject::* _isContinue)(int), int& _outH, int& _outW);
+
+	/// <summary>
+	/// 経路探索
+	/// </summary>
+	/// <param name="_h">開始のY位置</param>
+	/// <param name="_w">開始のX位置</param>
+	/// <param name="_desH">目的地のY位置</param>
+	/// <param name="_desW">目的地のX位置</param>
+	/// <param name="_callComp">コールバックするコンポーネント</param>
+	/// <param name="_isContinue">チップの種類が通り抜けられるか判定、戻り値・true：通れる、false：通れない</param>
+	/// <param name="_outH">最端ルートの次に進むY位置</param>
+	/// <param name="_outW">最端ルートの次に進むX位置</param>
+	/// <returns>true：成功、false：失敗（引数が不正、たどり着かない、最端ルートは格納します）</returns>
+	bool FindRoute(int _h, int _w, int _desH, int _desW, Component* _callComp, bool (Component::* _isContinue)(int), int& _outH, int& _outW);
+
+	/// <summary>
+	/// 経路探索
+	/// </summary>
+	/// <param name="_h">開始のY位置</param>
+	/// <param name="_w">開始のX位置</param>
+	/// <param name="_desH">目的地のY位置</param>
+	/// <param name="_desW">目的地のX位置</param>
+	/// <param name="_isContinue">チップの種類が通り抜けられるか判定、戻り値・true：通れる、false：通れない</param>
+	/// <param name="_outH">最端ルートの次に進むY位置、たどり着かない場合最近点を格納</param>
+	/// <param name="_outW">最端ルートの次に進むX位置、たどり着かない場合最近点を格納</param>
+	/// <returns>true：成功、false：失敗（引数が不正→-1を格納します、たどり着かない→最近点を格納します）</returns>
+	bool FindRoute(int _h, int _w, int _desH, int _desW, bool (*_isContinue)(int), int& _outH, int& _outW);
+
 private:
+	bool RouteSearch(int _h, int _w, int _desH, int _desW, Searcher&_searcher, int& _outH, int& _outW);
+
 	int GetIndex(int _h, int _w)const;
 
 	void EraseCollider(ChipCollider* _collide);

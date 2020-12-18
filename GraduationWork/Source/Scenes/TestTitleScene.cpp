@@ -9,13 +9,8 @@ namespace
 
 TestTitleScene::TestTitleScene()
 {
-	Scroll::value.x = -200.f;
-	Scroll::value.y = -100.f;
-	Scroll::speed.x = 1.f;
-//	Scroll::isUseDeltaTime = true;
-
-	Scroll::QuakeEndCallback(this, &TestTitleScene::CheckInput);
-
+	//Scroll::quake.QuakeEndCallback(this, &TestTitleScene::CheckInput);
+	//void (Object:: * p)() = Scroll::quake.GetCallBack();
 }
 
 TestTitleScene::~TestTitleScene()
@@ -29,9 +24,12 @@ void TestTitleScene::Start()
 	for (int h = 0; h < 16; ++h)
 		for (int w = 0; w < 16; ++w)
 		{
-			ImageRenderer* p = map->GetChip(h, w)->AddComponent<ImageRenderer>();
+			Chip* chip = map->GetChip(h, w);
+			ImageRenderer* p = chip->AddComponent<ImageRenderer>();
 			p->SetImage("Media/Player.png");
-			p->blue = 0;
+			chip->type = GetRand(5) == 0;
+			if (chip->type)
+				p->blue = 0;
 		}
 	//map->isLoopX = true;
 	//map->isLoopY = true;
@@ -45,6 +43,40 @@ void TestTitleScene::Start()
 
 	map->SetChipCollider(empty);
 
+	//Å•Å•Å•Ç‚ÇŒÇ¢Å•Å•Å•
+	//Quake quake;
+	//quake.time = 10;
+	//quake.Play();
+	//quake.Update();
+	float* a;
+	float b;
+	a = &b;
+	VECTOR2* p = &Scroll::quake.center;
+	*p = VECTOR2::one();
+	Scroll::quake.a = 100;
+	Scroll::value.x = 10.f;
+	Scroll::quake.center.x = 50.f;
+	Scroll::quake.center.y = 50.f;
+	Scroll::quake.speed.x = 10000.f;
+	Scroll::quake.speed.y = 10000.f;
+	Scroll::quake.scale.x = 500.f;
+	Scroll::quake.scale.y = 500.f;
+	Scroll::quake.time = 10.f;
+	Scroll::quake.Update();
+
+	//	Scroll::isUseDeltaTime = true;
+
+	Scroll::quake.Play();
+	//Å£Å£Å£Å£Å£Å£Å£
+
+	dest = Instantiate<GameObject>();
+	dest->transform->position.x = 700;
+	dest->transform->position.y = 300;
+
+	ImageRenderer* image = dest->AddComponent<ImageRenderer>();
+	image->SetImage("Media\\Player.png");
+	image->red = image->green = 0;
+	map->SetChipCollider(dest);
 }
 
 void TestTitleScene::Update()
@@ -57,10 +89,10 @@ void TestTitleScene::Update()
 	int x, y;
 	map->GetColliderSize(empty, &x, &y);
 
-	if (Input::IsKeyDown(KEY::KEY_Z))--x;
-	if (Input::IsKeyDown(KEY::KEY_X))++x;
-	if (Input::IsKeyDown(KEY::KEY_C))--y;
-	if (Input::IsKeyDown(KEY::KEY_V))++y;
+	if (Input::IsKeyPush(KEY::KEY_Z))--Scroll::speed.x;
+	if (Input::IsKeyPush(KEY::KEY_X))++Scroll::speed.x;
+	if (Input::IsKeyPush(KEY::KEY_C))--Scroll::speed.y;
+	if (Input::IsKeyPush(KEY::KEY_V))++Scroll::speed.y;
 	map->SetColliderSize(empty, &x, &y);
 
 	printfDx("x : %d, y : %d\n", x, y);
@@ -88,6 +120,18 @@ void TestTitleScene::Update()
 	printfDx("value	 : %f\n", info.value);
 	printfDx("weak	 : %f\n", info.weak);
 	printfDx("isSnap : %d\n", info.isSnap);
+
+	int h, w;
+	map->FindRoute
+	(
+		empty->transform->position.y / map->GetSizeY(), empty->transform->position.x / map->GetSizeX(),
+		dest->transform->position.y / map->GetSizeY(), dest->transform->position.x / map->GetSizeX(),
+		[](int _type) { return !_type; },
+		h, w
+	);
+
+	ImageRenderer* image = map->GetChip(h, w)->GetComponent<ImageRenderer>();
+	image->red = image->blue = 0;
 
 }
 

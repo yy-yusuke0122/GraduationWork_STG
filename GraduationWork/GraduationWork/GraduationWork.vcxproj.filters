@@ -282,6 +282,9 @@
     <ClCompile Include="..\lib\ComponentSwitcher.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="..\lib\Quake.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\UrLib.h">
@@ -549,6 +552,9 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\ComponentSwitcher.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Quake.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

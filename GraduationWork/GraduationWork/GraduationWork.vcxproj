@@ -51,6 +51,7 @@
     <ClCompile Include="..\lib\Object.cpp" />
     <ClCompile Include="..\lib\PhysicalBehavior.cpp" />
     <ClCompile Include="..\lib\PointLight.cpp" />
+    <ClCompile Include="..\lib\Quake.cpp" />
     <ClCompile Include="..\lib\Random.cpp" />
     <ClCompile Include="..\lib\Renderer.cpp" />
     <ClCompile Include="..\lib\Saver.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="..\lib\Object.h" />
     <ClInclude Include="..\lib\PhysicalBehavior.h" />
     <ClInclude Include="..\lib\PointLight.h" />
+    <ClInclude Include="..\lib\Quake.h" />
     <ClInclude Include="..\lib\Random.h" />
     <ClInclude Include="..\lib\Renderer.h" />
     <ClInclude Include="..\lib\Saver.h" />

@@ -157,7 +157,7 @@ public:
 	/// ゲームオブジェクト生成
 	/// </summary>
 	/// <typeparam name="C">生成するオブジェクト</typeparam>
-	/// <param name="_tagName">生成するオブジェクト名</typeparam>
+	/// <param name="_tagName">生成するオブジェクト名</param>
 	/// <returns>生成したオブジェクト</returns>
 	template<class C>
 	C* Instantiate(std::string _tagName = "")

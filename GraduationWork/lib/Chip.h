@@ -14,7 +14,7 @@ class Chip :public GameObject
 
 public:
 	Chip() :
-		map(nullptr), h(0), w(0)
+		map(nullptr), h(0), w(0), type(0)
 	{
 	}
 
@@ -44,5 +44,8 @@ private:
 	MapChip* map;
 
 	int h, w;
+
+public:
+	int type;
 
 };
