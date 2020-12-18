@@ -599,6 +599,5 @@ namespace UrLib {
 		v1.y = v1.y - v2.y;
 		return v1;
 	}
-
 }
 using namespace UrLib;

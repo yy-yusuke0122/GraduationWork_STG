@@ -111,6 +111,8 @@ public:
 
 	int red, green, blue;//0`255iF‚Ì‹­‚³j
 
+	bool isUseScroll;
+
 private:
 	Image image;
 

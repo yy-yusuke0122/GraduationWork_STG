@@ -10,11 +10,6 @@
 #include "../Objects/SoundManager.h"
 #include "../Objects/TestBullet.h"
 
-namespace
-{
-	VECTOR2 s;
-}
-
 TestMainScene::TestMainScene() :
 	player(nullptr), enemy(nullptr)
 {
@@ -47,6 +42,10 @@ void TestMainScene::Start()
 	player->transform->AddPosition(-add);
 	enemy->transform->SetPosition(center);
 	enemy->transform->AddPosition(add);
+
+	Button* button = Instantiate<Button>();
+	button->textObj->text = "‚¤‚ñ‚¿I";
+	button->transform->SetPosition(center);
 }
 
 void TestMainScene::Update()

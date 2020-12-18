@@ -39,6 +39,8 @@ bool ComponentSwitcher::SetStateMachine(StateMachine* _stateMachine)
     for (std::list<std::string>::iterator it = states.begin(); it != states.end(); ++it) {
         components.emplace((*it), nullptr);
     }
+
+    return true;
 }
 
 std::string ComponentSwitcher::GetState() const

@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "Transform.h"
 #include "ImageRenderer.h"
+#include "UI.h"
 #include "ComponentSwitcher.h"
 #include "Animator2D.h"
 #include "Anim2D.h"

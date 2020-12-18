@@ -4,7 +4,7 @@ ImageRenderer::ImageRenderer() :
     position(0.0f, 0.0f), rotation(0.0f), scale(1.0f, 1.0f),
     alpha(255), add(-1), sub(-1), mul(-1), inv(-1),
     transFlag(TRUE), turnXFlag(false), turnYFlag(false), order(0), drawNum(0u), image(this),
-    red(255), green(255), blue(255)
+    red(255), green(255), blue(255), isUseScroll(true)
 {
 }
 
@@ -23,8 +23,8 @@ void ImageRenderer::Draw()
 
     const VECTOR2& scroll = Scroll::GetValue();
 
-    int x = static_cast<int>(transform->position.x + position.x - scroll.x);
-    int y = static_cast<int>(transform->position.y + position.y - scroll.y);
+    int x = static_cast<int>(transform->position.x + position.x - ((isUseScroll) ? scroll.x : 0.f));
+    int y = static_cast<int>(transform->position.y + position.y - ((isUseScroll) ? scroll.y : 0.f));
     int cx = sizex / 2;
     int cy = sizey / 2;
     float Angle = ToRadian(rotation);
