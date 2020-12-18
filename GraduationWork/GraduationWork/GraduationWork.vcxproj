@@ -69,6 +69,8 @@
     <ClCompile Include="..\lib\Time.cpp" />
     <ClCompile Include="..\lib\Transform.cpp" />
     <ClCompile Include="..\lib\typedef.cpp" />
+    <ClCompile Include="..\lib\UI.cpp" />
+    <ClCompile Include="..\lib\UpdateButton.cpp" />
     <ClCompile Include="..\lib\UrLib.cpp" />
     <ClCompile Include="..\Source\Components\CheckDeadObjects.cpp" />
     <ClCompile Include="..\Source\Components\DamageToPlayer.cpp" />
@@ -162,6 +164,8 @@
     <ClInclude Include="..\lib\Time.h" />
     <ClInclude Include="..\lib\Transform.h" />
     <ClInclude Include="..\lib\typedef.h" />
+    <ClInclude Include="..\lib\UI.h" />
+    <ClInclude Include="..\lib\UpdateButton.h" />
     <ClInclude Include="..\lib\UrLib.h" />
     <ClInclude Include="..\Source\Components\CheckDeadObjects.h" />
     <ClInclude Include="..\Source\Components\DamageToPlayer.h" />
