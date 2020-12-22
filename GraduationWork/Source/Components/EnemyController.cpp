@@ -29,8 +29,6 @@ void EnemyController::Update()
 	//	count = 0;
 	//	ChangeMode();
 	//}
-
-	printfDx("enemyAttack : %d\n", pattern);
 }
 
 void EnemyController::Next()

@@ -560,13 +560,13 @@
     <ClInclude Include="..\lib\ComponentSwitcher.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\lib\Quake.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\UI.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\UpdateButton.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Quake.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

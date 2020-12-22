@@ -4,8 +4,8 @@ void TMCMover::Update()
 {
 	transform->position += Input::GetAxis() * VECTOR2(1.f, -1.f) * 3.f;
 
-	printfDx("enter\n"); PrintInfo(enter);
-	printfDx("exit\n"); PrintInfo(exit_);
+	//printfDx("enter\n"); PrintInfo(enter);
+	//printfDx("exit\n"); PrintInfo(exit_);
 }
 
 void TMCMover::OnChipEnter(Chip* _c)
@@ -18,7 +18,7 @@ void TMCMover::OnChipEnter(Chip* _c)
 
 void TMCMover::OnChipStay(Chip* _c)
 {
-	printfDx("stay	h : %d, w : %d\n", _c->GetH(), _c->GetW());
+	//printfDx("stay	h : %d, w : %d\n", _c->GetH(), _c->GetW());
 }
 
 void TMCMover::OnChipExit(Chip* _c)
@@ -31,8 +31,8 @@ void TMCMover::OnChipExit(Chip* _c)
 
 void TMCMover::PrintInfo(INFO& _info)
 {
-	for (int i = 0; i < 4; ++i)
+	/*for (int i = 0; i < 4; ++i)
 	{
 		printfDx("	h : %d, w : %d\n", _info.i[i].h, _info.i[i].w);
-	}
+	}*/
 }

@@ -5,6 +5,8 @@
 namespace
 {
 	constexpr int cs = 32;
+
+	Quake quake;
 }
 
 TestTitleScene::TestTitleScene()
@@ -44,29 +46,17 @@ void TestTitleScene::Start()
 	map->SetChipCollider(empty);
 
 	//Å•Å•Å•Ç‚ÇŒÇ¢Å•Å•Å•
-	//Quake quake;
-	//quake.time = 10;
-	//quake.Play();
-	//quake.Update();
-	float* a;
-	float b;
-	a = &b;
-	VECTOR2* p = &Scroll::quake.center;
-	*p = VECTOR2::one();
-	Scroll::quake.a = 100;
-	Scroll::value.x = 10.f;
-	Scroll::quake.center.x = 50.f;
-	Scroll::quake.center.y = 50.f;
-	Scroll::quake.speed.x = 10000.f;
-	Scroll::quake.speed.y = 10000.f;
-	Scroll::quake.scale.x = 500.f;
-	Scroll::quake.scale.y = 500.f;
-	Scroll::quake.time = 10.f;
-	Scroll::quake.Update();
+	//Scroll::value.x = 10.f;
+	//Scroll::GetQuake()->center.x = 50.f;
+	//Scroll::GetQuake()->center.y = 50.f;
+	//Scroll::GetQuake()->speed.x = 10000.f;
+	//Scroll::GetQuake()->speed.y = 10000.f;
+	//Scroll::GetQuake()->scale.x = 500.f;
+	//Scroll::GetQuake()->scale.y = 500.f;
+	//Scroll::GetQuake()->time = 10.f;
 
-	//	Scroll::isUseDeltaTime = true;
-
-	Scroll::quake.Play();
+	//Scroll::GetQuake()->Play();
+	//Scroll::GetQuake()->isPlay = true;
 	//Å£Å£Å£Å£Å£Å£Å£
 
 	dest = Instantiate<GameObject>();
@@ -77,6 +67,15 @@ void TestTitleScene::Start()
 	image->SetImage("Media\\Player.png");
 	image->red = image->green = 0;
 	map->SetChipCollider(dest);
+
+	quake.center.x = 50.f;
+	quake.center.y = 50.f;
+	quake.speed.x = 10000.f;
+	quake.speed.y = 10000.f;
+	quake.scale.x = 500.f;
+	quake.scale.y = 500.f;
+	quake.time = 10.f;
+	quake.Play();
 }
 
 void TestTitleScene::Update()
@@ -86,40 +85,7 @@ void TestTitleScene::Update()
 	printfDx("TitleScene\n");
 	printfDx("Press '1' : To 'MainScene'\n");
 
-	int x, y;
-	map->GetColliderSize(empty, &x, &y);
-
-	if (Input::IsKeyPush(KEY::KEY_Z))--Scroll::speed.x;
-	if (Input::IsKeyPush(KEY::KEY_X))++Scroll::speed.x;
-	if (Input::IsKeyPush(KEY::KEY_C))--Scroll::speed.y;
-	if (Input::IsKeyPush(KEY::KEY_V))++Scroll::speed.y;
-	map->SetColliderSize(empty, &x, &y);
-
-	printfDx("x : %d, y : %d\n", x, y);
-
 //	DEBUG_LOG("hogehoge");
-
-	if (Input::IsKeyDown(KEY::KEY_ENTER))
-		Scroll::isUseDeltaTime = !Scroll::isUseDeltaTime;
-
-	InputInfo info = Input::GetInfo("X");
-
-	printfDx("\nXÅ´Å´\n");
-	printfDx("accele : %f\n", info.accele);
-	printfDx("dead	 : %f\n", info.dead);
-	printfDx("speed	 : %f\n", info.speed);
-	printfDx("value	 : %f\n", info.value);
-	printfDx("weak	 : %f\n", info.weak);
-	printfDx("isSnap : %d\n", info.isSnap);
-
-	info = Input::GetInfo("Y");
-	printfDx("\nYÅ´Å´\n");
-	printfDx("accele : %f\n", info.accele);
-	printfDx("dead	 : %f\n", info.dead);
-	printfDx("speed	 : %f\n", info.speed);
-	printfDx("value	 : %f\n", info.value);
-	printfDx("weak	 : %f\n", info.weak);
-	printfDx("isSnap : %d\n", info.isSnap);
 
 	int h, w;
 	map->FindRoute
@@ -133,6 +99,12 @@ void TestTitleScene::Update()
 	ImageRenderer* image = map->GetChip(h, w)->GetComponent<ImageRenderer>();
 	image->red = image->blue = 0;
 
+	quake.Update();
+
+	printfDx("time : %f\n", quake.time);
+	printfDx("cur : %f\n", quake.GetTime());
+	printfDx("quake : %d\n", quake.IsPlay());
+	printfDx("value : %f\n", quake.GetValue());
 }
 
 void TestTitleScene::CheckInput()

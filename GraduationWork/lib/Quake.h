@@ -9,7 +9,7 @@ class Quake
 public:
 	Quake() :
 		currentTime(0.f), callObj(nullptr), cCallback(nullptr),
-		time(1.f), scale(1.f, 1.f), gCallback(nullptr), speed(1.f, 1.f), isQuake(false)
+		time(1.f), scale(1.f, 1.f), gCallback(nullptr), speed(1.f, 1.f), isPlay(false)
 	{
 	}
 
@@ -22,7 +22,10 @@ public:
 	/// <summary>
 	/// 震わせる
 	/// </summary>
-	void Play() { isQuake = true; }
+	void Play()
+	{
+		isPlay = true;
+	}
 
 	/// <summary>
 	/// 震えの終了時に呼び出す関数をセット
@@ -32,7 +35,7 @@ public:
 	/// <param name="_obj">オブジェクトアドレス</param>
 	/// <param name="_call">呼び出す関数</param>
 	template<class C>
-	void QuakeEndCallback(C* _obj, void (C::* _call)() )
+	void QuakeEndCallback(C* _obj, void (C::* _call)())
 	{
 		callObj = _obj;
 		cCallback = reinterpret_cast<void (Object::*)()> (_call);
@@ -48,7 +51,7 @@ public:
 	/// Quake中か取得
 	/// </summary>
 	/// <returns>true：Quake中、false：Play待ち</returns>
-	bool IsPlay()const { return isQuake; }
+	bool IsPlay()const { return isPlay; }
 
 	/// <summary>
 	/// コールバックするオブジェクトを取得
@@ -60,7 +63,7 @@ public:
 	/// コールバックするメソッドを取得
 	/// </summary>
 	/// <returns>呼び出すメソッド</returns>
-	void (Object::* GetCallBack()const)()  { return cCallback; };
+	auto GetCallBack() { return cCallback; };
 
 	/// <summary>
 	/// Quakeの値を取得
@@ -80,7 +83,6 @@ private:
 	VECTOR2 value;
 
 public:
-	int a;
 	VECTOR2 center;//中心
 
 	float time;//震えの時間
@@ -92,6 +94,5 @@ public:
 	void (*gCallback)();//震えの終了時に呼び出す関数、呼出し後に破棄
 
 private:
-	bool isQuake;
-
+	bool isPlay;
 };

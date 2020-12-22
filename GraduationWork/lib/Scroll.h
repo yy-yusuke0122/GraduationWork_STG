@@ -1,7 +1,6 @@
 #pragma once
 
-//#include "typedef.h"
-#include "Quake.h"
+class Quake;
 
 class Object;
 
@@ -17,15 +16,17 @@ private:
 	}
 
 public:
-//	static void Initialize();
-
 	static void Update();
+
+	static void End();
 
 	/// <summary>
 	/// 現在のスクロール値取得
 	/// </summary>
 	/// <returns>スクロール値</returns>
 	static const VECTOR2& GetValue() { return scrollValue; }
+
+	//static Quake* GetQuake();
 
 private:
 	static void ScrollUpdate();
@@ -39,7 +40,8 @@ public:
 	static VECTOR2 value;//スクロール目的値
 
 	static VECTOR2 speed;//スクロール速さ（0～1）
-
-	static Quake quake;
+	
+private:
+//	static Quake* quake;//←やばい
 
 };

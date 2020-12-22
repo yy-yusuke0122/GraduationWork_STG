@@ -157,5 +157,6 @@ int UrLib::End()
     Saver::Wait();
     Loader::Wait();
     Debug::Release();
+    Scroll::End();
     return ret;
 }

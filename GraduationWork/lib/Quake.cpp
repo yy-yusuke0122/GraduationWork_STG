@@ -77,8 +77,6 @@ void Quake::Update()
 		value.y = 1.f - (n.y - ni.y) * s.y;
 
 	value += center;
-
-	printfDx("time : %f\n", time);
 }
 
 void Quake::EndQuake()
@@ -98,5 +96,5 @@ void Quake::EndQuake()
 	time = 0.f;
 	currentTime = 0.f;
 
-	isQuake = false;
+	isPlay = false;
 }
