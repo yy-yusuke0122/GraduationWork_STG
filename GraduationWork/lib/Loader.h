@@ -15,6 +15,9 @@ private:
 	}
 
 public:
+	static void Load();
+
+public:
 	/// <summary>
 	/// データ全削除
 	/// </summary>
@@ -32,11 +35,6 @@ public:
 	/// <param name="_key">検索するキー</param>
 	/// <returns>true：存在する、false：存続しない</returns>
 	static bool HasKey(const std::string& _key);
-
-	/// <summary>
-	/// データ読み込み
-	/// </summary>
-	static void Load();
 
 	/// <summary>
 	/// int型を取得

@@ -25,9 +25,29 @@ void DrawManager::Draw()
 	}
 }
 
-void DrawManager::AddRenderer(Renderer* _p)
+std::list<Renderer*>::iterator DrawManager::AddRenderer(Renderer* _p)
 {
-	rendererList.emplace_back(_p);
+	std::list<Renderer*>::iterator ret;
+
+	for (std::list<Renderer*>::reverse_iterator it = rendererList.rbegin(),
+		end = rendererList.rend(); it != end; ++it)
+	{
+		if ((*it)->GetOrder() > _p->GetOrder())
+			continue;//オーダーが同じまたは小さいが見つかるまで
+		return rendererList.emplace(it.base(), _p);
+		break;
+	}
+
+	//自分が一番小さい
+	rendererList.emplace_front(_p);
+	return rendererList.begin();
+}
+
+std::list<Renderer*>::iterator DrawManager::AddRenderer(std::list<Renderer*>::iterator _p)
+{
+	Renderer* p = *_p;
+	rendererList.erase(_p);
+	return AddRenderer(p);
 }
 
 bool DrawManager::EraseRenderer(Renderer* _p)
@@ -37,12 +57,12 @@ bool DrawManager::EraseRenderer(Renderer* _p)
 		if ((*it) == _p) {
 			rendererList.erase(it);
 			return true;
-		}	
+		}
 	}
-	return false; 
+	return false;
 }
 
-void DrawManager::AddRight(Light* _p)
+void DrawManager::AddLight(Light* _p)
 {
 	lightList.emplace_back(_p);
 }

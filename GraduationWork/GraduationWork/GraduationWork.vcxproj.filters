@@ -282,9 +282,6 @@
     <ClCompile Include="..\lib\ComponentSwitcher.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\Quake.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\UI.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -564,9 +561,6 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\UpdateButton.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\lib\Quake.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

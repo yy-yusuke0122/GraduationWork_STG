@@ -390,7 +390,7 @@ public://パッド入力取得
 	/// パッドの有効範囲をセット
 	/// </summary>
 	/// <param name="_padCount">セットするパッド番号</param>
-	/// <param name="_zone">0で無効範囲0%、1で有効範囲100%</param>
+	/// <param name="_zone">0で有効範囲0%、1で有効範囲100%</param>
 	/// <returns>true：成功、false：失敗</returns>
 	static bool SetPadDeadZone(int _padCount, float _zone);
 
@@ -459,7 +459,7 @@ public://入力マッピング関数
 	static void EraseMapping(const std::string& _name);
 
 	/// <summary>
-	/// 入力マッピングにキーを削除
+	/// 入力マッピングからキーを削除
 	/// </summary>
 	/// <param name="_name">マッピング名</param>
 	/// <param name="_key">削除するキー</param>
@@ -476,12 +476,12 @@ public://入力マッピング関数
 	/// 入力マッピングにパッドを削除
 	/// </summary>
 	/// <param name="_name">マッピング名</param>
-	/// <param name="_padCount">追加するパッド番号</param>
+	/// <param name="_padCount">パッド番号</param>
 	/// <param name="_pad">削除するパッド</param>
 	static void ErasePadMapping(const std::string& _name, int _padCount, PAD _pad);
 	
 	/// <summary>
-	/// 入力マッピングの速さ情報
+	/// 入力マッピングの情報
 	/// </summary>
 	/// <param name="_name">マッピング名</param>
 	/// <param name="_accele">セットする加速度、nullで無視</param>
@@ -523,6 +523,6 @@ private:
 	static std::unordered_map<std::string, MappingInfo> mapping;//マッピングデータ
 
 public:
-	static bool anyKey;//何かしらのキー入力
+	static bool anyKey;//何かしらの入力
 
 };

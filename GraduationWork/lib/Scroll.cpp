@@ -1,6 +1,5 @@
 #include "Time.h"
 #include "Function.h"
-#include "Quake.h"
 #include "Scroll.h"
 
 VECTOR2 Scroll::scrollValue;

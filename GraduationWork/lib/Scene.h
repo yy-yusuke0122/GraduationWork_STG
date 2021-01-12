@@ -131,16 +131,16 @@ public:
 	int GetSubSceneCount()const;
 
 	/// <summary>
-	/// ゲームオブジェクトを探しますよ！！！
+	/// ゲームオブジェクト取得
 	/// </summary>
-	/// <param name="_tag">タグ</param>
-	/// <returns>アドレス！！！</returns>
+	/// <param name="_tag">取得するゲームオブジェクトのタグ</param>
+	/// <returns>null以外：ゲームオブジェクト、null：見つからない</returns>
 	GameObject* FindGameObject(const std::string& _tag)override;
 
 	/// <summary>
-	/// ゲームオブジェクトを探しますよ！！！
+	/// ゲームオブジェクト取得
 	/// </summary>
-	/// <returns>アドレス！！！</returns>
+	/// <returns>null以外：ゲームオブジェクト、null：見つからない</returns>
 	template<class C>
 	C* FindGameObject()
 	{
@@ -221,7 +221,7 @@ public:
 	/// 非同期読み込み中に生成されるシーンを設定
 	/// 非同期読み込み終了時、自動で破棄されます
 	/// </summary>
-	/// <typeparam name="C"></typeparam>
+	/// <typeparam name="C">非同期シーンの型</typeparam>
 	template<class C>
 	void AsyncScene()
 	{
@@ -288,5 +288,5 @@ public:
 
 	float asyncMinTime;//非同期シーン最低生存時間
 
-	SceneOption option;
+	SceneOption option;//シーン内で使用されるオプション
 };

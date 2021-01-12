@@ -29,7 +29,13 @@ public:
 	/// 描画オブジェクト追加
 	/// </summary>
 	/// <param name="_p">追加する描画オブジェクト</param>
-	static void AddRenderer(Renderer* _p);
+	static std::list<Renderer*>::iterator AddRenderer(Renderer* _p);
+
+	/// <summary>
+	/// 描画オブジェクト追加
+	/// </summary>
+	/// <param name="_p">追加する描画オブジェクト</param>
+	static std::list<Renderer*>::iterator AddRenderer(std::list<Renderer*>::iterator _p);
 
 	/// <summary>
 	/// 描画オブジェクト破棄
@@ -41,7 +47,7 @@ public:
 	/// <summary>
 	/// ライトオブジェクト追加
 	/// </summary>
-	static void AddRight(Light* _p);
+	static void AddLight(Light* _p);
 
 	/// <summary>
 	/// ライトオブジェクト破棄

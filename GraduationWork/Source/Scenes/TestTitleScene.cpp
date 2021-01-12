@@ -5,8 +5,6 @@
 namespace
 {
 	constexpr int cs = 32;
-
-	Quake quake;
 }
 
 TestTitleScene::TestTitleScene()
@@ -67,15 +65,6 @@ void TestTitleScene::Start()
 	image->SetImage("Media\\Player.png");
 	image->red = image->green = 0;
 	map->SetChipCollider(dest);
-
-	quake.center.x = 50.f;
-	quake.center.y = 50.f;
-	quake.speed.x = 10000.f;
-	quake.speed.y = 10000.f;
-	quake.scale.x = 500.f;
-	quake.scale.y = 500.f;
-	quake.time = 10.f;
-	quake.Play();
 }
 
 void TestTitleScene::Update()
@@ -85,7 +74,7 @@ void TestTitleScene::Update()
 	printfDx("TitleScene\n");
 	printfDx("Press '1' : To 'MainScene'\n");
 
-//	DEBUG_LOG("hogehoge");
+	//	DEBUG_LOG("hogehoge");
 
 	int h, w;
 	map->FindRoute
@@ -99,12 +88,16 @@ void TestTitleScene::Update()
 	ImageRenderer* image = map->GetChip(h, w)->GetComponent<ImageRenderer>();
 	image->red = image->blue = 0;
 
-	quake.Update();
+	if(Input::IsKeyDown(KEY::KEY_SPACE))
+	for (h = 0; h < map->GetHeight(); ++h)
+	{
+		for (w = 0; w < map->GetWidth(); ++w)
+		{
+			ImageRenderer* p = map->GetChip(h, w)->GetComponent<ImageRenderer>();
+			p->SetOrder(GetRand(100));
+		}
+	}
 
-	printfDx("time : %f\n", quake.time);
-	printfDx("cur : %f\n", quake.GetTime());
-	printfDx("quake : %d\n", quake.IsPlay());
-	printfDx("value : %f\n", quake.GetValue());
 }
 
 void TestTitleScene::CheckInput()

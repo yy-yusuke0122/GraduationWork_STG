@@ -46,6 +46,6 @@ private:
 	int h, w;
 
 public:
-	int type;
+	int type;//ユーザー指定値
 
 };

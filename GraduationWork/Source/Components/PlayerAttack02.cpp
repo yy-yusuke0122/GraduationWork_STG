@@ -29,7 +29,7 @@ void PlayerAttack02::Start()
 	SoundManager::Get()->Push("Sound/AttackHit.mp3", "AttackHit");
 
 	// 0.25•bŒã‚É”j‰ó
-	Delay<GameObject, void>* p = AddComponent<Delay<GameObject, void>>();
+	Delay<GameObject>* p = AddComponent<Delay<GameObject>>();
 	p->instance = gameObject;
 	p->endTime = 1.0f;
 	p->call = &GameObject::Destroy;

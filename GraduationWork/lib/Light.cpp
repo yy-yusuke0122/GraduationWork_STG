@@ -22,7 +22,7 @@ const Light::COLOR Light::black = Light::GetCOLOR(0.f, 0.f, 0.f);
 Light::Light() :
 	handle(-1), ambient(0.f, 0.f, 0.f)
 {
-	DrawManager::AddRight(this);
+	DrawManager::AddLight(this);
 }
 
 Light::~Light()

@@ -16,9 +16,9 @@ public:
 	/// <summary>
 	/// 画像を読み込む
 	/// </summary>
-	/// <param name="_filePass">読込みたい画像ファイルのパス</param>
-	/// <returns>読み込み成功でtrue, ファイルが見つからないか既に同じものを読み込んでいたらfalse</returns>
-	bool SetImage(const std::string& _filePass);
+	/// <param name="_filePath">読込みたい画像ファイルのパス</param>
+	/// <returns>読み込み成功でtrue, ファイルが見つからない場合false</returns>
+	bool SetImage(const std::string& _filePath);
 
 	/// <summary>
 	/// 画像を分割読み込み
@@ -28,7 +28,7 @@ public:
 	/// <param name="_ydiv">縦分割数</param>
 	/// <param name="_allnum">全体分割数、0で_xdiv*_ydiv</param>
 	/// <returns>true：読み込み成功、false：失敗</returns>
-	bool SetImageDiv(const std::string& _filePass, unsigned _xdiv, unsigned _ydiv, unsigned _allnum = 0u);
+	bool SetImageDiv(const std::string& _filePath, unsigned _xdiv, unsigned _ydiv, unsigned _allnum = 0u);
 
 	/// <summary>
 	/// 画像ハンドル取得
@@ -49,10 +49,10 @@ public:
 	unsigned GetDrawNumber()const { return drawNum; }
 
 	/// <summary>
-	/// 描画最大番号取得
+	/// 画像数を取得
 	/// </summary>
-	/// <returns>描画最大番号</returns>
-	unsigned GetDrawMaxNumber()const;
+	/// <returns>画像数</returns>
+	unsigned GetImageCount()const;
 
 	/// <summary>
 	/// 読み込んでいるファイルのパスを取得
@@ -97,7 +97,7 @@ public:
 
 	int sub;//減算（-1は無効）、描画先の値から画像の値を引いて（0～1）この値を掛けて出力（0～255）
 
-	int mul;//乗算する値（-1は無効）、描画先と画像の色（0～1）を乗算した結果にこの値を掛けて出力（0～255）
+	int mul;//乗算（-1は無効）、描画先と画像の色（0～1）を乗算した結果にこの値を掛けて出力（0～255）
 
 	int inv;//色反転（-1は無効）、反転後の透明度（0～255）
 	
@@ -107,8 +107,6 @@ public:
 	
 	bool turnYFlag;//縦反転フラグ
 	
-	int order;//描画の順番（0が先）
-
 	int red, green, blue;//0～255（色の強さ）
 
 	bool isUseScroll;

@@ -3,7 +3,7 @@
 #include "Component.h"
 #include "Time.h"
 
-template<class C, typename RET>
+template<class C>
 class Delay : public Component
 {
 public:
@@ -22,14 +22,11 @@ public:
 			time += Time::DeltaTime();
 		else
 			time += Time::UnscaledDeltaTime();
-		
-		if (	call == nullptr)return;
-		if (instance == nullptr)return;
-
 
 		if (time > endTime)
 		{
-			(instance->*call)();
+			if (call != nullptr && instance != nullptr)
+				(instance->*call)();
 			time = 0.f;
 		}
 	}
@@ -39,7 +36,7 @@ public:
 
 	float endTime;//指定
 
-	RET(C::* call)();//コールバック
+	void(C::* call)();//コールバック
 
 	C* instance;//インスタンス
 
