@@ -32,7 +32,7 @@
 #include "PhysicalBehavior.h"
 
 namespace UrLib {
-	int Init(int ScreenSizeX, int ScreenSizeY, int ColorBitDepth, int WindowMode, bool IsShadowCalc = true);
+	int Init(int ScreenSizeX, int ScreenSizeY, bool WindowMode, int ColorBitDepth = 32);
 	void Update();
 	int Draw();
 	int End();

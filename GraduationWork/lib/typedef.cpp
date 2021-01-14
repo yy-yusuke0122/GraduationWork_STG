@@ -99,22 +99,29 @@ void UrLib::Quaternion::RotatePosition(VECTOR3 _axis, Quaternion* _pos, float _d
 
 MATRIX UrLib::Quaternion::GetMatrix() const
 {
-    float x2 = x * x, y2 = y * y, z2 = z * z, w2 = w * w;
-    float xy = x * y, yz = y * z, zw = z * w, wx = w * x,
-        xz = x * z, yw = y * w;
+    VECTOR3 sq(x, y, z);
+    sq = sq * sq;
+
+    float sqw = w * w;
+
+    float	xy = x * y, xz = x * z, xw = x * w,
+        yz = y * z, yw = y * w, zw = z * w;
 
     MATRIX m = MGetIdent();
-    m.m[0][0] = w2 + x2 - y2 - z2;
-    m.m[0][1] = 2.f * (xy - zw);
-    m.m[0][2] = 2.f * (yw + xz);
 
-    m.m[1][0] = 2.f * (zw + xy);
-    m.m[1][1] = w2 - x2 + y2 - z2;
-    m.m[1][2] = 2.f * (yz - wx);
+    //“]’u‚µ‚Ä‘ã“ü
 
-    m.m[2][0] = 2.f * (xz - yw);
-    m.m[2][1] = 2.f * (yz + wx);
-    m.m[2][2] = w2 - x2 - y2 + z2;
+    m.m[0][0] = sq.x - sq.y - sq.z + sqw;
+    m.m[1][0] = 2.f * (xy - zw);
+    m.m[2][0] = 2.f * (yw + xz);
+
+    m.m[0][1] = 2.f * (zw + xy);
+    m.m[1][1] = -sq.x + sq.y - sq.z + sqw;
+    m.m[2][1] = 2.f * (yz - xw);
+
+    m.m[0][2] = 2.f * (xz - yw);
+    m.m[1][2] = 2.f * (yz + xw);
+    m.m[2][2] = -sq.x - sq.y + sq.z + sqw;
 
     return m;
 }

@@ -64,7 +64,7 @@ namespace//TODO
 
 #endif // !_DEBUG
 
-int UrLib::Init(int ScreenSizeX, int ScreenSizeY, int ColorBitDepth, int WindowMode, bool IsShadowCalc)
+int UrLib::Init(int ScreenSizeX, int ScreenSizeY, bool WindowMode, int ColorBitDepth)
 {
     int ret = 0;
 
@@ -79,7 +79,7 @@ int UrLib::Init(int ScreenSizeX, int ScreenSizeY, int ColorBitDepth, int WindowM
 
     ret += Set3DSoundOneMetre(Meter::oneMeter);
     
-    ret += ChangeWindowMode(WindowMode);
+    ret += ChangeWindowMode((WindowMode) ? TRUE : FALSE);
 
     ret += SetGraphMode(Screen::x, Screen::y, ColorBitDepth);
 

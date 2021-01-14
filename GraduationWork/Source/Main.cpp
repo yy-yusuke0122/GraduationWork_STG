@@ -4,7 +4,7 @@
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	if (UrLib::Init(1000, 700, 32, TRUE) < 0)		// URライブラリ初期化処理
+	if (UrLib::Init(1000, 700, true, 32) < 0)		// URライブラリ初期化処理
 	{
 		return -1;			// エラーが起きたら直ちに終了
 	}

@@ -123,7 +123,6 @@ public:
 	/// <summary>
 	/// 経路探索
 	/// </summary>
-	/// <param name="_obj">経路探索を行うオブジェクト</param>
 	/// <param name="_h">開始のY位置</param>
 	/// <param name="_w">開始のX位置</param>
 	/// <param name="_desH">目的地のY位置</param>

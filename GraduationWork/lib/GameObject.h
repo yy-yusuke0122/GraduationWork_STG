@@ -106,7 +106,7 @@ public:
 	/// <summary>
 	/// 指定したタグの子GameObjectを全て破棄する
 	/// </summary>
-	/// <param name="_name">破棄したい子GameObjectのタグ</param>
+	/// <param name="_tag">破棄したい子GameObjectのタグ</param>
 	/// <returns>成功でtrue、指定したタグの子GameObjectが見つからなければfalse</returns>
 	bool RemoveChild(std::string _tag);
 

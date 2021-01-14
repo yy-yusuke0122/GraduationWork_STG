@@ -26,20 +26,10 @@ private:
 	}
 
 public:
-	/// <summary>
-	/// インスタンス破棄
-	/// </summary>
-	/// <returns>true：破棄、false：生成されていない</returns>
 	static bool Destroy();
 
-	/// <summary>
-	/// 初期化
-	/// </summary>
 	static void Start();
 
-	/// <summary>
-	/// 更新
-	/// </summary>
 	static void Update();
 
 	/// <summary>

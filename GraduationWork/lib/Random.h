@@ -15,7 +15,7 @@ private:
 
 public:
 	/// <summary>
-	/// 初期値セット
+	/// 初期化値セット
 	/// </summary>
 	/// <returns>true：成功、false：失敗</returns>
 	static bool SetSeed(int _seed);
