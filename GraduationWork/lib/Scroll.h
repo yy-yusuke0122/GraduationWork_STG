@@ -18,7 +18,7 @@ private:
 public:
 	static void Update();
 
-	static void End();
+//	static void End();
 
 	/// <summary>
 	/// 現在のスクロール値取得
@@ -40,8 +40,5 @@ public:
 	static VECTOR2 value;//スクロール目的値
 
 	static VECTOR2 speed;//スクロール速さ（0～1）
-	
-private:
-//	static Quake* quake;//←やばい
 
 };

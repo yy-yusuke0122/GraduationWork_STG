@@ -35,15 +35,15 @@ void Scroll::Update()
 		ScrollUpdate();
 }
 
-void Scroll::End()
-{
-	/*if (quake != nullptr)
-	{
-		delete quake;
-		quake = nullptr;
-	}*/
-}
-
+//void Scroll::End()
+//{
+//	/*if (quake != nullptr)
+//	{
+//		delete quake;
+//		quake = nullptr;
+//	}*/
+//}
+//
 //Quake* Scroll::GetQuake()
 //{
 //	if (quake == nullptr)

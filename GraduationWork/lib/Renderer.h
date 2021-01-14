@@ -30,7 +30,7 @@ private:
 	void AsyncEnd()override { isRendererEnable = true; }
 
 public:
-	bool isRendererEnable;
+	bool isRendererEnable;//描画 オン・オフ
 
 private:
 	std::list<Renderer*>::iterator orderIt;

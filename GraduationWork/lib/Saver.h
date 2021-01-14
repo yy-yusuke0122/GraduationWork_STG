@@ -63,10 +63,10 @@ public:
 
 	/// <summary>
 	/// 保存中か
-	/// 非同期読み込みをした場合、この関数で終了をチェックできます
+	/// 非同期保存をした場合、この関数で終了をチェックできます
 	/// </summary>
 	/// <returns>true：読み込み中、false：読み込み終了</returns>
-	static bool IsSaving();//読み込み中か
+	static bool IsSaving();
 
 	/// <summary>
 	/// 保存が終わるまで待つ
@@ -83,6 +83,6 @@ private:
 	static bool isSaving;
 
 public:
-	static bool isAsync;//非同期読み込みを行うか
+	static bool isAsync;//非同期保存を行うか
 
 };
