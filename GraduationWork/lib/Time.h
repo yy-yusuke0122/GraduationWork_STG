@@ -12,7 +12,6 @@ private:
 	}
 
 public:
-
 	static void Init();
 
 	static void Update();
@@ -30,18 +29,6 @@ public:
 	/// <returns>経過時間</returns>
 	static float UnscaledDeltaTime() { return unscaledDeltaTime; }
 
-	/// <summary>
-	/// タイムスケールをセット
-	/// </summary>
-	/// <param name="_scale">セットするスケール値</param>
-	static void SetScale(float _scale) { unscaledDeltaTime = _scale; }
-
-	/// <summary>
-	/// タイムスケールを取得
-	/// </summary>
-	/// <returns>スケール値</returns>
-	static float GetScale() { return timeScale; }
-
 private:
 	static float deltaTime;
 
@@ -49,6 +36,7 @@ private:
 
 	static float lastTime;
 
-	static float timeScale;
+public:
+	static float timeScale;//タイムスケール
 
 };

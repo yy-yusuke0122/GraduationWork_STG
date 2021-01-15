@@ -143,8 +143,8 @@ private:
 public:
 	bool isLoop;//ループ再生するか
 
-	int pan;//パン
-	int volume;//ボリューム
+	int pan;//パン、-255～255
+	int volume;//ボリューム、0～255
 
 public://3Dで使用
 	float radius;//音が聞こえる距離

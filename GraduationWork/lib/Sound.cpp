@@ -247,7 +247,7 @@ void Sound::Set()
 	Clamp(pan, -255, 255);
 	ChangePanSoundMem(pan, soundInfo->handle);
 
-	Clamp(volume, 0, 256);
+	Clamp(volume, 0, 255);
 	ChangeVolumeSoundMem(volume, soundInfo->handle);
 
 	if (is3D)
