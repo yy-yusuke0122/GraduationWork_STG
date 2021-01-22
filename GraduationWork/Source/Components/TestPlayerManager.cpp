@@ -3,7 +3,6 @@
 #include "TestPlayerIdle.h"
 #include "TestPlayerMove.h"
 #include "TestPlayerAttack.h"
-#include "../Components/Jump.h"
 #include "../Objects/Stage.h"
 #include "../Objects/Player.h"
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "../../lib/UrLib.h"
+#include "Component.h"
 
 class PhysicalBehavior;
 

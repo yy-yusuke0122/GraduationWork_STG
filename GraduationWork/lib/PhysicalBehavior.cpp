@@ -1,4 +1,6 @@
 #include "PhysicalBehavior.h"
+#include "Time.h"
+#include "Transform.h"
 
 PhysicalBehavior::PhysicalBehavior() :
     velocity(VECTOR3::zero()), isLanding(false),

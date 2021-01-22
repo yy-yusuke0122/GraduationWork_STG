@@ -30,6 +30,7 @@
 #include "MapChip.h"
 #include "Chip.h"
 #include "PhysicalBehavior.h"
+#include "Jump.h"
 
 namespace UrLib {
 	int Init(int ScreenSizeX, int ScreenSizeY, bool WindowMode, int ColorBitDepth = 32);

@@ -1,5 +1,5 @@
 #include "Jump.h"
-#include "../../lib/PhysicalBehavior.h"
+#include "PhysicalBehavior.h"
 
 JumpComponent::JumpComponent() :
 	jumpPower(1.0f), jumpCount(0), maxJumpCount(1),
@@ -27,7 +27,6 @@ void JumpComponent::Start()
 
 void JumpComponent::Update()
 {
-	printfDx("jumpCount %d / %d\n", jumpCount, maxJumpCount);
 }
 
 void JumpComponent::Jump(bool _velocityChange)
@@ -51,7 +50,6 @@ void JumpComponent::Jump(bool _velocityChange)
 void JumpComponent::Land()
 {
 	jumpCount = 0;
-	physics->velocity.y = 0.0f;
 	physics->isLanding = true;
 }
 

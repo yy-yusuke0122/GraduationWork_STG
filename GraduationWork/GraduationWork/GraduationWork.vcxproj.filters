@@ -222,9 +222,6 @@
     <ClCompile Include="..\Source\Scenes\LoadingScene.cpp">
       <Filter>Source\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Components\Jump.cpp">
-      <Filter>Source\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\MapChip.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -286,6 +283,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\UpdateButton.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\Jump.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -497,9 +497,6 @@
     <ClInclude Include="..\Source\Scenes\LoadingScene.h">
       <Filter>Source\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Components\Jump.h">
-      <Filter>Source\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\lib\Chip.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
@@ -561,6 +558,9 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\UpdateButton.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Jump.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

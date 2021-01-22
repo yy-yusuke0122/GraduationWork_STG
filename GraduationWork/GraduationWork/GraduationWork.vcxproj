@@ -41,6 +41,7 @@
     <ClCompile Include="..\lib\Image.cpp" />
     <ClCompile Include="..\lib\ImageRenderer.cpp" />
     <ClCompile Include="..\lib\Input.cpp" />
+    <ClCompile Include="..\lib\Jump.cpp" />
     <ClCompile Include="..\lib\Light.cpp" />
     <ClCompile Include="..\lib\Loader.cpp" />
     <ClCompile Include="..\lib\MapChip.cpp" />
@@ -79,7 +80,6 @@
     <ClCompile Include="..\Source\Components\EnemyAttack02.cpp" />
     <ClCompile Include="..\Source\Components\EnemyController.cpp" />
     <ClCompile Include="..\Source\Components\EnemyImageChanger.cpp" />
-    <ClCompile Include="..\Source\Components\Jump.cpp" />
     <ClCompile Include="..\Source\Components\Life.cpp" />
     <ClCompile Include="..\Source\Components\PlayerAttack00.cpp" />
     <ClCompile Include="..\Source\Components\PlayerAttack01.cpp" />
@@ -134,6 +134,7 @@
     <ClInclude Include="..\lib\Image.h" />
     <ClInclude Include="..\lib\ImageRenderer.h" />
     <ClInclude Include="..\lib\Input.h" />
+    <ClInclude Include="..\lib\Jump.h" />
     <ClInclude Include="..\lib\Light.h" />
     <ClInclude Include="..\lib\Loader.h" />
     <ClInclude Include="..\lib\MapChip.h" />
@@ -173,7 +174,6 @@
     <ClInclude Include="..\Source\Components\EnemyAttack02.h" />
     <ClInclude Include="..\Source\Components\EnemyController.h" />
     <ClInclude Include="..\Source\Components\EnemyImageChanger.h" />
-    <ClInclude Include="..\Source\Components\Jump.h" />
     <ClInclude Include="..\Source\Components\Life.h" />
     <ClInclude Include="..\Source\Components\PlayerAttack00.h" />
     <ClInclude Include="..\Source\Components\PlayerAttack01.h" />
