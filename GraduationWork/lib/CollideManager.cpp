@@ -34,9 +34,9 @@ bool CollideManager::Destroy()
     return true;
 }
 
-void CollideManager::Start()
+void CollideManager::Init(unsigned int Level, float left, float top, float right, float bottom)
 {
-    manager2D->Init();
+    manager2D->Init(Level, left, top, right, bottom);
 }
 
 void CollideManager::Update()
@@ -44,11 +44,6 @@ void CollideManager::Update()
     // “–‚½‚è”»’è‚ÌŠm”F
     manager2D->Update();
     manager3D->Update();
-}
-
-void CollideManager::RemoveAllCollider()
-{
-    manager2D->RemoveAll();
 }
 
 bool CollideManager::PushCollider2D(Collider2D* _col)

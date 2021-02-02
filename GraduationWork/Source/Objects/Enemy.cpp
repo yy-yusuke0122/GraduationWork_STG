@@ -27,7 +27,7 @@ void Enemy::Start()
 	life->SetMaxHP(MAX_HP);
 	life->SetHP(life->max);
 
-	transform->SetPosition(VECTOR3(0.0f, 250.0f, 0.0f));
+	transform->SetPosition(VECTOR3(0.0f, 600.0f, 0.0f));
 }
 
 void Enemy::Dead()

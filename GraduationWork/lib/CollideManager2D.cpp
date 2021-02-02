@@ -12,17 +12,23 @@ CollideManager2D::CollideManager2D()
 CollideManager2D::~CollideManager2D()
 {
 	delete LTree;
-	
+
 	for (std::list<OBJECT_FOR_TREE<Collider2D>*>::iterator it = pOFTAry.begin(); it != pOFTAry.end();) {
-		(*it)->Remove();
+		delete (*it);
 		it = pOFTAry.erase(it);
 	}
 }
 
-void CollideManager2D::Init()
+void CollideManager2D::Init(unsigned int Level, float left, float top, float right, float bottom)
 {
-	LTree->Init(8, -100.0f, -100.0f, 1000 + 100.0f, 700 + 100.0f);
-	RemoveAll();
+	LTree->Init(Level, left, top, right, bottom);
+
+	for (std::list<OBJECT_FOR_TREE<Collider2D>*>::iterator it = pOFTAry.begin(); it != pOFTAry.end();) {
+		delete (*it);
+		it = pOFTAry.erase(it);
+	}
+	pOFTAry.clear();
+	currentCollideList.clear();
 }
 
 void CollideManager2D::Update()
@@ -45,7 +51,7 @@ void CollideManager2D::Update()
 
 		// 前フレームに衝突しているもの同士で衝突判定
 		for (std::list<COL_PAIR>::iterator it = currentCollideList.begin(); it != currentCollideList.end();) {
-			if (CheckCollideStay(it->col1, it->col2)) {
+			if (!CheckCollideStay(it->col1, it->col2)) {
 				it = currentCollideList.erase(it);
 			}
 			else {
@@ -58,9 +64,7 @@ void CollideManager2D::Update()
 
 		// 衝突判定
 		DWORD c;
-		if (ColNum != 12)
-			int a = 0;
-		ColNum /= 2;	// 2で割るのはペアになっているので
+		ColNum /= 2;	// ペアになっているので2で割る
 		Collider2D** p = ColVect->getRootPtr();
 		Collider2D* pRoot[10000];
 		for (int i = 0; i < ColNum; ++i) {
@@ -75,32 +79,6 @@ void CollideManager2D::Update()
 			CheckCollideEnter(p[c * 2], p[c * 2 + 1]);
 		}
 	}
-	
-	//int i = 0;
-	//for (auto col_1 : colliderList) {
-	//	++i;
-	//	int j = 0;
-	//	for (auto col_2 : colliderList) {
-	//		if (++j <= i) {
-	//			continue;	// 既に確認したオブジェクトは飛ばす
-	//		}
-	//		CheckCollider(col_1, col_2);
-	//	}
-	//}
-}
-
-void CollideManager2D::RemoveAll()
-{
-	for (std::list<OBJECT_FOR_TREE<Collider2D>*>::iterator it = pOFTAry.begin(); it != pOFTAry.end();) {
-		(*it)->Remove();
-		it = pOFTAry.erase(it);
-	}
-	pOFTAry.clear();
-
-	for (std::list<COL_PAIR>::iterator it = currentCollideList.begin(); it != currentCollideList.end();) {
-		it = currentCollideList.erase(it);
-	}
-	currentCollideList.clear();
 }
 
 bool CollideManager2D::PushCollider(Collider2D* _col)
@@ -111,13 +89,6 @@ bool CollideManager2D::PushCollider(Collider2D* _col)
 	pOFTAry.emplace_back(p);
 
 	return true;
-
-	/*if (_col != nullptr) {
-		COL_INFO* info = new COL_INFO(_col);
-		colliderList.emplace_back(info);
-		return true;
-	}
-	return false;*/
 }
 
 void CollideManager2D::RemoveCollider(Collider2D* _col)
@@ -141,13 +112,6 @@ void CollideManager2D::RemoveCollider(Collider2D* _col)
 			++it;
 		}
 	}
-	//// リストの中から対応したコライダーを検索し、除外
-	//for (auto it = colliderList.begin(); it != colliderList.end(); ++it) {
-	//	if ((*it) == _col) {
-	//		colliderList.erase(it);
-	//		break;
-	//	}
-	//}
 }
 
 void CollideManager2D::CheckCollideEnter(Collider2D* _col1, Collider2D* _col2)

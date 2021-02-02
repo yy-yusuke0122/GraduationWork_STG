@@ -27,17 +27,17 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Start();
+	/// <param name="Level">4分木空間の分割レベル(下限1、上限15)</param>
+	/// <param name="left">当たり判定を行う範囲の左座標</param>
+	/// <param name="top">当たり判定を行う範囲の上座標</param>
+	/// <param name="right">当たり判定を行う範囲の右座標</param>
+	/// <param name="bottom">当たり判定を行う範囲の下座標</param>
+	void Init(unsigned int Level = 8, float left = -1000.0f, float top = -1000.0f, float right = 1000.0f, float bottom = 1000.0f);
 
 	/// <summary>
 	/// 当たり判定を確認
 	/// </summary>
 	void Update();
-
-	/// <summary>
-	/// 全てのコライダーを管理下から外す
-	/// </summary>
-	void RemoveAllCollider();
 
 	/// <summary>
 	/// Collider2Dを管理下に追加する

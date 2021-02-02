@@ -91,8 +91,6 @@ int UrLib::Init(int ScreenSizeX, int ScreenSizeY, bool WindowMode, int ColorBitD
 
     SceneManager::Start();
 
-    CollideManager::Get()->Start();
-
     Input::Start();
 
     Time::Init();

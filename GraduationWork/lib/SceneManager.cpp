@@ -87,8 +87,9 @@ void SceneManager::ChangeScene()
 
 	mainScene->reloadScene = p;
 
+	CollideManager::Get()->Init();
+
 	mainScene->SceneStart();
 
 	SetUseASyncLoadFlag(FALSE);
-
 }

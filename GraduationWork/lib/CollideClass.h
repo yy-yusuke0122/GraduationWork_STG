@@ -110,7 +110,7 @@ private:
 /////////////////////////////////////
 // üŒ`4•ª–Ø‹óŠÔŠÇ—ƒNƒ‰ƒX
 //////////////////////////////////
-#define CLINER4TREEMANAGER_MAXLEVEL		9
+#define CLINER4TREEMANAGER_MAXLEVEL		17
 template <class T>
 class CLiner4TreeManager
 {

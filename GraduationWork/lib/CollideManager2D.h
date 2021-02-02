@@ -17,17 +17,12 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Init();
+	void Init(unsigned int Level = 8, float left = -1000.0f, float top = -1000.0f, float right = 1000.0f, float bottom = 1000.0f);
 
 	/// <summary>
 	/// 当たり判定を確認
 	/// </summary>
 	void Update();
-
-	/// <summary>
-	/// 全てのコライダーを管理下から外す
-	/// </summary>
-	void RemoveAll();
 
 	/// <summary>
 	/// Collider2Dを管理下に追加する
