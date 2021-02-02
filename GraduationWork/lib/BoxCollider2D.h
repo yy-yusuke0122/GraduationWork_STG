@@ -11,6 +11,7 @@ public:
 	void Disp();
 	bool IsCollide(Collider2D* _collider) override;
 	Point2D GetWorldPosition() override;
+	AABB2D GetAABB2D() override;
 
 	// ‰ñ“]Œã‚Ì’¸“_À•W‚Ìæ“¾
 	Point2D LeftTop();
@@ -19,7 +20,7 @@ public:
 	Point2D RightBottom();
 
 	AABB2D box;
-	float rotation;
+	float rotation;	// ‰ñ“]’l(Radian)
 
 private:
 	bool IsCollideCircle(CircleCollider2D* _collider);

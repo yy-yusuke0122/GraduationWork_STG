@@ -12,7 +12,7 @@ CircleCollider2D::~CircleCollider2D()
 
 void CircleCollider2D::Disp()
 {
-	VECTOR2 pos = GetWorldPosition();
+	VECTOR2 pos = GetWorldPosition() - Scroll::GetValue();
 	DrawCircle((int)pos.x, (int)pos.y, (int)circle.r, GetColor(255, 255, 255), FALSE);
 }
 
@@ -33,6 +33,15 @@ Point2D CircleCollider2D::GetWorldPosition()
 {
 	Point p = transform->position + circle.p;
 	return Point2D(p.x, p.y);;
+}
+
+AABB2D CircleCollider2D::GetAABB2D()
+{
+	AABB2D box;
+	box.p = GetWorldPosition();
+	box.hl.x = this->circle.r;
+	box.hl.y = this->circle.r;
+	return box;
 }
 
 bool CircleCollider2D::IsCollideCircle(CircleCollider2D* _collider)

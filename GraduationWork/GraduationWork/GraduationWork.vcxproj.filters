@@ -563,6 +563,9 @@
     <ClInclude Include="..\lib\Jump.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="..\lib\CollideClass.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\lib\Scene.h.rej">

@@ -33,4 +33,10 @@ public:
 	/// </summary>
 	/// <returns>ワールド座標上のコライダー座標</returns>
 	virtual Point2D GetWorldPosition() = 0;
+
+	/// <summary>
+	/// コライダーを囲うAABBを取得
+	/// </summary>
+	/// <returns>コライダーを囲うAABB2D</returns>
+	virtual AABB2D GetAABB2D() = 0;
 };

@@ -28,8 +28,8 @@ void TestPlayerManager::Start()
 
 	state->SetStateMachine(stateMachine);
 	state->SetComponent("Idle", AddComponent<TestPlayerIdle>());
-	state->SetComponent("Move", AddComponent<TestPlayerMove>());
-	state->SetComponent("Attack", AddComponent<TestPlayerAttack>());
+	state->SetComponent("Move", AddComponent<TestPlayerMove>(false));
+	state->SetComponent("Attack", AddComponent<TestPlayerAttack>(false));
 
 	animator->SetStateMachine(stateMachine);
 	animator->SetAnim("Idle", "Media/Player.png", 2, 2, 4, 1.0f, 0, 3);

@@ -18,17 +18,6 @@ namespace UrLib {
 
 	inline float Remainder(const float& f1, const float& f2) { return f1 - (f2 * (int)(f1 / f2)); }
 
-	inline Quaternion operator *(const Quaternion& q1, const Quaternion& q2) 
-	{
-		Quaternion q;
-		q.x = q1.w * q2.x - q1.z * q2.y + q1.y * q2.z + q1.x * q2.w;
-		q.y = q1.z * q2.x + q1.w * q2.y - q1.x * q2.z + q1.y * q2.w;
-		q.z = -q1.y * q2.x + q1.x * q2.y + q1.w * q2.z + q1.z * q2.w;
-		q.w = -q1.x * q2.x - q1.y * q2.y - q1.z * q2.z + q1.w * q2.w;
-
-		return q;
-	}
-
 	template<typename T>
 	inline void ReplaceValue(T& _a, T& _b)
 	{

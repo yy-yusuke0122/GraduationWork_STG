@@ -117,6 +117,7 @@
     <ClInclude Include="..\lib\Chip.h" />
     <ClInclude Include="..\lib\ChipCollider.h" />
     <ClInclude Include="..\lib\CircleCollider2D.h" />
+    <ClInclude Include="..\lib\CollideClass.h" />
     <ClInclude Include="..\lib\CollideManager.h" />
     <ClInclude Include="..\lib\CollideManager2D.h" />
     <ClInclude Include="..\lib\CollideManager3D.h" />

@@ -21,7 +21,7 @@ public:
 	/// <typeparam name="C">追加したいComponentのクラス</typeparam>
 	/// <returns>追加したComponentのポインター</returns>
 	template<class C>
-	inline C* AddComponent();
+	inline C* AddComponent(bool startFlag = true);
 
 	/// <summary>
 	/// 指定したComponentを取得する
@@ -91,9 +91,9 @@ private:
 };
 
 template<class C>
-inline C* Component::AddComponent()
+inline C* Component::AddComponent(bool startFlag)
 {
-	return gameObject->AddComponent<C>();
+	return gameObject->AddComponent<C>(startFlag);
 }
 
 template<class C>

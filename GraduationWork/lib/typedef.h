@@ -56,6 +56,18 @@ namespace UrLib {
 			return tagFloat2(*this - r).Length() > 0.0f;
 		}
 
+		tagFloat2& operator +=(const tagFloat2& v) {
+			x = x + v.x;
+			y = y + v.y;
+			return *this;
+		}
+
+		tagFloat2& operator -=(const tagFloat2& v) {
+			x = x - v.x;
+			y = y - v.y;
+			return *this;
+		}
+
 		float Dot(const tagFloat2& r) const {
 			return x * r.x + y * r.y;
 		}
@@ -98,6 +110,8 @@ namespace UrLib {
 		static VECTOR2 one() { return VECTOR2(1.0f, 1.0f); }
 		static VECTOR2 up() { return VECTOR2(0.0f, 1.0f); }
 		static VECTOR2 right() { return VECTOR2(1.0f, 0.0f); }
+
+		operator VECTOR() const { return VGet(x, y, 0.0f); }
 
 		VECTOR2& operator =(const Float2& r) {
 			x = r.x;
@@ -176,6 +190,13 @@ namespace UrLib {
 			}
 		}
 
+		// âÒì]
+		void Rotate(float rad) {
+			VECTOR2 v = *this;
+			this->x = v.x * cosf(rad) + v.y * -sinf(rad);
+			this->y = v.x * sinf(rad) + v.y * cosf(rad);
+		}
+
 		// êÇíºä÷åWÇ…Ç†ÇÈÇ©
 		bool IsVertical(const VECTOR2& r) const {
 			float d = Dot(r);
@@ -222,7 +243,7 @@ namespace UrLib {
 	struct Circle2D {
 		Point2D p;
 		float r;	// îºåa
-		Circle2D() : p(0.0f, 0.0f), r(0.5f) {}
+		Circle2D() : p(0.0f, 0.0f), r(1.0f) {}
 		Circle2D(const Point2D& p, float r) : p(p), r(r) {}
 		~Circle2D() {}
 	};
@@ -230,7 +251,7 @@ namespace UrLib {
 	struct Capsule2D {
 		Segment2D s;
 		float r;	// îºåa
-		Capsule2D() : r(0.5f) {}
+		Capsule2D() : r(1.0f) {}
 		Capsule2D(const Segment2D& s, float r) : s(s), r(r) {}
 		Capsule2D(const Point2D& p1, const Point2D& p2, float r) : s(p1, p2), r(r) {}
 		~Capsule2D() {}
@@ -249,10 +270,10 @@ namespace UrLib {
 			return *((&hl.x) + i) * 2.0f;
 		}
 
-		Point2D LeftTop() const { return Point2D(-hl.x, -hl.y); }
-		Point2D LeftBottom() const { return Point2D(-hl.x, hl.y); }
-		Point2D RightTop() const { return Point2D(hl.x, -hl.y); }
-		Point2D RightBottom() const { return Point2D(hl.x, hl.y); }
+		Point2D LeftTop() const { return Point2D(-hl.x, hl.y); }
+		Point2D LeftBottom() const { return Point2D(-hl.x, -hl.y); }
+		Point2D RightTop() const { return Point2D(hl.x, hl.y); }
+		Point2D RightBottom() const { return Point2D(hl.x, -hl.y); }
 	};
 
 	struct Triangle2D {
@@ -559,6 +580,17 @@ namespace UrLib {
 		static Quaternion RotatePosition(VECTOR3 _axis, Quaternion _pos, float _deg);
 		static void RotatePosition(VECTOR3 _axis, VECTOR3* _pos, float _deg);
 		static void RotatePosition(VECTOR3 _axis, Quaternion* _pos, float _deg);
+
+		Quaternion operator*(const Quaternion& _q) {
+			Quaternion q;
+
+			q.x = w * _q.x - z * _q.y + y * _q.z + x * _q.w;
+			q.y = z * _q.x + w * _q.y - x * _q.z + y * _q.w;
+			q.z = -y * _q.x + x * _q.y + w * _q.z + z * _q.w;
+			q.w = -x * _q.x - y * _q.y - z * _q.z + w * _q.w;
+
+			return q;
+		}
 
 		MATRIX GetMatrix() const;
 

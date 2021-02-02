@@ -1,5 +1,6 @@
 #include "dxlib/DxLib.h"
 #include "SceneManager.h"
+#include "CollideManager.h"
 
 Scene* SceneManager::mainScene = nullptr;
 

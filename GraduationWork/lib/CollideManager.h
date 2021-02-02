@@ -25,9 +25,19 @@ public:
 
 public:
 	/// <summary>
+	/// 初期化
+	/// </summary>
+	void Start();
+
+	/// <summary>
 	/// 当たり判定を確認
 	/// </summary>
 	void Update();
+
+	/// <summary>
+	/// 全てのコライダーを管理下から外す
+	/// </summary>
+	void RemoveAllCollider();
 
 	/// <summary>
 	/// Collider2Dを管理下に追加する

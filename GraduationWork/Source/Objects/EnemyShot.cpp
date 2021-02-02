@@ -13,8 +13,8 @@ void EnemyShot::Start()
 	image = AddComponent<ImageRenderer>();
 	image->SetImage("Media/EnemyBullet.png");//画像
 
-	CircleCollider2D* collider = AddComponent<CircleCollider2D>();//コライダ
-	collider->circle.r = (image->GetSizeX() + image->GetSizeY()) / 4.f;
+	// CircleCollider2D* collider = AddComponent<CircleCollider2D>();//コライダ
+	// collider->circle.r = (image->GetSizeX() + image->GetSizeY()) / 4.f;
 
 	direction = AddComponent<DirectionMover>();//指定方向へ移動
 	AddComponent<ScreenOut>();

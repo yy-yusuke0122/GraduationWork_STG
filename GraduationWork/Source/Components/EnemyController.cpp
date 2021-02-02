@@ -13,7 +13,7 @@ EnemyController::~EnemyController()
 
 void EnemyController::Start()
 {
-	stateArray[0] = state = AddComponent<EnemyAttack00>();
+	(stateArray[0] = state = AddComponent<EnemyAttack00>())->SetActive(false);
 	(stateArray[1] = AddComponent<EnemyAttack01>())->SetActive(false);
 	(stateArray[2] = AddComponent<EnemyAttack02>())->SetActive(false);
 	nextPattern = pattern = 0;
@@ -21,6 +21,8 @@ void EnemyController::Start()
 
 void EnemyController::Update()
 {
+	GetComponent<CircleCollider2D>()->Disp();
+	return;
 	if (pattern != nextPattern)
 		ChangeMode();
 

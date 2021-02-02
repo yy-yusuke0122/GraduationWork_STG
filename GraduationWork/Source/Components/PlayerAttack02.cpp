@@ -19,9 +19,11 @@ void PlayerAttack02::Start()
 	power = 1.0f;
 	coolTime = 0;
 
-	box = AddComponent<BoxCollider2D>();
-	box->box.hl.x = 120.0f;
-	box->box.hl.y = 120.0f;
+	CircleCollider2D* circle = AddComponent<CircleCollider2D>();
+	circle->circle.r = 50.0f;
+	//box = AddComponent<BoxCollider2D>();
+	//box->box.hl.x = 120.0f;
+	//box->box.hl.y = 120.0f;
 
 	AddComponent<ImageRenderer>()->SetImage("Media/PlayerAttack02.png");
 
@@ -37,7 +39,7 @@ void PlayerAttack02::Start()
 
 void PlayerAttack02::Update()
 {
-	box->Disp();
+	/*box->Disp();*/
 }
 
 void PlayerAttack02::OnCollisionStay2D(Collider2D* _collider)

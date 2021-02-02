@@ -1,6 +1,11 @@
 #pragma once
 #include <list>
 
+template<class T>
+class CLiner4TreeManager;
+template<class T>
+class OBJECT_FOR_TREE;
+
 class Collider;
 class Collider2D;
 
@@ -10,9 +15,19 @@ public:
 	~CollideManager2D();
 
 	/// <summary>
+	/// 初期化
+	/// </summary>
+	void Init();
+
+	/// <summary>
 	/// 当たり判定を確認
 	/// </summary>
 	void Update();
+
+	/// <summary>
+	/// 全てのコライダーを管理下から外す
+	/// </summary>
+	void RemoveAll();
 
 	/// <summary>
 	/// Collider2Dを管理下に追加する
@@ -28,19 +43,18 @@ public:
 	void RemoveCollider(Collider2D* _col);
 
 private:
-	struct COL_INFO {
-		Collider2D* col;
-		std::list<Collider2D*> currentCollideList;
-		COL_INFO(Collider2D* _col) : col(_col) {}
-		~COL_INFO() {}
+	struct COL_PAIR {
+		Collider2D* col1;
+		Collider2D* col2;
+		COL_PAIR(Collider2D* _col1, Collider2D* _col2) : col1(_col1), col2(_col2) {}
+		~COL_PAIR() {}
 	};
-	std::list<COL_INFO*> colliderList;
+	std::list<COL_PAIR> currentCollideList;
+	CLiner4TreeManager<Collider2D>* LTree;
+	std::list<OBJECT_FOR_TREE<Collider2D>*> pOFTAry;
 private:
-	/// <summary>
-	/// お互いが衝突しているかを確認し、
-	/// 衝突時は対応した関数を呼ぶ
-	/// </summary>
-	void CheckCollider(COL_INFO* _col1, COL_INFO* _col2);
+	void CheckCollideEnter(Collider2D* _col1, Collider2D* _col2);
+	bool CheckCollideStay(Collider2D* _col1, Collider2D* _col2);
 
 	/// <summary>
 	/// 既に衝突しているかを確認する
@@ -50,5 +64,6 @@ private:
 	/// <param name="_col2">既に衝突しているか確認するコライダー</param>
 	/// <param name="_it">既に衝突しているコライダーを指すイテレータ</param>
 	/// <returns>既に衝突していればtrue</returns>
-	bool IsCollided(COL_INFO* _colInfo, Collider2D* _col, std::list<Collider2D*>::iterator& _it);
+	//bool IsCollided(COL_INFO* _colInfo, Collider2D* _col, std::list<Collider2D*>::iterator& _it);
+	bool IsCollided(Collider2D* _col1, Collider2D* _col2);
 };

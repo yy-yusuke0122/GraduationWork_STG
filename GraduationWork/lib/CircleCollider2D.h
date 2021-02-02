@@ -11,6 +11,7 @@ public:
 	void Disp();
 	bool IsCollide(Collider2D* _collider) override;
 	Point2D GetWorldPosition() override;
+	AABB2D GetAABB2D() override;
 
 	Circle2D circle;
 

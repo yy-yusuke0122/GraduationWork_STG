@@ -16,9 +16,8 @@ BoxCollider2D::~BoxCollider2D()
 void BoxCollider2D::Disp()
 {
 	AABB2D dispBox = box;
-	dispBox.p = GetWorldPosition();
-	float rad = ToRadian(rotation);
-	DrawRotaBox(dispBox, rad, GetColor(255, 255, 255), FALSE);
+	dispBox.p = GetWorldPosition() - Scroll::GetValue();
+	DrawRotaBox(dispBox, rotation, GetColor(255, 255, 255), FALSE);
 	printfDx("rotation = %f\n", rotation);
 }
 
@@ -41,56 +40,66 @@ Point2D BoxCollider2D::GetWorldPosition()
 	return Point2D(p.x, p.y);
 }
 
+AABB2D BoxCollider2D::GetAABB2D()
+{
+	AABB2D box;
+	box.p = GetWorldPosition();
+
+	Point2D p;
+	auto SetMaxPoint = [&](Point2D _p) { 
+		if (p.x < _p.x) p.x = _p.x;
+		if (p.y < _p.y) p.y = _p.y;
+	};
+
+	SetMaxPoint(LeftTop());
+	SetMaxPoint(RightTop());
+	SetMaxPoint(RightBottom());
+	SetMaxPoint(LeftBottom());
+
+	box.hl = p;
+	return box;
+}
+
 Point2D BoxCollider2D::LeftTop()
 {
-	MATRIX matZ = MGetRotZ(ToRadian(rotation));
-	VECTOR2 lt = box.LeftTop();
-	Point p = VTransform(VGet(lt.x, lt.y, 0.0f), matZ);
-	Point2D p2(p.x, p.y);
-	p2 = p2 + GetWorldPosition();
-	return p2;
+	Point2D p = box.LeftTop();
+	Point2D p2 = { p.x * cosf(rotation) + p.y * -sinf(rotation), p.x * sinf(rotation) + p.y * cosf(rotation) };
+	return p2 + GetWorldPosition() + box.p;
 }
 
 Point2D BoxCollider2D::LeftBottom()
 {
-	MATRIX matZ = MGetRotZ(ToRadian(rotation));
-	VECTOR2 lb = box.LeftBottom();
-	Point p = VTransform(VGet(lb.x, lb.y, 0.0f), matZ);
-	Point2D p2(p.x, p.y);
-	p2 = p2 + GetWorldPosition();
-	return p2;
+	Point2D p = box.LeftBottom();
+	Point2D p2 = { p.x * cosf(rotation) + p.y * -sinf(rotation), p.x * sinf(rotation) + p.y * cosf(rotation) };
+	return p2 + GetWorldPosition() + box.p;
 }
 
 Point2D BoxCollider2D::RightTop()
 {
-	MATRIX matZ = MGetRotZ(ToRadian(rotation));
-	VECTOR2 rt = box.RightTop();
-	Point p = VTransform(VGet(rt.x, rt.y, 0.0f), matZ);
-	Point2D p2(p.x, p.y);
-	p2 = p2 + GetWorldPosition();
-	return p2;
+	Point2D p = box.RightTop();
+	Point2D p2 = { p.x * cosf(rotation) + p.y * -sinf(rotation), p.x * sinf(rotation) + p.y * cosf(rotation) };
+	return p2 + GetWorldPosition() + box.p;
 }
 
 Point2D BoxCollider2D::RightBottom()
 {
-	MATRIX matZ = MGetRotZ(ToRadian(rotation));
-	VECTOR2 rb = box.RightBottom();
-	Point p = VTransform(VGet(rb.x, rb.y, 0.0f), matZ);
-	Point2D p2(p.x, p.y);
-	p2 = p2 + GetWorldPosition();
-	return p2;
+	Point2D p = box.RightBottom();
+	Point2D p2 = { p.x * cosf(rotation) + p.y * -sinf(rotation), p.x * sinf(rotation) + p.y * cosf(rotation) };
+	return p2 + GetWorldPosition() + box.p;
 }
 
 bool BoxCollider2D::IsCollideCircle(CircleCollider2D* _collider)
 {
-	// 矩形０度の時の座標に円の角度を直す
-	Point2D circle = _collider->GetWorldPosition();
-	float radian = ToRadian(rotation);
+	// 矩形０度の時の座標に円の座標を直す
 	Point2D rect = GetWorldPosition();
 	Point2D c;
 
-	c.x = static_cast<float>(cos(radian) * ((double)circle.x - (double)rect.x) - sin(radian) * ((double)circle.y - (double)rect.y) + rect.x);
-	c.y = static_cast<float>(sin(radian) * ((double)circle.x - (double)rect.x) + cos(radian) * ((double)circle.y - (double)rect.y) + rect.y);
+	{
+		Point2D circle = _collider->GetWorldPosition();
+		VECTOR2 tmp = circle - rect;
+		tmp.Rotate(rotation);
+		c = tmp + rect;
+	}
 
 	// 円の中心点から矩形の１番近い頂点の座標
 	Point2D p;

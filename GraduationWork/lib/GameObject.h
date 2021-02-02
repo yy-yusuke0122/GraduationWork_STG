@@ -24,7 +24,7 @@ public:
 	/// <typeparam name="C">追加したいComponentのクラス</typeparam>
 	/// <returns>追加したComponentのポインター</returns>
 	template<class C>
-	inline C* AddComponent();
+	inline C* AddComponent(bool startFlag = true);
 
 	/// <summary>
 	/// 指定したComponentを取得する
@@ -144,7 +144,7 @@ public:
 };
 
 template<class C>
-inline C* GameObject::AddComponent()
+inline C* GameObject::AddComponent(bool startFlag)
 {
 	// 既に同じComponentを持っていたら終了
 	C* p = GetComponent<C>();
@@ -159,7 +159,10 @@ inline C* GameObject::AddComponent()
 	Object* obj = comp;
 	obj->className = typeid(C).name();
 	compList.push_back(comp);
-	comp->Start();
+
+	if (startFlag) {
+		comp->Start();
+	}
 
 	return p;
 }

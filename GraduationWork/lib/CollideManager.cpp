@@ -34,11 +34,21 @@ bool CollideManager::Destroy()
     return true;
 }
 
+void CollideManager::Start()
+{
+    manager2D->Init();
+}
+
 void CollideManager::Update()
 {
     // “–‚½‚è”»’è‚ÌŠm”F
     manager2D->Update();
     manager3D->Update();
+}
+
+void CollideManager::RemoveAllCollider()
+{
+    manager2D->RemoveAll();
 }
 
 bool CollideManager::PushCollider2D(Collider2D* _col)
