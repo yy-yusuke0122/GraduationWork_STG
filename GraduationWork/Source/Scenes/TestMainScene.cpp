@@ -28,11 +28,11 @@ void TestMainScene::Start()
 	option.gravityDir = VECTOR3::up();
 	option.gravity = 40.0f;
 
-	//Instantiate<ScreenCollider>();
+	Instantiate<ScreenCollider>();
 	player = Instantiate<Player>();
 	enemy = Instantiate<Enemy>();
-	//Instantiate<Stage>();
-	//Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
+	Instantiate<Stage>();
+	Instantiate<GameObject>()->AddComponent<CheckDeadObjects>();
 
 	SoundManager::Get()->Push("Sound/BGM.mp3", "MainBGM");
 
@@ -43,9 +43,9 @@ void TestMainScene::Start()
 	enemy->transform->SetPosition(center);
 	enemy->transform->AddPosition(add);
 
-	//Button* button = Instantiate<Button>();
-	//button->textObj->text = "‚¤‚ñ‚¿I";
-	//button->transform->SetPosition(center);
+	Button* button = Instantiate<Button>();
+	button->textObj->text = "‚¤‚ñ‚¿I";
+	button->transform->SetPosition(center);
 }
 
 void TestMainScene::Update()

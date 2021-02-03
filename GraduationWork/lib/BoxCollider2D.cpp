@@ -23,6 +23,10 @@ void BoxCollider2D::Disp()
 
 bool BoxCollider2D::IsCollide(Collider2D* _collider)
 {
+	// ‚Ç‚¿‚ç‚©‚Ì—LŒøó‘Ô‚ª–³Œø‚Ìê‡‚ÍÕ“Ë‚µ‚Ä‚¢‚È‚¢
+	if (!IsActive() || !_collider->IsActive())
+		return false;
+
 	CircleCollider2D* col_c = dynamic_cast<CircleCollider2D*>(_collider);
 	BoxCollider2D* col_b = dynamic_cast<BoxCollider2D*>(_collider);
 	if (col_c != nullptr) {	// ‘ÎÛ‚ªCircleCollider‚Ì
