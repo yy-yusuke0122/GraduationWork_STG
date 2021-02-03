@@ -19,6 +19,8 @@ TestTitleScene::~TestTitleScene()
 
 void TestTitleScene::Start()
 {
+//	UrLib::CollideInit(1,100,100,100,100);
+
 	map = Instantiate<MapChip>();
 	map->Create(16, 16, cs, cs);
 	for (int h = 0; h < 16; ++h)

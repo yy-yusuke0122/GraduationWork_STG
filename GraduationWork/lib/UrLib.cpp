@@ -159,3 +159,8 @@ int UrLib::End()
     Debug::Release();
     return ret;
 }
+
+void UrLib::CollideInit(unsigned int Level, float left, float top, float right, float bottom)
+{
+    CollideManager::Get()->Init(Level, left, top, right, bottom);
+}
