@@ -30,12 +30,12 @@ void PlayerMover::Update()
 
 void PlayerMover::Move(bool _isRight)
 {
-	VECTOR3 vec;
+	VECTOR2 vec;
 	if (_isRight == true) {
-		vec = VGet(speed, 0.0f, 0.0f);
+		vec = VECTOR2(speed, 0.0f) * Time::DeltaTime();
 	}
 	else if (_isRight == false) {
-		vec = VGet(-speed, 0.0f, 0.0f);
+		vec = VECTOR2(-speed, 0.0f) * Time::DeltaTime();
 	}
 	transform->AddPosition(vec);
 }

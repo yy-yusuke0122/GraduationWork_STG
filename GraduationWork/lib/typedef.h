@@ -108,7 +108,7 @@ namespace UrLib {
 
 		static VECTOR2 zero() { return VECTOR2(); }
 		static VECTOR2 one() { return VECTOR2(1.0f, 1.0f); }
-		static VECTOR2 up() { return VECTOR2(0.0f, 1.0f); }
+		static VECTOR2 up() { return VECTOR2(0.0f, -1.0f); }
 		static VECTOR2 right() { return VECTOR2(1.0f, 0.0f); }
 
 		operator VECTOR() const { return VGet(x, y, 0.0f); }
@@ -391,11 +391,13 @@ namespace UrLib {
 		VECTOR3() {}
 		VECTOR3(float _x, float _y, float _z) : tagFloat3(_x, _y, _z) {}
 		VECTOR3(tagFloat3 f) : tagFloat3(f) {}
+		VECTOR3(VECTOR2 _v) : tagFloat3(_v.x, _v.y, 0.0f) {}
 		VECTOR3(VECTOR v) : tagFloat3(v) {}
 		static VECTOR3 zero() { return VECTOR3(); }
 		static VECTOR3 one() { return VECTOR3(1.0f, 1.0f, 1.0f); }
 		static VECTOR3 up() { return VECTOR3(0.0f, 1.0f, 0.0f); }
 		static VECTOR3 right() { return VECTOR3(1.0f, 0.0f, 0.0f); }
+		static VECTOR3 foward() { return VECTOR3(0.0f, 0.0f, 1.0f); }
 		void Clear() { x = 0.0f, y = 0.0f, z = 0.0f; }
 		VECTOR3& operator =(const VECTOR& _v) { x = _v.x, y = _v.y, z = _v.z; return *this; }
 		operator VECTOR() const { return VGet(x, y, z); }

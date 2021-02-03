@@ -18,6 +18,6 @@ private:
 	TestPlayerManager* manager;
 	ComponentSwitcher* state;
 
-	VECTOR3 dir;
+	VECTOR2 dir;
 	float speed;
 };

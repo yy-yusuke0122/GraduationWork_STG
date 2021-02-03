@@ -2,7 +2,7 @@
 #include "TestPlayerManager.h"
 
 TestPlayerMove::TestPlayerMove() :
-	manager(nullptr), state(nullptr), dir(VECTOR3::zero()), speed(0.0f)
+	manager(nullptr), state(nullptr), dir(VECTOR2::zero()), speed(0.0f)
 {
 }
 
@@ -15,7 +15,7 @@ void TestPlayerMove::Start()
 	manager = GetComponent<TestPlayerManager>();
 	state = manager->GetStateController();
 
-	speed = 20.0f;
+	speed = 150.0f;
 }
 
 void TestPlayerMove::Update()
@@ -34,9 +34,8 @@ void TestPlayerMove::CheckMoveInput()
 {
 	dir.Clear();
 
-	VECTOR2 vec = Input::GetAxis() * speed;
-	dir.x = vec.x;
-	dir.y = vec.y;
+	dir = Input::GetAxis() * speed * Time::DeltaTime();
+	dir.y *= -1.0f;
 
 	if (dir.Length() == 0.0f) {
 		state->SetBool("isMove", false);

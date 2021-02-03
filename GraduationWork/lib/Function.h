@@ -10,7 +10,6 @@ namespace UrLib {
 	inline float ToDegree(float _rad) { return _rad * 180.0f / DX_PI_F; }
 
 	inline VECTOR3 operator *(const VECTOR3& v, const MATRIX& m) { return VTransform(v, m); }
-
 	inline VECTOR3& operator *=(VECTOR3& v, const MATRIX& m) { return v = VTransform(v, m); }
 
 	inline MATRIX operator *(const MATRIX& m1, const MATRIX& m2) { return MMult(m1, m2); }
