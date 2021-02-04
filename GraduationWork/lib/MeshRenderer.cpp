@@ -65,8 +65,6 @@ void MeshRenderer::Draw()
 
     m *= MGetTranslate(transform->position + renderTransform.position);
 
-    m.m[0][0] = m.m[1][1] = 1.f;//TODO : Quaternion‚Ìs—ñ•ÏŠ·ƒoƒO
-
     MV1SetMatrix(info->handle, m);
 
     SetUseLighting((isLighting) ? TRUE : FALSE);
